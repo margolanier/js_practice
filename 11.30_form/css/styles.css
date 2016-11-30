@@ -1,44 +1,62 @@
 body {
 	background-color: #E3EEF3;
 	padding: 1%;
-	font-family: sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: red;
 }
 
 form {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-color: white;
+	position: relative;
 }
 
-fieldset {
+.row {
 	border: none;
 	text-align: left;
-	display: flex;
-	justify-content: space-between;
+	display: block;
 }
 
-fieldset.2items .item {
+.row.two-items > .item {
 	width: 50%;
 }
 
-fieldset.3items .item {
+.row.three-items > .item {
 	width: 33.3%;
 }
 
-fieldset.4items .item {
+.row.four-items > .item {
 	width: 25%;
 }
 
 .item {
-	padding: 5px;
-	border: 1px solid blue;
+	padding: 15px;
+	border: 1px solid #ccc;
+	display: inline-block;
 }
 
 label {
-	color: #ccc;
+	color: #a5a5a5;
+	font-size: .7rem;
+	letter-spacing: 1px;
 	text-transform: uppercase;
+	display: table-row;
+	margin: 10px 0;
 }
 
 input, select {
-	color; red;
+	display: table-row;
+	box-sizing: border-box;
+	min-width: 200px;
+	border: none;
+	font-size: .8rem;
+	margin-top: 10px;
+}
+
+input[placeholder] {
+	color: #ccc;
+	opacity: 1;
+	font-size: .8rem;
 }
