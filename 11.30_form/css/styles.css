@@ -1,0 +1,44 @@
+body {
+	background-color: #E3EEF3;
+	padding: 1%;
+	font-family: sans-serif;
+}
+
+form {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: white;
+}
+
+fieldset {
+	border: none;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+}
+
+fieldset.2items .item {
+	width: 50%;
+}
+
+fieldset.3items .item {
+	width: 33.3%;
+}
+
+fieldset.4items .item {
+	width: 25%;
+}
+
+.item {
+	padding: 5px;
+	border: 1px solid blue;
+}
+
+label {
+	color: #ccc;
+	text-transform: uppercase;
+}
+
+input, select {
+	color; red;
+}

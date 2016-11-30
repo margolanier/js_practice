@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Form</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<form action="/" method="post">
+		
+		<fieldset class="row 2items">
+			<div class="item">
+				<label for="name">Name</label>
+				<input type="text" name="name" placeholder="What is your full name?">
+			</div>
+			
+			<div class="row item">
+				<label for="company">Company</label>
+				<input type="text" name="company" placeholder="Where do you currently work?">
+			</div>
+		</fieldset>
+		
+		<fieldset class="row 3items">
+			<div class="item">
+				<label for="phone">Phone Number</label>
+				<input type="tel" name="phone" placeholder="What is the best # to reach you?">
+			</div>
+			
+			<div class="item">
+				<label for="email">Email</label>
+				<input type="email" name="email" placeholder="What is your e-mail address?">
+			</div>
+			
+			<div class="item">
+				<label for="availability">Availability</label>
+				<select name="availability">
+					<option selected>5-15 hrs per week</option>
+					<option>16-30 hrs per week</option>
+					<option>30+ hrs per week</option>
+				</select>
+			</div>
+		</fieldset>
+		
+		<fieldset class="4items">
+			<div class="item">
+				<label for="skills">Skills</label>
+				<input type="text-area" name="skills" placeholder="List a few of your primary skills">
+			</div>
+			
+			<div class="item">
+				<label for="experience">Yrs Experience</label>
+				<input type="number" name="experience" placeholder="How many years of experience?">
+			</div>
+			
+			<div class="item">
+				<label for="color">Favorite Color</label>
+				<input type="text" name="color" placeholder="What's your favorite color, above all others?">
+			</div>
+			
+			<div class="item">
+				<label for="color">Programming Language of Choice</label>
+				<input type="text" name="language" placeholder="I know. Tough question.">
+			</div>
+		</fieldset>
+		
+		<div class="row">
+			<input type="submit" value="Submit Form">
+		</div>
+		
+	</form>
+</body>
+
+</html>
