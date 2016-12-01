@@ -55,6 +55,7 @@ input, select {
 	display: table-row;
 	box-sizing: border-box;
 	min-width: 200px;
+	width: 100%;
 	border: none;
 	font-size: .8rem;
 	margin-top: 5px;
@@ -79,4 +80,5 @@ input[type="submit"] {
 	background-color: #82AE65;
 	border-radius: 3px;
 	margin: auto;
+	max-width: 300px;
 }
