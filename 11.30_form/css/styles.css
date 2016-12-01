@@ -15,17 +15,15 @@ form {
 
 form .row {
 	display: flex;
-	border-bottom: 1px solid #cccccc;
-	height: 75px;
-}
-
-form .row:last-child {
-	border-bottom: none;
+	/*flex-wrap: wrap;*/
+	min-height: 75px;
 }
 
 .row .item {
+	border-bottom: 1px solid #cccccc;
 	border-right: 1px solid #cccccc;
 	padding: 15px;
+	overflow-x: auto;
 }
 
 .row .item:last-child {
@@ -64,8 +62,8 @@ input, select {
 	background-color: white;
 }
 
-option {
-	color: red;
+select option {
+	color: #cccccc;
 }
 
 input[placeholder] {
