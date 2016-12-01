@@ -1,22 +1,35 @@
 body {
 	background-color: #E3EEF3;
 	padding: 1%;
+	margin: 0;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	color: red;
 }
 
 form {
-	border: 1px solid #ccc;
-	border-radius: 5px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
 	background-color: white;
 	position: relative;
 }
 
-.row {
-	border: none;
-	text-align: left;
-	display: block;
+form .row {
+	display: flex;
+	border-bottom: 1px solid #cccccc;
+	height: 75px;
+}
+
+form .row:last-child {
+	border-bottom: none;
+}
+
+.row .item {
+	border-right: 1px solid #cccccc;
+	padding: 15px;
+}
+
+.row .item:last-child {
+	border-right: none;
 }
 
 .row.two-items > .item {
@@ -31,19 +44,13 @@ form {
 	width: 25%;
 }
 
-.item {
-	padding: 15px;
-	border: 1px solid #ccc;
-	display: inline-block;
-}
-
 label {
-	color: #a5a5a5;
+	color: grey;
 	font-size: .7rem;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	display: table-row;
-	margin: 10px 0;
+	margin: 10px 5px;
 }
 
 input, select {
@@ -52,11 +59,26 @@ input, select {
 	min-width: 200px;
 	border: none;
 	font-size: .8rem;
-	margin-top: 10px;
+	margin-top: 5px;
+	padding: 5px 0;
+	background-color: white;
+}
+
+option {
+	color: red;
 }
 
 input[placeholder] {
-	color: #ccc;
+	color: #cccccc;
 	opacity: 1;
 	font-size: .8rem;
+}
+
+input[type="submit"] {
+	color: white;
+    padding: 5px;
+    height: 30px;
+	background-color: #82AE65;
+	border-radius: 3px;
+	margin: auto;
 }
