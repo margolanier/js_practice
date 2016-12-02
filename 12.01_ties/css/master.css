@@ -1,0 +1,117 @@
+/***
+ * GLOBAL
+ ***/
+body {
+	background-color: white;
+	font-family: Tahoma, sans-serif;
+	font-size: 16px;
+}
+
+grid-container, .grid-container {
+	width: 100%;
+	max-width: 1120px;
+	margin: 0 auto;
+	text-align: left;
+	display: block;
+}
+
+section {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+ul.menu-items {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	background-color: inherit;
+}
+
+ul.menu-items li {
+	padding: 5px 10px;
+}
+
+ul.menu-items li:first-child {
+	padding-left: 0;
+}
+
+h1 {
+	font-size: 60px;
+	margin: 65px 0;
+	text-align: center;
+}
+
+a:hover {
+	opacity: 0.8;
+}
+
+/***
+ * HEADER
+ ***/
+toolbar {
+	background-color: #fa6938;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	transition: background-color 0.5s ease;
+}
+
+toolbar:hover {
+	background-color: #33a1ff;
+}
+
+header {
+	position: relative;
+	border-bottom: 10px solid transparent;
+	border-image: url('http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg') 10 88 repeat;
+	/*border-image: url('../assets/perforated-bottom@2x.png') 10 88 repeat;*/
+	z-index: 100;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.primary-footer {
+	border-top: 10px solid transparent;
+	border-image: url('http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg') 10 88 repeat;
+}
+
+.secondary-footer {
+	background-color: #f4f4f4;
+	border-top: 10px solid transparent;
+	border-image: url('http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg') 10 88 repeat;
+}
+
+/*.secondary-footer ul {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}*/
+
+footer ul {
+	padding: 0;
+	list-style: none;
+	margin-right: 3rem;
+}
+
+.footer-content {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+li.footer-categ {
+	font-weight: bold;
+}
