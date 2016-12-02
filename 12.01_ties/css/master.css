@@ -3,8 +3,9 @@
  ***/
 body {
 	background-color: white;
-	font-family: Tahoma, sans-serif;
+	font-family: 'Palanquin', Tahoma, sans-serif;
 	font-size: 16px;
+	font-weight: 400;
 }
 
 grid-container, .grid-container {
@@ -35,7 +36,7 @@ ul.menu-items {
 }
 
 ul.menu-items li {
-	padding: 5px 10px;
+	padding: 5px 15px;
 }
 
 ul.menu-items li:first-child {
@@ -44,12 +45,18 @@ ul.menu-items li:first-child {
 
 h1 {
 	font-size: 60px;
+	font-weight: 400;
 	margin: 65px 0;
 	text-align: center;
 }
 
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
 a:hover {
-	opacity: 0.8;
+	color: #33a1ff;
 }
 
 /***
@@ -68,42 +75,59 @@ toolbar:hover {
 	background-color: #33a1ff;
 }
 
+#toolbar-btn {
+	background: rgba(0, 0, 0, .2);
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: .8rem;
+}
+
 header {
 	position: relative;
-	border-bottom: 10px solid transparent;
-	border-image: url('http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg') 10 88 repeat;
-	/*border-image: url('../assets/perforated-bottom@2x.png') 10 88 repeat;*/
-	z-index: 100;
+	background-color: white;
+    border-bottom: 5px solid transparent;
+    border-image: url(../assets/perforated-bottom.png) 5 0 repeat;
+    border-image-outset: .5;
+    z-index: 100;
 }
 
 nav {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
+	font-size: 1.4rem;
+	font-weight: 100;
 }
 
-.primary-footer {
-	border-top: 10px solid transparent;
-	border-image: url('http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg') 10 88 repeat;
+#logo {
+	margin-right: 3rem;
 }
-
-.secondary-footer {
-	background-color: #f4f4f4;
-	border-top: 10px solid transparent;
-	border-image: url('http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg') 10 88 repeat;
-}
-
-/*.secondary-footer ul {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-}*/
 
 footer ul {
 	padding: 0;
 	list-style: none;
 	margin-right: 3rem;
+}
+
+.primary-footer {
+	background-color: white;
+    border-top: 7px solid transparent;
+    border-image: url(../assets/hatch-light.png) 7 0 repeat;
+    border-image-outset: .5;
+}
+
+.secondary-footer {
+	background-color: #f4f4f4;
+    border-top: 5px solid transparent;
+    border-image: url(../assets/perforated-bottom.png) 5 0 repeat;
+    border-image-outset: .5;
+}
+
+.secondary-footer ul {
+	display: flex;
 }
 
 .footer-content {
