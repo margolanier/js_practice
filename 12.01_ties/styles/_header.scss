@@ -12,6 +12,10 @@ toolbar {
 	
 	&:hover, &:focus {
 		background-color: $blue;
+		
+		a {
+			color: white;
+		}
 	}
 	
 	#toolbar-btn {
@@ -112,26 +116,41 @@ header {
 		font-size: 1rem;
 		line-height: 1.2rem;
 		color: $lt-grey-text;
+		/*align-self: flex-end;*/
+		margin-left: auto;
 		text-align: right;
+		display: table;
+		position: relative;
 		
 		.login-1 {
-			margin-bottom: 10px;
+			position: absolute;
+			right: 0;
+			top: -15px;
 		}
 		
 		a {
 			font-size: .8rem;
 			color: $lt-grey-text;
 			text-transform: uppercase;
+			
+			&:hover, &:focus {
+				color: $blue;
+			}
 		}
 		
-		.login-2 > div {
-			border: 1px solid $md-grey;
-			border-radius: 3px;
-			width: 120px;
-			height: 40px;
-			display: inline-block;
-			position: relative;
-			bottom: 0;
+		.login-2 {
+			display: table-cell;
+			vertical-align: middle;
+		
+			> div {
+				border: 1px solid $md-grey;
+				border-radius: 3px;
+				width: 120px;
+				height: 30px;
+				display: inline-block;
+				position: relative;
+				bottom: 0;
+			}
 		}
 		
 		.login-2 > div.cart {

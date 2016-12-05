@@ -64,6 +64,8 @@ toolbar {
   transition: background-color 0.5s ease; }
   toolbar:hover, toolbar:focus {
     background-color: #33a1ff; }
+    toolbar:hover a, toolbar:focus a {
+      color: white; }
   toolbar #toolbar-btn {
     background: rgba(0, 0, 0, 0.2);
     padding: 5px 10px;
@@ -143,21 +145,32 @@ header {
     font-size: 1rem;
     line-height: 1.2rem;
     color: #909090;
-    text-align: right; }
+    /*align-self: flex-end;*/
+    margin-left: auto;
+    text-align: right;
+    display: table;
+    position: relative; }
     header .login .login-1 {
-      margin-bottom: 10px; }
+      position: absolute;
+      right: 0;
+      top: -15px; }
     header .login a {
       font-size: .8rem;
       color: #909090;
       text-transform: uppercase; }
-    header .login .login-2 > div {
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      width: 120px;
-      height: 40px;
-      display: inline-block;
-      position: relative;
-      bottom: 0; }
+      header .login a:hover, header .login a:focus {
+        color: #33a1ff; }
+    header .login .login-2 {
+      display: table-cell;
+      vertical-align: middle; }
+      header .login .login-2 > div {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 120px;
+        height: 30px;
+        display: inline-block;
+        position: relative;
+        bottom: 0; }
     header .login .login-2 > div.cart {
       text-align: left; }
     header .login #cart-icon {
@@ -209,94 +222,80 @@ header {
  ***/
 footer {
   margin-top: 4rem; }
-
-footer ul {
-  padding: 0;
-  list-style: none;
-  margin-right: 3rem; }
-
-footer ul.connect {
-  align-items: flex-start; }
-
-.primary-footer {
-  background-color: white;
-  border-top: 7px solid transparent;
-  border-image: url(../assets/hatch-light.png) 7 0 repeat;
-  border-image-outset: .5;
-  padding-bottom: 2rem; }
-
-.primary-footer a {
-  color: #33a1ff; }
-
-.social-links a {
-  display: inline-block;
-  transform: scale(0.5);
-  width: 70px;
-  height: 70px; }
-
-.social-links a:hover, .social-links a:focus {
-  opacity: 0.8; }
-
-#facebook-icon {
-  background: url(../assets/sprite@2x.png) -540px 0; }
-
-#pinterest-icon {
-  background: url(../assets/sprite@2x.png) -540px -80px; }
-
-#twitter-icon {
-  background: url(../assets/sprite@2x.png) -540px -160px; }
-
-.contact-box {
-  background-color: #a2afc0;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  color: #ffffff;
-  padding: 15px;
-  font-size: 1.2rem;
-  font-weight: 300;
-  width: 300px; }
-
-.contact-box h3 {
-  font-size: 1.5rem;
-  font-style: italic;
-  font-weight: 300;
-  margin: 0; }
-
-a.contact-us-btn {
-  background-color: #33a1ff;
-  padding: 0 5px;
-  color: #ffffff !important;
-  float: right; }
-
-.connect li {
-  width: 25%; }
-
-.connect li img {
-  border: 1px solid #ccc; }
-
-.secondary-footer {
-  background-color: #f4f4f4;
-  border-top: 5px solid transparent;
-  border-image: url(../assets/perforated-bottom.png) 5 0 repeat;
-  border-image-outset: .5;
-  padding-bottom: 2rem; }
-
-.secondary-footer .footer-menu {
-  display: flex; }
-
-.secondary-footer a {
-  color: #909090; }
-
-li.footer-categ {
-  font-weight: 400;
-  color: #000000; }
-
-.copyright {
-  font-size: .8rem;
-  color: #909090; }
-
-.copyright a {
-  border-bottom: 1px dotted #909090; }
+  footer ul {
+    padding: 0;
+    list-style: none;
+    margin-right: 3rem; }
+  footer ul.connect {
+    align-items: flex-start; }
+  footer .primary-footer {
+    background-color: white;
+    border-top: 7px solid transparent;
+    border-image: url(../assets/hatch-light.png) 7 0 repeat;
+    border-image-outset: .5;
+    padding-bottom: 2rem; }
+    footer .primary-footer a {
+      color: #33a1ff; }
+    footer .primary-footer .social-links a {
+      display: inline-block;
+      transform: scale(0.5);
+      width: 70px;
+      height: 70px; }
+    footer .primary-footer .social-links a:hover, footer .primary-footer .social-links a:focus {
+      opacity: 0.8; }
+    footer .primary-footer #facebook-icon {
+      background: url(../assets/sprite@2x.png) -540px 0; }
+    footer .primary-footer #pinterest-icon {
+      background: url(../assets/sprite@2x.png) -540px -80px; }
+    footer .primary-footer #twitter-icon {
+      background: url(../assets/sprite@2x.png) -540px -160px; }
+    footer .primary-footer .connect li {
+      width: 25%; }
+    footer .primary-footer .connect li img {
+      border: 1px solid #ccc; }
+  footer .secondary-footer {
+    background-color: #f4f4f4;
+    border-top: 5px solid transparent;
+    border-image: url(../assets/perforated-bottom.png) 5 0 repeat;
+    border-image-outset: .5;
+    padding-bottom: 2rem; }
+    footer .secondary-footer .footer-menu {
+      display: flex; }
+    footer .secondary-footer a {
+      color: #909090; }
+    footer .secondary-footer li {
+      line-height: 1.4rem; }
+    footer .secondary-footer li.footer-categ {
+      font-weight: 600;
+      color: #000000; }
+    footer .secondary-footer .contact-box {
+      background-color: #ccc;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+      color: #ffffff;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: 200;
+      width: 300px;
+      height: 100px;
+      margin-top: 1rem;
+      margin-left: auto; }
+      footer .secondary-footer .contact-box h3 {
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: 300;
+        margin: 0; }
+      footer .secondary-footer .contact-box a.contact-us-btn {
+        background-color: #33a1ff;
+        padding: 5px;
+        border-radius: 3px;
+        color: #ffffff !important;
+        float: right; }
+    footer .secondary-footer .copyright {
+      font-size: .8rem;
+      color: #909090; }
+      footer .secondary-footer .copyright a {
+        border-bottom: 1px dotted #909090; }
 
 /***
  * SECTION 1 - DRESS BETTER
@@ -337,25 +336,6 @@ ul.menu-items.ties-callout {
 .callouts {
   display: flex;
   margin-bottom: 3rem; }
-  .callouts a.callout {
-    width: 33.3%;
-    background-color: #f4f4f4;
-    margin: 15px;
-    border: 1px solid #ccc;
-    position: relative;
-    text-align: right; }
-    .callouts a.callout:first-child {
-      margin-left: 0; }
-    .callouts a.callout:last-child {
-      margin-right: 0; }
-    .callouts a.callout span {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      font-size: 1.3rem;
-      line-height: 1.6rem;
-      font-weight: bold;
-      max-width: 100px; }
 
 p.story-text {
   font-size: 2.4rem;
@@ -371,30 +351,27 @@ a.story-link {
   text-align: center;
   display: block; }
 
-/***
- * DISCOUNT PAGE
- ***/
-.callouts {
-  display: flex;
-  margin-bottom: 3rem; }
-  .callouts a.callout {
-    width: 33.3%;
-    background-color: #f4f4f4;
-    margin: 15px;
-    border: 1px solid #ccc;
-    position: relative;
-    text-align: right; }
-    .callouts a.callout:first-child {
-      margin-left: 0; }
-    .callouts a.callout:last-child {
-      margin-right: 0; }
-    .callouts a.callout span {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      font-size: 1.3rem;
-      line-height: 1.6rem;
-      font-weight: bold;
-      max-width: 150px; }
+a.cta {
+  width: 33.3%;
+  background-color: #f4f4f4;
+  margin: 15px;
+  border: 1px solid #ccc;
+  position: relative;
+  text-align: right; }
+  a.cta:first-child {
+    margin-left: 0; }
+  a.cta:last-child {
+    margin-right: 0; }
+  a.cta span {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    font-weight: bold;
+    max-width: 100px; }
+
+.discount-content .callouts a.cta span {
+  max-width: 150px; }
 
 /*# sourceMappingURL=style.css.map */
