@@ -1,0 +1,201 @@
+/***
+ * HEADER
+ ***/
+
+toolbar {
+	background-color: $orange;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	transition: background-color 0.5s ease;
+	
+	&:hover, &:focus {
+		background-color: $blue;
+	}
+	
+	#toolbar-btn {
+		background: rgba(0, 0, 0, .2);
+		padding: 5px 10px;
+		margin: 5px 5px 5px 0;
+		border-radius: 3px;
+		text-transform: uppercase;
+		font-size: .8rem;
+	}
+}
+
+
+header {
+	position: relative;
+	background-color: white;
+    border-bottom: 5px solid transparent;
+    border-image: url(../assets/perforated-bottom.png) 5 0 repeat;
+    border-image-outset: .5;
+    z-index: 100;
+	
+	nav {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		font-size: 1.4rem;
+		font-weight: 100;
+	}
+
+	.main-menu li {
+		position: relative;
+		
+		&:after {
+			top: 110%;
+			left: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-color: rgba(204, 204, 204, 0);
+			border-top-color: #ccc;
+			border-width: 3px;
+			margin-left: -3px;
+			z-index: 100;
+		}
+	}
+
+	.menu-subitem {
+		position: absolute;
+		top: 130%;
+		left: 0;
+		text-align: center;
+		line-height: 100px;
+		margin: 0 auto;
+		background: black;
+		border-radius: 3px;
+		color: white;
+		width: 100%;
+		height: 100px;
+		display: none;
+		transition: all 0.5s ease;
+		
+		&:after {
+			bottom: 100%;
+			left: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-color: rgba(0, 0, 0, 0);
+			border-bottom-color: black;
+			border-width: 10px;
+			margin-left: -10px;
+			z-index: 120;
+		}
+	}
+
+	.main-menu li:hover .menu-subitem, .main-menu li:focus .menu-subitem {
+		display: block;
+	}
+
+	#logo {
+		margin-right: 3rem;
+	}
+
+
+	/***
+	 * CART
+	 ***/
+	.login {
+		width: 300px;
+		height: 50px;
+		font-size: 1rem;
+		line-height: 1.2rem;
+		color: $lt-grey-text;
+		text-align: right;
+		
+		.login-1 {
+			margin-bottom: 10px;
+		}
+		
+		a {
+			font-size: .8rem;
+			color: $lt-grey-text;
+			text-transform: uppercase;
+		}
+		
+		.login-2 > div {
+			border: 1px solid $md-grey;
+			border-radius: 3px;
+			width: 120px;
+			height: 40px;
+			display: inline-block;
+			position: relative;
+			bottom: 0;
+		}
+		
+		.login-2 > div.cart {
+			text-align: left;
+		}
+		
+		#cart-icon {
+			display: inline-block;
+			transform: scale(0.7);
+			width: 25px;
+			height: 28px;
+			background: url(../assets/sprite@2x.png) -91px -31px;
+		}
+
+		#cart-total {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			background-color: $md-grey;
+			position: relative;
+			bottom: 2px;
+			color: $white;
+			text-align: center;
+			margin-left: 5px;
+			
+			&:after {
+				right: 100%;
+				top: 50%;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				position: absolute;
+				pointer-events: none;
+				border-color: rgba(204, 204, 204, 0);
+				border-right-color: $md-grey;
+				border-width: 5px;
+				margin-top: -5px;
+			}
+		}
+		
+		> div.search {
+			border: 5px solid rgba (255, 255, 255, .4);
+			width: 150px;
+		}
+
+		form {
+			display: inline-block;
+		}
+
+		input[type="search"] {
+			width: 80px;
+			border: none;
+		}
+
+		#search-icon {
+			display: inline-block;
+			transform: scale(0.5);
+			width: 28px;
+			height: 28px;
+			background: url(../assets/sprite@2x.png) -28px -29px;
+		}
+	}
+	
+	
+}
+

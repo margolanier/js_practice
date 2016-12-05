@@ -1,0 +1,19 @@
+/***
+ * SITE STYLES
+ ***/
+
+/* Variables */
+$orange: #fa6938;
+$blue: #33a1ff;
+$white: #ffffff;
+$black: #000000;
+$lt-grey-bg: #f4f4f4;
+$lt-grey-text: #909090;
+$md-grey: #ccc;
+
+/* Partials */
+@import 'global';
+@import 'header';
+@import 'footer';
+@import 'front-page';
+@import 'detail-page';
