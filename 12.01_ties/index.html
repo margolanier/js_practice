@@ -4,7 +4,7 @@
 <head>
 	<title>Skinny Ties</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Palanquin:100,300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Palanquin:100,300,400,600" rel="stylesheet">
 	<link rel="stylesheet" href="css/master.css">
 	<link rel="stylesheet" href="css/frontpage.css">
 </head>
@@ -27,16 +27,40 @@
 				<a id="logo"><img src="assets/logo-stack@2x.png" alt="Skinny Ties"></a>
 
 				<ul class="menu-items main-menu">
-					<li>Collection</li>
-					<li>Color</li>
-					<li>Width</li>
-					<li>Fabric</li>
-					<li>Pattern</li>
+					<li>
+						Collection
+						<div class="menu-subitem">Hey</div>
+					</li>
+					<li>
+						Color
+						<div class="menu-subitem">Luke,</div>
+					</li>
+					<li>
+						Width
+						<div class="menu-subitem">How's</div>
+					</li>
+					<li>
+						Fabric
+						<div class="menu-subitem">It</div>
+					</li>
+					<li>
+						Pattern
+						<div class="menu-subitem">Going?</div>
+					</li>
 				</ul>
 
-				<ul class="menu-items login-menu">
-					<li>Cart</li>
-				</ul>
+				<section class="login">
+					<a href="#" title="Sign in">Sign in</a>
+					<a href="#" title="Register">Register</a>
+					<div class="cart">
+						Cart
+					</div>
+					<div class="search">
+						<form>
+							<input type="search" name="search" placeholder="Search">
+						</form>
+					</div>
+				</section>
 			</nav>
 		</grid-container>
 	</header>
@@ -120,10 +144,10 @@
 					<span>Tie Bars</span>
 				</a>
 			</div>
-			<p>We started designing and selling neckties in 1971.
-			After 45 years, we’re still family-owned and operated.
+			<p class="story-text">We started designing and selling neckties in 1971.
+				<br>After 45 years, we’re still family-owned and operated.
 			</p>
-			<a>View our story</a>
+			<a class="story-link" href="#" title="View our story">View our story</a>
 		</grid-container>
 	</section>
 	
@@ -132,19 +156,27 @@
 			<grid-container>
 				<ul class="menu-items connect">
 					<li>
-						
-						<img src="assets/striped.jpg" alt="Bow Ties">
-						<span>Bow Ties</span>
+						<h3>Weekly Pick</h3>
+						<img src="assets/weekly-pick.jpg" alt="Weekly Pick">
+						<p><a href="#" title="Weekly pick">2.5" Blue White and Yellow Cotton Plaid Skinny Tie. Made in the USA</a></p>
 					</li>
 					<li>
-						<span>Pocket Squares</span>
+						<h3>Loop Us In</h3>
+						<p>Tightly knotted or hanging loose? Fitted suit or selvedge denim? Share your style with us.</p>
+						<div class="social-links">
+							<a id="facebook-icon" href="#" title="Share on Facebook"></a>
+							<a id="pinterest-icon" href="#" title="Share on Pinterest"></a>
+							<a id="twitter-icon" href="#" title="Share on Twitter"></a>
+						</div>
 					</li>
 					<li>
-						<span>Tie Bars</span>
+						<h3>The Quarterly</h3>
+						<p>Our newsletter is simple and brief for the hard-pressed gentleman.</p>
 					</li>
 					<li>
-						<img src="assets/style-guide@1.5x.jpg" alt="Tie Bars">
-						<span>Tie Bars</span>
+						<h3>Style Guide</h3>
+						<img src="assets/style-guide@1.5x.jpg" alt="Style Guide">
+						<p>There are eighty-five ways to <a href="#" title="knot a tie">knot a tie.</a> We’ll show you <a href="#" title="the essentials">the essentials.</a></p>
 					</li>
 				</ul>
 			</grid-container>
@@ -152,7 +184,7 @@
 	
 	
 		<section class="secondary-footer">
-			<grid-container>
+			<grid-container class="footer-menu">
 				<ul>
 					<li class="footer-categ">Shop By</li>
 					<li><a href="#" title="">Collection</a></li>
@@ -183,8 +215,10 @@
 					<li><a href="#" title="">Shipping Info</a></li>
 					<li><a href="#" title="">Returns</a></li>
 				</ul>
+			</grid-container>
 			
-				<div class="copyright">&copy; 2016 Skinny Ties. All rights reserved.</div>
+			<grid-container>
+				<div class="copyright">&copy; 2016 Skinny Ties. All rights reserved. &nbsp; &nbsp; &nbsp; Made by <a href="#" title="Margo">ya girl, Margo</a></div>
 			</grid-container>
 		</section>
 		

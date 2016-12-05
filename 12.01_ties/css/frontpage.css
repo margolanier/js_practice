@@ -3,6 +3,8 @@
  ***/
 .hero {
 	background-color: #f4f4f4;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 2rem;
 }
 
 ul.menu-items.ties-callout {
@@ -46,6 +48,7 @@ ul.ties-callout li {
  ***/
 .callouts {
 	display: flex;
+	margin-bottom: 3rem;
 }
 
 a.callout {
@@ -75,6 +78,21 @@ a.callout span {
 	max-width: 100px;
 }
 
+p.story-text {
+	font-size: 2.4rem;
+	font-weight: 100;
+	margin: 1rem 0;
+	font-style: italic;
+	text-align: center;
+}
+
+a.story-link {
+	text-transform: uppercase;
+	color: #33a1ff;
+	letter-spacing: 2px;
+	text-align: center;
+	display: block;
+}
 
 
 

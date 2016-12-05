@@ -46,7 +46,8 @@ ul.menu-items li:first-child {
 h1 {
 	font-size: 60px;
 	font-weight: 400;
-	margin: 65px 0;
+	margin: 0;
+	padding: 65px 0;
 	text-align: center;
 }
 
@@ -55,7 +56,7 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+a:hover, a:focus, a.blue {
 	color: #33a1ff;
 }
 
@@ -71,14 +72,14 @@ toolbar {
 	transition: background-color 0.5s ease;
 }
 
-toolbar:hover {
+toolbar:hover, toolbar:focus {
 	background-color: #33a1ff;
 }
 
 #toolbar-btn {
 	background: rgba(0, 0, 0, .2);
     padding: 5px 10px;
-    margin: 5px;
+    margin: 5px 5px 5px 0;
     border-radius: 3px;
     text-transform: uppercase;
     font-size: .8rem;
@@ -102,8 +103,81 @@ nav {
 	font-weight: 100;
 }
 
+.main-menu li {
+	position: relative;
+}
+
+.main-menu li:after {
+	top: 110%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(204, 204, 204, 0);
+	border-top-color: #ccc;
+	border-width: 3px;
+	margin-left: -3px;
+	z-index: 100;
+}
+
+.menu-subitem {
+	position: absolute;
+    top: 130%;
+	left: 0;
+    text-align: center;
+    line-height: 100px;
+    margin: 0 auto;
+    background: black;
+	border-radius: 3px;
+    color: white;
+    width: 100%;
+    height: 100px;
+	display: none;
+	transition: all 0.5s ease;
+}
+
+.menu-subitem:after {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(0, 0, 0, 0);
+	border-bottom-color: black;
+	border-width: 10px;
+	margin-left: -10px;
+	z-index: 120;
+}
+
+.main-menu li:hover .menu-subitem, .main-menu li:focus .menu-subitem {
+	display: block;
+}
+
 #logo {
 	margin-right: 3rem;
+}
+
+.login {
+	border: 1px solid blue;
+}
+
+.login div {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+
+/***
+ * FOOTER
+ ***/
+footer {
+	margin-top: 4rem;
 }
 
 footer ul {
@@ -112,11 +186,51 @@ footer ul {
 	margin-right: 3rem;
 }
 
+footer ul.connect {
+	align-items: flex-start;
+}
+
 .primary-footer {
 	background-color: white;
     border-top: 7px solid transparent;
     border-image: url(../assets/hatch-light.png) 7 0 repeat;
     border-image-outset: .5;
+	padding-bottom: 2rem;
+}
+
+.primary-footer a {
+	color: #33a1ff;
+}
+
+.social-links a {
+	display: inline-block;
+	transform: scale(0.5);
+	width: 70px;
+	height: 70px;
+}
+
+.social-links a:hover, .social-links a:focus {
+	opacity: 0.8;
+}
+
+#facebook-icon {
+    background: url(../assets/sprite@2x.png) -540px 0;
+}
+
+#pinterest-icon {
+    background: url(../assets/sprite@2x.png) -540px -80px;
+}
+
+#twitter-icon {
+    background: url(../assets/sprite@2x.png) -540px -160px;
+}
+
+.connect li {
+	width: 25%;
+}
+
+.connect li img {
+	border: 1px solid #ccc;
 }
 
 .secondary-footer {
@@ -124,18 +238,28 @@ footer ul {
     border-top: 5px solid transparent;
     border-image: url(../assets/perforated-bottom.png) 5 0 repeat;
     border-image-outset: .5;
+	padding-bottom: 2rem;
 }
 
-.secondary-footer ul {
+.secondary-footer .footer-menu {
 	display: flex;
 }
 
-.footer-content {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
+.secondary-footer a {
+	color: #909090;
 }
 
 li.footer-categ {
-	font-weight: bold;
+	font-weight: 400;
+	color: black;
+	
+}
+
+.copyright {
+	font-size: .8rem;
+	color: #909090;
+}
+
+.copyright a {
+	border-bottom: 1px dotted #909090;
 }
