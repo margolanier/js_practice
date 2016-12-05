@@ -2,4 +2,4 @@
 Practice formatting web layouts.
 
 ## Pages
-Homepage and --- page which is linked to in the --- main menu.
+Includes homepage and discount page.  All links in the toolbar menu link to the discount page.
