@@ -1288,56 +1288,16 @@ button {
     margin-left: 0;
     margin-right: 0;
     float: left; } }
+/* Main Layout with fixed footer */
 .body {
   position: relative;
   z-index: 0;
   height: auto;
   background-color: lightgrey;
-  padding-bottom: 300px; }
+  padding-bottom: 300px;
+  text-align: center; }
 
-/*header {
-	@include grid-row();
-	
-	> nav, > cart {
-		@include grid-column(6);
-		background-color: lightsalmon;
-	}
-}
-
-section {
-	@include grid-row();
-	
-	h2 {
-		@include grid-column(12);
-	}
-	
-	div {
-		@include grid-column(12);
-		background-color: lightgreen;
-		
-		@include breakpoint(600px) {
-			@include grid-column(6);
-			background-color: yellow;
-		}
-	}
-	
-	&.hero {
-		
-	}
-}
-
-.full-width-1 {
-	.testRow {
-		@include grid-row();
-	}
-	background-color: lightcoral;
-}
-
-.full-width-2 {
-	@include grid-column(12);
-	background-color: lightgreen;
-}*/
-.site {
+.site-wrap {
   background-color: #ffffff;
   position: relative; }
 
@@ -1346,5 +1306,161 @@ footer {
   z-index: -1;
   bottom: 0;
   overflow: hidden; }
+
+/* General grid styles */
+section:not(.fullWidthRow) > div {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto; }
+  section:not(.fullWidthRow) > div::before, section:not(.fullWidthRow) > div::after {
+    content: ' ';
+    display: table; }
+  section:not(.fullWidthRow) > div::after {
+    clear: both; }
+  section:not(.fullWidthRow) > div > div {
+    width: 100%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem; }
+    @media screen and (min-width: 40em) {
+      section:not(.fullWidthRow) > div > div {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    section:not(.fullWidthRow) > div > div:last-child:not(:first-child) {
+      float: right; }
+
+header .header-inner {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto; }
+  header .header-inner::before, header .header-inner::after {
+    content: ' ';
+    display: table; }
+  header .header-inner::after {
+    clear: both; }
+header .header-menu {
+  width: 100%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 40em) {
+    header .header-menu {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  header .header-menu:last-child:not(:first-child) {
+    float: right; }
+  @media screen and (min-width: 48em) {
+    header .header-menu {
+      width: 33.33333%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    header .header-menu {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 48em) {
+      header .header-menu:last-child:not(:first-child) {
+        float: right; } }
+  header .header-menu ul {
+    display: flex; }
+    header .header-menu ul li {
+      list-style-type: none;
+      padding: 5px 10px; }
+
+#hero {
+  background-color: #FFCDB2;
+  padding: 4rem 0; }
+
+#sidekicks div {
+  width: 100%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 40em) {
+    #sidekicks div {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  #sidekicks div:last-child:not(:first-child) {
+    float: right; }
+#sidekicks .primary-banner {
+  background-color: #FFB4A2; }
+  @media screen and (min-width: 48em) {
+    #sidekicks .primary-banner {
+      width: 66.66667%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    #sidekicks .primary-banner {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 48em) {
+      #sidekicks .primary-banner:last-child:not(:first-child) {
+        float: right; } }
+#sidekicks .secondary-banner {
+  background-color: #E5989B; }
+  @media screen and (min-width: 48em) {
+    #sidekicks .secondary-banner {
+      width: 33.33333%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    #sidekicks .secondary-banner {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 48em) {
+      #sidekicks .secondary-banner:last-child:not(:first-child) {
+        float: right; } }
+
+#products .product {
+  background-color: #B5838D;
+  width: 100%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 40em) {
+    #products .product {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  #products .product:last-child:not(:first-child) {
+    float: right; }
+  @media screen and (min-width: 20em) {
+    #products .product {
+      width: 50%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 20em) and (min-width: 40em) {
+    #products .product {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 20em) {
+      #products .product:last-child:not(:first-child) {
+        float: right; } }
+  @media screen and (min-width: 48em) {
+    #products .product {
+      width: 33.33333%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    #products .product {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 48em) {
+      #products .product:last-child:not(:first-child) {
+        float: right; } }
+  #products .product img {
+    padding: 20px; }
+#products .product:nth-child(5n - 3) {
+  background-color: #6D6875; }
+#products .product:nth-child(5n - 2) {
+  background-color: #FFCDB2; }
+#products .product:nth-child(5n - 1) {
+  background-color: #FFB4A2; }
+#products .product:nth-child(5n) {
+  background-color: #E5989B; }
 
 /*# sourceMappingURL=app.css.map */
