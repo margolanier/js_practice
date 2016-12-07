@@ -4,7 +4,7 @@ console.log('#1: Tallest Mountain');
 let heights = [8848, 8841, 8568, 8485];
 let tallest = heights[0];
 
-for (i=0; i<heights.length; i++) {
+for (let i=0; i<heights.length; i++) {
 	if (heights[i] > tallest) {
 		tallest = heights[i];
 	}
@@ -17,34 +17,30 @@ console.log('');
 console.log('#2: Hangman Lite');
 
 let word = 'hippopotamus';
-let letterGuessed = 'p';
+
+// Generate random letter to guess
+let alphabet = "abcdefghijklmnopqrstuvwxyz";
+let letter = Math.floor( 26*Math.random() ); 
+let guess = alphabet[letter];
+
 let instances = 0;
 
 // Get number of instances in which the letter appeared
-for (i=0; i<word.length; i++) {
-	if (letterGuessed === word[i]) {
+for (let i=0; i<word.length; i++) {
+	if (guess === word[i]) {
 		instances++;
 	}
 }
 console.log();
 
 // Print an answer
+console.log('Word: ' + word);
+console.log('Guess: ' + guess);
 if (instances>0) {
-	console.log('Yes, the letter existed ' + instances + ' times in the word.');
+	console.log('Yes, the letter existed ' + instances + ' time(s) in the word.');
 } else {
 	console.log("No, that letter doesn't appear in the word.")
 }
-
-/*http://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript*/
-/*function randomLetter() {
-    var text = "";
-    var possible = "abcdefghijklmnopqrstuvwxyz";
-
-    for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}*/
 
 
 /* Cherokee Hare */
@@ -68,23 +64,18 @@ console.log('');
 console.log('#4: Change Machine');
 
 let amount = 47;
-let change = [20, 10, 5, 1];
+let change = [20, 10, 5, 1]; // change[] values: bill denomination replaced with number of bills
 let numOfBills = 0;
 
-for (i=0; i<change.length; i++) {
-	if (amount/change[i] > 1) {
-		
-		// Get number of i bills
-		numOfBills = Math.floor( amount/change[i] );
-		
-		// Get new total amount
-		amount = amount % change[i];
-		
-		// Update array
-		change[i] = numOfBills;
-	} else {
-		change[i] = 0;
-	}
+for (let i=0; i<change.length; i++) {
+	// Get number of i bills
+	numOfBills = Math.floor( amount/change[i] );
+
+	// Get new total amount
+	amount = amount % change[i]; // 7 % 20
+
+	// Update array
+	change[i] = numOfBills;
 }
 
 console.log(change);
@@ -94,13 +85,13 @@ console.log(change);
 console.log('');
 console.log('#5: Finding Palindromes');
 
-word = 'level';
+word = 'lertel';
 let midWord = Math.ceil(word.length/2); 
 let end = word.length - 1;
 let palindrome = true;
 
 // Compare each letter to it's match until false
-for (i=0; i<=midWord; i++) {
+for (let i=0; i<midWord; i++) {
 	if (word[i] !== word[end - i]) {
 		palindrome = false;
 	}
@@ -108,7 +99,26 @@ for (i=0; i<=midWord; i++) {
 console.log('Palindrome? = ' + palindrome);
 
 
-/* Palindrome */
+/* Fibonacci Sequence */
 console.log('');
-console.log('#5: Palindrome');
+console.log('#6: Fibonacci Sequence');
+
+
+// Generate random count value between 5 and 10
+let count =  Math.round( 5*Math.random() + 5 );
+/*	thnx stack overflow <3
+	Math.random() * (max - min) + min; */
+
+// Sequence must start with 0 or 1
+let sequence = [Math.round( Math.random() ), 1];
+
+// Start at 2nd value to add last 2 values
+for (let i=1; i<count; i++) {
+	let sumOfPrev2 = sequence[i] + sequence[i-1];
+	sequence.push(sumOfPrev2);
+}
+console.log(sequence);
+console.log('Sequence with ' + count + ' values: ' + sequence);
+
+
 
