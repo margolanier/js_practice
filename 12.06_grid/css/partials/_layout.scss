@@ -1,0 +1,116 @@
+/* Top-level layout with fixed footer */
+
+.body {
+	position: relative;
+	z-index: 0;
+	height: auto;
+	background-color: $light-grey;
+	padding-bottom: 20rem;
+	text-align: center;
+}
+
+.site-wrap {
+	background-color: $white;
+	position: relative;
+}
+
+footer {
+	position: fixed;
+	z-index: -1;
+	bottom: 2rem;
+	width: 100%;
+	overflow: hidden;
+}
+
+
+/* General grid layout styles */
+
+section:not(.fullWidthRow) > div,
+section:not(.reset-grid) > div {
+	@include grid-row();
+	
+	> div {
+		@include grid-column(12);
+	}
+}
+
+header, footer {
+	
+	.header-inner, .footer-inner {
+		@include grid-row();
+	}
+	
+	.header-menu, .footer-menu {
+		@include grid-column(12);
+		
+		@include breakpoint($medium-screen) {
+			@include grid-column(4);
+		}
+		
+		ul {
+			display: flex;
+			
+			li {
+				list-style-type: none;
+				padding: 5px 10px;
+			}
+		}
+	}
+	
+	menu-left.header-menu,
+	menu-left.footer-menu {
+		text-align: left;
+		@include breakpoint($medium-screen) {
+			@include grid-column(3);
+		}
+	}
+
+	main-menu.header-menu,
+	main-menu.footer-menu {
+		@include breakpoint($medium-screen) {
+			@include grid-column(6);
+		}
+		ul {
+			justify-content: center;
+		}
+	}
+
+	menu-right.header-menu,
+	menu-right.footer-menu {
+		text-align: right;
+		@include breakpoint($medium-screen) {
+			@include grid-column(3);
+		}
+	}
+	
+}
+
+.sub-footer {
+	display: flex;
+	@include grid-row();
+	border-top: 1px solid black;
+	margin-top: 3rem;
+	padding-top: .5rem;
+	
+	p {
+		@include grid-column(12);
+		
+		@include breakpoint($tablet) {
+			@include grid-column(4);
+		}
+		
+		font-size: .7rem;
+		border-left: 2px dotted black;
+		border-right: 2px dotted black;
+	}
+	
+	p:first-child {
+		text-align: left;
+		border: none;
+	}
+	
+	p:last-child {
+		text-align: right;
+		border: none;
+	}
+}

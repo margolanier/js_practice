@@ -1288,7 +1288,7 @@ button {
     margin-left: 0;
     margin-right: 0;
     float: left; } }
-/* Main Layout with fixed footer */
+/* Top-level layout with fixed footer */
 .body {
   position: relative;
   z-index: 0;
@@ -1308,7 +1308,7 @@ footer {
   width: 100%;
   overflow: hidden; }
 
-/* General grid styles */
+/* General grid layout styles */
 section:not(.fullWidthRow) > div,
 section:not(.reset-grid) > div {
   max-width: 75rem;
@@ -1445,6 +1445,54 @@ footer menu-right.footer-menu {
       footer menu-right.footer-menu:last-child:not(:first-child) {
         float: right; } }
 
+.sub-footer {
+  display: flex;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid black;
+  margin-top: 3rem;
+  padding-top: .5rem; }
+  .sub-footer::before, .sub-footer::after {
+    content: ' ';
+    display: table; }
+  .sub-footer::after {
+    clear: both; }
+  .sub-footer p {
+    width: 100%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    font-size: .7rem;
+    border-left: 2px dotted black;
+    border-right: 2px dotted black; }
+    @media screen and (min-width: 40em) {
+      .sub-footer p {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    .sub-footer p:last-child:not(:first-child) {
+      float: right; }
+    @media screen and (min-width: 20em) {
+      .sub-footer p {
+        width: 33.33333%;
+        float: left;
+        padding-left: 0.625rem;
+        padding-right: 0.625rem; } }
+  @media screen and (min-width: 20em) and (min-width: 40em) {
+    .sub-footer p {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+    @media screen and (min-width: 20em) {
+        .sub-footer p:last-child:not(:first-child) {
+          float: right; } }
+  .sub-footer p:first-child {
+    text-align: left;
+    border: none; }
+  .sub-footer p:last-child {
+    text-align: right;
+    border: none; }
+
+/* Front page styles */
 #hero {
   background-color: #FFCDB2;
   padding: 8rem 0; }
@@ -1584,52 +1632,5 @@ footer menu-right.footer-menu {
       background-color: #FFB4A2; }
     #products .product:nth-child(5n) article {
       background-color: #E5989B; }
-
-.sub-footer {
-  display: flex;
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
-  border-top: 1px solid black;
-  margin-top: 3rem;
-  padding-top: .5rem; }
-  .sub-footer::before, .sub-footer::after {
-    content: ' ';
-    display: table; }
-  .sub-footer::after {
-    clear: both; }
-  .sub-footer p {
-    width: 100%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem;
-    font-size: .7rem;
-    border-left: 2px dotted black;
-    border-right: 2px dotted black; }
-    @media screen and (min-width: 40em) {
-      .sub-footer p {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    .sub-footer p:last-child:not(:first-child) {
-      float: right; }
-    @media screen and (min-width: 20em) {
-      .sub-footer p {
-        width: 33.33333%;
-        float: left;
-        padding-left: 0.625rem;
-        padding-right: 0.625rem; } }
-  @media screen and (min-width: 20em) and (min-width: 40em) {
-    .sub-footer p {
-      padding-left: 0.9375rem;
-      padding-right: 0.9375rem; } }
-    @media screen and (min-width: 20em) {
-        .sub-footer p:last-child:not(:first-child) {
-          float: right; } }
-  .sub-footer p:first-child {
-    text-align: left;
-    border: none; }
-  .sub-footer p:last-child {
-    text-align: right;
-    border: none; }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,96 @@
+/* Front page styles */
+
+#hero {
+	background-color: $color1_apricot;
+	padding: 8rem 0;
+}
+
+#sidekicks {
+	div {
+		@include grid-column(12);
+		padding: 6rem 0;
+	}
+	
+	.primary-banner {
+		@include breakpoint($tablet) {
+			@include grid-column(6);
+		}
+		
+		@include breakpoint($medium-screen) {
+			@include grid-column(8);
+		}
+		
+		background-color: $color2_peach;
+	}
+	
+	.secondary-banner {
+		@include breakpoint($tablet) {
+			@include grid-column(6);
+		}
+		
+		@include breakpoint($medium-screen) {
+			@include grid-column(4);
+		}
+		
+		background-color: $color3_pink;
+	}
+}
+
+#products {
+	margin-top: 5rem;
+	padding-bottom: 5rem;
+	border-left: 1px solid $light-grey;
+	border-bottom: 1px solid $light-grey;
+	
+	.product {
+		border-top: 1px solid $light-grey;
+		border-right: 1px solid $light-grey;
+		
+		@include grid-column(12);
+		
+		@include breakpoint($tablet) {
+			@include grid-column(6);
+		}
+		
+		@include breakpoint($medium-screen) {
+			@include grid-column(4);
+		}
+		
+		a {
+			display: none;
+		}
+		
+		&:hover article a {
+			display: block;
+			position: absolute;
+			top: 1rem;
+			left: 0;
+			right: 0;
+		}
+		
+		article {
+			margin: 20px;
+			position: relative;
+			background-color: $color4_lavender;
+			
+			img {
+				padding: 50px 20px 10px 20px;
+			}
+		}
+		
+		&:nth-child(5n - 3) article {
+			background-color: $color5_purple;
+		}
+		&:nth-child(5n - 2) article {
+		background-color: $color1_apricot;
+	}
+		&:nth-child(5n - 1) article {
+			background-color: $color2_peach;
+		}
+		&:nth-child(5n) article {
+			background-color: $color3_pink;
+		}
+	}
+	
+	
+}
