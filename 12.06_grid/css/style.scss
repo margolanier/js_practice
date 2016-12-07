@@ -22,7 +22,7 @@ $color5_purple: #6D6875;
 	z-index: 0;
 	height: auto;
 	background-color: $light-grey;
-	padding-bottom: 300px;
+	padding-bottom: 20rem;
 	text-align: center;
 }
 
@@ -34,13 +34,15 @@ $color5_purple: #6D6875;
 footer {
 	position: fixed;
 	z-index: -1;
-	bottom: 0;
+	bottom: 2rem;
+	width: 100%;
 	overflow: hidden;
 }
 
 
 /* General grid styles */
-section:not(.fullWidthRow) > div {
+section:not(.fullWidthRow) > div,
+section:not(.reset-grid) > div {
 	@include grid-row();
 	
 	> div {
@@ -48,13 +50,13 @@ section:not(.fullWidthRow) > div {
 	}
 }
 
-header {
+header, footer {
 	
-	.header-inner {
+	.header-inner, .footer-inner {
 		@include grid-row();
 	}
 	
-	.header-menu {
+	.header-menu, .footer-menu {
 		@include grid-column(12);
 		
 		@include breakpoint($medium-screen) {
@@ -70,19 +72,51 @@ header {
 			}
 		}
 	}
+	
+	menu-left.header-menu,
+	menu-left.footer-menu {
+		text-align: left;
+		@include breakpoint($medium-screen) {
+			@include grid-column(3);
+		}
+	}
+
+	main-menu.header-menu,
+	main-menu.footer-menu {
+		@include breakpoint($medium-screen) {
+			@include grid-column(6);
+		}
+		ul {
+			justify-content: center;
+		}
+	}
+
+	menu-right.header-menu,
+	menu-right.footer-menu {
+		text-align: right;
+		@include breakpoint($medium-screen) {
+			@include grid-column(3);
+		}
+	}
+	
 }
 
 #hero {
 	background-color: $color1_apricot;
-	padding: 4rem 0;
+	padding: 8rem 0;
 }
 
 #sidekicks {
 	div {
 		@include grid-column(12);
+		padding: 6rem 0;
 	}
 	
 	.primary-banner {
+		@include breakpoint($tablet) {
+			@include grid-column(6);
+		}
+		
 		@include breakpoint($medium-screen) {
 			@include grid-column(8);
 		}
@@ -91,6 +125,10 @@ header {
 	}
 	
 	.secondary-banner {
+		@include breakpoint($tablet) {
+			@include grid-column(6);
+		}
+		
 		@include breakpoint($medium-screen) {
 			@include grid-column(4);
 		}
@@ -100,8 +138,15 @@ header {
 }
 
 #products {
+	margin-top: 5rem;
+	padding-bottom: 5rem;
+	border-left: 1px solid $light-grey;
+	border-bottom: 1px solid $light-grey;
+	
 	.product {
-		background-color: $color4_lavender;
+		border-top: 1px solid $light-grey;
+		border-right: 1px solid $light-grey;
+		
 		@include grid-column(12);
 		
 		@include breakpoint($tablet) {
@@ -112,20 +157,71 @@ header {
 			@include grid-column(4);
 		}
 		
-		img {
-			padding: 20px;
+		a {
+			display: none;
 		}
-	}
-	.product:nth-child(5n - 3) {
-		background-color: $color5_purple;
-	}
-	.product:nth-child(5n - 2) {
+		
+		&:hover article a {
+			display: block;
+			position: absolute;
+			top: 1rem;
+			left: 0;
+			right: 0;
+		}
+		
+		article {
+			margin: 20px;
+			position: relative;
+			background-color: $color4_lavender;
+			
+			img {
+				padding: 50px 20px 10px 20px;
+			}
+		}
+		
+		&:nth-child(5n - 3) article {
+			background-color: $color5_purple;
+		}
+		&:nth-child(5n - 2) article {
 		background-color: $color1_apricot;
 	}
-	.product:nth-child(5n - 1) {
-		background-color: $color2_peach;
+		&:nth-child(5n - 1) article {
+			background-color: $color2_peach;
+		}
+		&:nth-child(5n) article {
+			background-color: $color3_pink;
+		}
 	}
-	.product:nth-child(5n) {
-		background-color: $color3_pink;
+	
+	
+}
+
+.sub-footer {
+	display: flex;
+	@include grid-row();
+	border-top: 1px solid black;
+	margin-top: 3rem;
+	padding-top: .5rem;
+	
+	p {
+		@include grid-column(12);
+		
+		@include breakpoint($tablet) {
+			@include grid-column(4);
+		}
+		
+		font-size: .7rem;
+		border-left: 2px dotted black;
+		border-right: 2px dotted black;
+	}
+	
+	p:first-child {
+		text-align: left;
+		border: none;
+	}
+	
+	p:last-child {
+		text-align: right;
+		border: none;
 	}
 }

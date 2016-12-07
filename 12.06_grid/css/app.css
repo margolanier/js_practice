@@ -1294,7 +1294,7 @@ button {
   z-index: 0;
   height: auto;
   background-color: lightgrey;
-  padding-bottom: 300px;
+  padding-bottom: 20rem;
   text-align: center; }
 
 .site-wrap {
@@ -1304,79 +1304,157 @@ button {
 footer {
   position: fixed;
   z-index: -1;
-  bottom: 0;
+  bottom: 2rem;
+  width: 100%;
   overflow: hidden; }
 
 /* General grid styles */
-section:not(.fullWidthRow) > div {
+section:not(.fullWidthRow) > div,
+section:not(.reset-grid) > div {
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto; }
-  section:not(.fullWidthRow) > div::before, section:not(.fullWidthRow) > div::after {
+  section:not(.fullWidthRow) > div::before, section:not(.fullWidthRow) > div::after,
+  section:not(.reset-grid) > div::before,
+  section:not(.reset-grid) > div::after {
     content: ' ';
     display: table; }
-  section:not(.fullWidthRow) > div::after {
+  section:not(.fullWidthRow) > div::after,
+  section:not(.reset-grid) > div::after {
     clear: both; }
-  section:not(.fullWidthRow) > div > div {
+  section:not(.fullWidthRow) > div > div,
+  section:not(.reset-grid) > div > div {
     width: 100%;
     float: left;
     padding-left: 0.625rem;
     padding-right: 0.625rem; }
     @media screen and (min-width: 40em) {
-      section:not(.fullWidthRow) > div > div {
+      section:not(.fullWidthRow) > div > div,
+      section:not(.reset-grid) > div > div {
         padding-left: 0.9375rem;
         padding-right: 0.9375rem; } }
-    section:not(.fullWidthRow) > div > div:last-child:not(:first-child) {
+    section:not(.fullWidthRow) > div > div:last-child:not(:first-child),
+    section:not(.reset-grid) > div > div:last-child:not(:first-child) {
       float: right; }
 
-header .header-inner {
+header .header-inner, header .footer-inner, footer .header-inner, footer .footer-inner {
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto; }
-  header .header-inner::before, header .header-inner::after {
+  header .header-inner::before, header .header-inner::after, header .footer-inner::before, header .footer-inner::after, footer .header-inner::before, footer .header-inner::after, footer .footer-inner::before, footer .footer-inner::after {
     content: ' ';
     display: table; }
-  header .header-inner::after {
+  header .header-inner::after, header .footer-inner::after, footer .header-inner::after, footer .footer-inner::after {
     clear: both; }
-header .header-menu {
+header .header-menu, header .footer-menu, footer .header-menu, footer .footer-menu {
   width: 100%;
   float: left;
   padding-left: 0.625rem;
   padding-right: 0.625rem; }
   @media screen and (min-width: 40em) {
-    header .header-menu {
+    header .header-menu, header .footer-menu, footer .header-menu, footer .footer-menu {
       padding-left: 0.9375rem;
       padding-right: 0.9375rem; } }
-  header .header-menu:last-child:not(:first-child) {
+  header .header-menu:last-child:not(:first-child), header .footer-menu:last-child:not(:first-child), footer .header-menu:last-child:not(:first-child), footer .footer-menu:last-child:not(:first-child) {
     float: right; }
   @media screen and (min-width: 48em) {
-    header .header-menu {
+    header .header-menu, header .footer-menu, footer .header-menu, footer .footer-menu {
       width: 33.33333%;
       float: left;
       padding-left: 0.625rem;
       padding-right: 0.625rem; } }
   @media screen and (min-width: 48em) and (min-width: 40em) {
-    header .header-menu {
+    header .header-menu, header .footer-menu, footer .header-menu, footer .footer-menu {
       padding-left: 0.9375rem;
       padding-right: 0.9375rem; } }
   @media screen and (min-width: 48em) {
-      header .header-menu:last-child:not(:first-child) {
+      header .header-menu:last-child:not(:first-child), header .footer-menu:last-child:not(:first-child), footer .header-menu:last-child:not(:first-child), footer .footer-menu:last-child:not(:first-child) {
         float: right; } }
-  header .header-menu ul {
+  header .header-menu ul, header .footer-menu ul, footer .header-menu ul, footer .footer-menu ul {
     display: flex; }
-    header .header-menu ul li {
+    header .header-menu ul li, header .footer-menu ul li, footer .header-menu ul li, footer .footer-menu ul li {
       list-style-type: none;
       padding: 5px 10px; }
+header menu-left.header-menu,
+header menu-left.footer-menu, footer menu-left.header-menu,
+footer menu-left.footer-menu {
+  text-align: left; }
+  @media screen and (min-width: 48em) {
+    header menu-left.header-menu,
+    header menu-left.footer-menu, footer menu-left.header-menu,
+    footer menu-left.footer-menu {
+      width: 25%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    header menu-left.header-menu,
+    header menu-left.footer-menu, footer menu-left.header-menu,
+    footer menu-left.footer-menu {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 48em) {
+      header menu-left.header-menu:last-child:not(:first-child),
+      header menu-left.footer-menu:last-child:not(:first-child), footer menu-left.header-menu:last-child:not(:first-child),
+      footer menu-left.footer-menu:last-child:not(:first-child) {
+        float: right; } }
+@media screen and (min-width: 48em) {
+  header main-menu.header-menu,
+  header main-menu.footer-menu, footer main-menu.header-menu,
+  footer main-menu.footer-menu {
+    width: 50%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    header main-menu.header-menu,
+    header main-menu.footer-menu, footer main-menu.header-menu,
+    footer main-menu.footer-menu {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+@media screen and (min-width: 48em) {
+    header main-menu.header-menu:last-child:not(:first-child),
+    header main-menu.footer-menu:last-child:not(:first-child), footer main-menu.header-menu:last-child:not(:first-child),
+    footer main-menu.footer-menu:last-child:not(:first-child) {
+      float: right; } }
+header main-menu.header-menu ul,
+header main-menu.footer-menu ul, footer main-menu.header-menu ul,
+footer main-menu.footer-menu ul {
+  justify-content: center; }
+header menu-right.header-menu,
+header menu-right.footer-menu, footer menu-right.header-menu,
+footer menu-right.footer-menu {
+  text-align: right; }
+  @media screen and (min-width: 48em) {
+    header menu-right.header-menu,
+    header menu-right.footer-menu, footer menu-right.header-menu,
+    footer menu-right.footer-menu {
+      width: 25%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 48em) and (min-width: 40em) {
+    header menu-right.header-menu,
+    header menu-right.footer-menu, footer menu-right.header-menu,
+    footer menu-right.footer-menu {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 48em) {
+      header menu-right.header-menu:last-child:not(:first-child),
+      header menu-right.footer-menu:last-child:not(:first-child), footer menu-right.header-menu:last-child:not(:first-child),
+      footer menu-right.footer-menu:last-child:not(:first-child) {
+        float: right; } }
 
 #hero {
   background-color: #FFCDB2;
-  padding: 4rem 0; }
+  padding: 8rem 0; }
 
 #sidekicks div {
   width: 100%;
   float: left;
   padding-left: 0.625rem;
-  padding-right: 0.625rem; }
+  padding-right: 0.625rem;
+  padding: 6rem 0; }
   @media screen and (min-width: 40em) {
     #sidekicks div {
       padding-left: 0.9375rem;
@@ -1385,6 +1463,19 @@ header .header-menu {
     float: right; }
 #sidekicks .primary-banner {
   background-color: #FFB4A2; }
+  @media screen and (min-width: 20em) {
+    #sidekicks .primary-banner {
+      width: 50%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 20em) and (min-width: 40em) {
+    #sidekicks .primary-banner {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 20em) {
+      #sidekicks .primary-banner:last-child:not(:first-child) {
+        float: right; } }
   @media screen and (min-width: 48em) {
     #sidekicks .primary-banner {
       width: 66.66667%;
@@ -1400,6 +1491,19 @@ header .header-menu {
         float: right; } }
 #sidekicks .secondary-banner {
   background-color: #E5989B; }
+  @media screen and (min-width: 20em) {
+    #sidekicks .secondary-banner {
+      width: 50%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; } }
+  @media screen and (min-width: 20em) and (min-width: 40em) {
+    #sidekicks .secondary-banner {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 20em) {
+      #sidekicks .secondary-banner:last-child:not(:first-child) {
+        float: right; } }
   @media screen and (min-width: 48em) {
     #sidekicks .secondary-banner {
       width: 33.33333%;
@@ -1414,53 +1518,118 @@ header .header-menu {
       #sidekicks .secondary-banner:last-child:not(:first-child) {
         float: right; } }
 
-#products .product {
-  background-color: #B5838D;
-  width: 100%;
-  float: left;
-  padding-left: 0.625rem;
-  padding-right: 0.625rem; }
-  @media screen and (min-width: 40em) {
-    #products .product {
-      padding-left: 0.9375rem;
-      padding-right: 0.9375rem; } }
-  #products .product:last-child:not(:first-child) {
-    float: right; }
-  @media screen and (min-width: 20em) {
-    #products .product {
-      width: 50%;
-      float: left;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem; } }
+#products {
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+  border-left: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey; }
+  #products .product {
+    border-top: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    width: 100%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem; }
+    @media screen and (min-width: 40em) {
+      #products .product {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    #products .product:last-child:not(:first-child) {
+      float: right; }
+    @media screen and (min-width: 20em) {
+      #products .product {
+        width: 50%;
+        float: left;
+        padding-left: 0.625rem;
+        padding-right: 0.625rem; } }
   @media screen and (min-width: 20em) and (min-width: 40em) {
     #products .product {
       padding-left: 0.9375rem;
       padding-right: 0.9375rem; } }
-  @media screen and (min-width: 20em) {
-      #products .product:last-child:not(:first-child) {
-        float: right; } }
-  @media screen and (min-width: 48em) {
-    #products .product {
-      width: 33.33333%;
-      float: left;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem; } }
+    @media screen and (min-width: 20em) {
+        #products .product:last-child:not(:first-child) {
+          float: right; } }
+    @media screen and (min-width: 48em) {
+      #products .product {
+        width: 33.33333%;
+        float: left;
+        padding-left: 0.625rem;
+        padding-right: 0.625rem; } }
   @media screen and (min-width: 48em) and (min-width: 40em) {
     #products .product {
       padding-left: 0.9375rem;
       padding-right: 0.9375rem; } }
-  @media screen and (min-width: 48em) {
-      #products .product:last-child:not(:first-child) {
-        float: right; } }
-  #products .product img {
-    padding: 20px; }
-#products .product:nth-child(5n - 3) {
-  background-color: #6D6875; }
-#products .product:nth-child(5n - 2) {
-  background-color: #FFCDB2; }
-#products .product:nth-child(5n - 1) {
-  background-color: #FFB4A2; }
-#products .product:nth-child(5n) {
-  background-color: #E5989B; }
+    @media screen and (min-width: 48em) {
+        #products .product:last-child:not(:first-child) {
+          float: right; } }
+    #products .product a {
+      display: none; }
+    #products .product:hover article a {
+      display: block;
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      right: 0; }
+    #products .product article {
+      margin: 20px;
+      position: relative;
+      background-color: #B5838D; }
+      #products .product article img {
+        padding: 50px 20px 10px 20px; }
+    #products .product:nth-child(5n - 3) article {
+      background-color: #6D6875; }
+    #products .product:nth-child(5n - 2) article {
+      background-color: #FFCDB2; }
+    #products .product:nth-child(5n - 1) article {
+      background-color: #FFB4A2; }
+    #products .product:nth-child(5n) article {
+      background-color: #E5989B; }
+
+.sub-footer {
+  display: flex;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid black;
+  margin-top: 3rem;
+  padding-top: .5rem; }
+  .sub-footer::before, .sub-footer::after {
+    content: ' ';
+    display: table; }
+  .sub-footer::after {
+    clear: both; }
+  .sub-footer p {
+    width: 100%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    font-size: .7rem;
+    border-left: 2px dotted black;
+    border-right: 2px dotted black; }
+    @media screen and (min-width: 40em) {
+      .sub-footer p {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    .sub-footer p:last-child:not(:first-child) {
+      float: right; }
+    @media screen and (min-width: 20em) {
+      .sub-footer p {
+        width: 33.33333%;
+        float: left;
+        padding-left: 0.625rem;
+        padding-right: 0.625rem; } }
+  @media screen and (min-width: 20em) and (min-width: 40em) {
+    .sub-footer p {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+    @media screen and (min-width: 20em) {
+        .sub-footer p:last-child:not(:first-child) {
+          float: right; } }
+  .sub-footer p:first-child {
+    text-align: left;
+    border: none; }
+  .sub-footer p:last-child {
+    text-align: right;
+    border: none; }
 
 /*# sourceMappingURL=app.css.map */
