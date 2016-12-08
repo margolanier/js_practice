@@ -48,15 +48,15 @@ console.log('#3: Cherokee Hare');
 
 let startingPop = 200;
 let birthRate = 0.1;
-let numWeeks = 4;
+let numWeeks = 5;
 
 latestPop = startingPop;
 
 for (let i=0; i<numWeeks; i++) {
-	latestPop = Math.ceil( latestPop + birthRate*latestPop );
+	latestPop = latestPop + birthRate*latestPop;
 }
 
-console.log('There will be ' + latestPop + ' Cherokee Hares after ' + numWeeks + ' weeks.');
+console.log('There will be ' + Math.round(latestPop) + ' Cherokee Hares after ' + numWeeks + ' weeks.');
 
 
 /* Change Machine */
