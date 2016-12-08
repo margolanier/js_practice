@@ -31,7 +31,6 @@ for (let i=0; i<word.length; i++) {
 		instances++;
 	}
 }
-console.log();
 
 // Print an answer
 console.log('Word: ' + word);
@@ -49,14 +48,15 @@ console.log('#3: Cherokee Hare');
 
 let startingPop = 200;
 let birthRate = 0.1;
-let numWeeks = 5;
+let numWeeks = 4;
 
 latestPop = startingPop;
 
-if(numWeeks > 0) {
-	latestPop = latestPop + birthRate*latestPop;
-	console.log('There will be ' + latestPop + ' Cherokee Hares after ' + numWeeks + ' weeks.');
+for (let i=0; i<numWeeks; i++) {
+	latestPop = Math.ceil( latestPop + birthRate*latestPop );
 }
+
+console.log('There will be ' + latestPop + ' Cherokee Hares after ' + numWeeks + ' weeks.');
 
 
 /* Change Machine */
@@ -64,7 +64,7 @@ console.log('');
 console.log('#4: Change Machine');
 
 let amount = 47;
-let change = [20, 10, 5, 1]; // change[] values: bill denomination replaced with number of bills
+let change = [20, 10, 5, 1]; // change[] values: bill denomination will be replaced with number of bills
 let numOfBills = 0;
 
 for (let i=0; i<change.length; i++) {
@@ -85,7 +85,7 @@ console.log(change);
 console.log('');
 console.log('#5: Finding Palindromes');
 
-word = 'lertel';
+word = 'level';
 let midWord = Math.ceil(word.length/2); 
 let end = word.length - 1;
 let palindrome = true;
@@ -96,7 +96,8 @@ for (let i=0; i<midWord; i++) {
 		palindrome = false;
 	}
 }
-console.log('Palindrome? = ' + palindrome);
+console.log('Word: ' + word);
+console.log('Palindrome?: ' + palindrome);
 
 
 /* Fibonacci Sequence */
@@ -104,7 +105,7 @@ console.log('');
 console.log('#6: Fibonacci Sequence');
 
 
-// Generate random count value between 5 and 10
+// Generate random count value (between 5 and 10 for testing purposes)
 let count =  Math.round( 5*Math.random() + 5 );
 /*	thnx stack overflow <3
 	Math.random() * (max - min) + min; */
@@ -118,7 +119,7 @@ for (let i=1; i<count; i++) {
 	sequence.push(sumOfPrev2);
 }
 console.log(sequence);
-console.log('Sequence with ' + count + ' values: ' + sequence);
+console.log('Sequence with ' + count + ' values: [' + sequence + ']');
 
 
 
