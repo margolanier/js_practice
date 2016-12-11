@@ -137,13 +137,22 @@ console.log( containsVowel('hqwrt') );
 console.log('');
 console.log('06 | pigLatin');
 
-function pigLatin(word) {
+function pigLatin(string) {
+	let words = string.split(' ');
+	let pigLatString = '';
 	
-	let firstLetter = word.slice(0, 1);
-	let trailing = word.slice(1, word.length);
-	return trailing + firstLetter + 'ay';
+	for (let i=0; i<words.length; i++) {
+		let word = words[i];
+		let firstLetter = word.slice(0, 1);
+		let trailing = word.slice(1, word.length);
+		let pigLatWord = trailing + firstLetter + 'ay ';
+		pigLatString += pigLatWord;
+	}
+	
+	return pigLatString;
 }
-console.log( pigLatin('margo') );
+console.log("still a chain smoking name dropping good looking muh fucking motha shut your mouth");
+console.log( pigLatin("still a chain smoking name dropping good looking muh fucking motha shut your mouth") );
 
 
 /* 07 | longestWord */
@@ -276,30 +285,134 @@ console.log('');
 console.log('14 | blackjack');
 
 function blackjack(hand) {
-	let possible = [2, 3, 4, 5, 6, 7, 8, 9, 'J', 'Q', 'K', 'A'];
+	// assumes only 1 player w dealer bc holy cow
+	// also assumes they always choose to draw again... v ballsy gamblers
 	
-	for (let i=0; i<hand.length; i++){
-		console.log(hand[i]);
-		if (typeof(hand[i] === 'string') ) {
-			if (hand[i] === 'J') { hand[i] = 10; }
-			if (hand[i] === 'Q') { hand[i] = 11; }
-			if (hand[i] === 'K') { hand[i] = 12; }
-			if (hand[i] === 'A') { hand[i] = 13; }
+	// Getting started
+	let deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+	
+	let bust = null;
+	let playerHand = [];
+	let dealerHand = [];
+	let round = 1;
+	
+	// To draw random card and remove from playing deck
+	function dealCard(toWhom) {
+		let cardDealt = Math.round( Math.random() * (deck.length - 1) + 1);
+		// Math.random() * (max - min) + min;
+		toWhom.push( deck[cardDealt] );
+		deck.splice(deck[cardDealt], 1);
+	}
+	
+	let sumPlayer = 0;
+	let sumDealer = 0;
+	let aces = 0;
+	
+	// To get sum of hand
+	function getScore(whoseHand) {
+		for (let i=0; i<whoseHand.length; i++){
+		
+			// Set value of face cards
+			if (typeof(whoseHand[i]) === 'string') {
+				if (whoseHand[i] === 'A') { 
+					whoseHand[i] = 11;
+					aces++;
+				} else {
+					whoseHand[i] = 10;
+				}
+			}
+
+			if(whoseHand === playerHand) {
+				if (sumPlayer > 21 && aces > 0) {
+					sumPlayer -= 10; // change value of the ace to 1
+				}
+				if (sumPlayer > 21) {
+					bust = true; // player loses
+					return bust;
+				}
+				if (sumPlayer <= 21 && sumPlayer > sumDealer && round === 3) {
+					// player wins if she gets to end of round 3, according to margo
+					bust = false; // player wins
+					return bust;
+				}
+				sumPlayer += whoseHand[i];
+				
+			} else {
+				sumDealer += whoseHand[i];
+			}
+			
 		}
 	}
-	console.log(hand);
 	
 	
+	// Round 1
+	for (let i=0; i<2; i++) {
+		dealCard(playerHand);
+		dealCard(dealerHand);
+	}
+	
+	console.log(dealerHand);
+	console.log(playerHand);
+	
+	getScore(dealerHand);
+	getScore(playerHand);
+	
+	console.log(sumDealer);
+	console.log(sumPlayer);
+	
+	// Continue?
+	console.log(bust);
+	while (bust == null) {
+		round++;
+		nextRound();
+	}
+	
+	// To determine if the game continues
+	function nextRound() {
+		
+		// +1 card to dealer
+		if (sumDealer < 17) {
+			dealCard(dealerHand);
+			getScore(dealerHand);
+			
+			if (sumDealer > 21) {
+				bust = false; // player wins
+				return bust;
+			}
+		}
+		
+		// +1 card to player
+		dealCard(playerHand);
+		getScore(playerHand);
+		
+	}
+}
+console.log( blackjack() );
+
+
+/* 15 | sprint */
+console.log('');
+console.log('15 | sprint');
+
+
+/*function sprint(sprinters) {
+	for (let i=0; i<sprinters.length; i++) {
+		
+	}
 }
 
-console.log( blackjack([4, 'Q']) );
-
-
-
-
-
-
-
+let athletes = {
+	[	name: 'Wilma Rudolph',
+		time: 267
+	],
+	[	name: 'Filma Fudolph',
+		time: 672
+	],
+	[	name: 'Bilma Budolph',
+		time: 726
+	]
+	
+};*/
 
 
 
