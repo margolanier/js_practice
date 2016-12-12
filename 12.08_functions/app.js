@@ -400,29 +400,56 @@ console.log( blackjack() );
 console.log('');
 console.log('15 | sprint');
 
-
-/*function sprint(sprinters) {
-	for (let i=0; i<sprinters.length; i++) {
-		
+let athletes = [
+	{	name: 'Wilma Rudolph',
+		time: 267,
+	},
+	{	name: 'Filma Fudolph',
+		time: 672,
+	},
+	{	name: 'Bilma Budolph',
+		time: 726,
+	},
+	{	name: 'Milma Mudolph',
+		time: 126,
 	}
+];
+
+function sprint(sprinters) {
+	let fastest = sprinters[0];
+	
+	for (let i=1; i<sprinters.length; i++) {
+		if (sprinters[i].time < fastest.time) {
+			fastest = sprinters[i];
+		}
+	}
+	return fastest.name;
 }
 
-let athletes = {
-	[	name: 'Wilma Rudolph',
-		time: 267
-	],
-	[	name: 'Filma Fudolph',
-		time: 672
-	],
-	[	name: 'Bilma Budolph',
-		time: 726
-	]
+console.log( sprint(athletes) );
+
+
+/* 16 | charFreq */
+console.log('');
+console.log('16 | charFreq');
+
+function charFreq(string) {
+	let charList = {};
+	console.log(charList);
 	
-};*/
+	// Iterate through each letter in string
+	for (let i=0; i<string.length; i++) {
+		
+		// if the property exists
+		if ( charList.hasOwnProperty(string[i]) ) {
+			charList[string[i]] += 1;
+		} else { // create it
+			charList[string[i]] = 1;
+		}
+		
+	}
+	return charList;
+}
 
-
-
-
-
-
+console.log( charFreq('abc cdef fgh hiii ') );
 
