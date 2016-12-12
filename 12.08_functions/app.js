@@ -32,65 +32,6 @@ console.log( greaterThan(3, 4) );
 console.log('');
 console.log('04 | secondLargest');
 
-/*
-let numbers = [4, 1, 3, 2];
-
-function secondLargest(numbers) {
-	let largest;
-	let nextLargest;
-	
-	if (numbers[0] > numbers[1]) {
-		largest = numbers[0];
-		nextLargest = numbers[1];
-	} else {
-		largest = numbers[1];
-		nextLargest = numbers[0];
-	}
-	
-	for (let i=0; i<numbers.length; i++) {
-		
-		// Compare i to largest and nextLargest
-		if (numbers[i] > largest) {
-			nextLargest = largest;
-			largest = numbers[i];
-		} else if (numbers[i] > nextLargest) {
-			nextLargest = numbers[i];
-		}
-	}
-	
-	return nextLargest;
-}
-console.log( secondLargest([2, 5, 1, 7, 4]) );*/
-
-
-/*function secondLargest(numbers) {
-	let largest = numbers[0];
-	let nextLargest = null;
-	
-	for (let i=0; i<numbers.length; i++) {
-		
-		// Compare i to largest and nextLargest
-		if (numbers[i] > largest) {
-			// if i > largest, reset largest and nextLargest
-			nextLargest = largest;
-			largest = numbers[i];
-			
-		} else if (numbers[i] < largest && nextLargest === null) {
-			// if i < largest and nextLargest has yet to be defined, set as nextLargest
-			nextLargest = numbers[i];
-			
-		} else if (numbers[i] < largest && numbers[i] > nextLargest) {
-			// if i > nextLargest but not the same # as largest, reset nextLargest
-			nextLargest = numbers[i];
-		}
-		
-	}
-	console.log('L: ' + largest);
-	console.log('NL: ' + nextLargest);
-	return nextLargest;
-}
-console.log( secondLargest([5, 5, 5, 1]) );*/
-
 function secondLargest(numbers) {
 	let sorted = numbers.sort(function(a, b){return b-a});
 	/*	sort array as numbers, not text
@@ -142,18 +83,14 @@ function pigLatin(string) {
 	let pigLatString = '';
 	
 	for (let i=0; i<words.length; i++) {
-		let word = words[i];
-		let firstLetter = word.slice(0, 1);
-		let trailing = word.slice(1, word.length);
-		let pigLatWord = trailing + firstLetter + 'ay ';
-		pigLatString += pigLatWord;
+		words[i] = words[i].slice(1) + words[i][0] + 'ay';
 	}
 	
-	return pigLatString;
+	return words.join(' ');
+	
 }
 
 console.log('theme music for your listening pleasure: https://www.youtube.com/watch?v=bigsk2g7xO8')
-console.log("still a chain smoking name dropping good looking muh fucking motha shut your mouth");
 console.log( pigLatin("still a chain smoking name dropping good looking muh fucking motha shut your mouth") );
 
 
@@ -453,3 +390,11 @@ function charFreq(string) {
 
 console.log( charFreq('abc cdef fgh hiii ') );
 
+
+/* 17 | map */
+console.log('');
+console.log('17 | map');
+
+/*function map {
+	
+}*/
