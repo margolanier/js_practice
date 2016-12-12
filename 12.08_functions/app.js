@@ -151,6 +151,8 @@ function pigLatin(string) {
 	
 	return pigLatString;
 }
+
+console.log('theme music for your listening pleasure: https://www.youtube.com/watch?v=bigsk2g7xO8')
 console.log("still a chain smoking name dropping good looking muh fucking motha shut your mouth");
 console.log( pigLatin("still a chain smoking name dropping good looking muh fucking motha shut your mouth") );
 
@@ -360,12 +362,6 @@ function blackjack(hand) {
 	console.log(sumDealer);
 	console.log(sumPlayer);
 	
-	// Continue?
-	console.log(bust);
-	while (bust == null) {
-		round++;
-		nextRound();
-	}
 	
 	// To determine if the game continues
 	function nextRound() {
@@ -386,6 +382,16 @@ function blackjack(hand) {
 		getScore(playerHand);
 		
 	}
+	
+	// Continue?
+	//console.log('Round ' + round + ': Bust? ' + bust);
+	while (bust == null) {
+		round++;
+		nextRound();
+	}
+	console.log('Round ' + round + ': Bust? ' + bust); /* game ends here */
+	
+	
 }
 console.log( blackjack() );
 
