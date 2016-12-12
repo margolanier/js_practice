@@ -53,7 +53,7 @@ function food(wagon) {
 	let totalFood = 0;
 	
 	for (let i=0; i<wagon.passengers.length; i++) {
-		total += wagon.passengers[i].amountFood;
+		totalFood += wagon.passengers[i].amountFood;
 	}
 	return totalFood;
 }
@@ -75,5 +75,5 @@ join(wagon, traveler);
 join(wagon, traveler2);
 
 console.log(quarantine(wagon)); // print true if someone is sick, false otherwise
-console.log(food(wood)); // print juan's food + henrietta's food
+console.log(food(wagon)); // print juan's food + henrietta's food
 
