@@ -5,34 +5,36 @@ function init() {
 	
 	fetchPerson.addEventListener('click', function() {
 		
-		//console.log('clicked');
+		// Set ul as empty container
+		let list = document.querySelector('#list');
+		
+		// Append container with list item
 		let listItem = document.createElement('li');
 		list.appendChild(listItem);
 		
-		let avi = document.createElement('img');
-		avi.src = 'https://randomuser.me/api/portraits/men/18.jpg';
-		listItem.appendChild(avi);
-		
-		let name = document.createElement('p');
-		name.textContent = 'person 1';
-		listItem.appendChild(name);
+			// Create list content
+			let avi = document.createElement('img');
+			avi.src = 'https://randomuser.me/api/portraits/men/18.jpg';
+			listItem.appendChild(avi);
+			
+			let name = document.createElement('p');
+			name.textContent = 'person 1';
+			listItem.appendChild(name);
+			
+			let likeBtn = document.createElement('button');
+			likeBtn.textContent = 'Like';
+			listItem.appendChild(likeBtn);
+			
+			let nopeBtn = document.createElement('button');
+			nopeBtn.textContent = 'Nope';
+			listItem.appendChild(nopeBtn);
+			
 		
 		
 		
 	});
 	
-	// Generate list item with child content
-	/*fetchPerson() {
-		console.log('clicked');
-		let listItem = document.createElement('li');
-		list.appendChild(listItem);
-		
-		let name = document.createElement('p');
-		name.textContent = 'person';
-		listItem.appendChild(name);
-	}
-	
-	
+	/*
 	like_button.addEventListener('click', function() {
 			
 		});
