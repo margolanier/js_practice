@@ -395,6 +395,85 @@ console.log( charFreq('abc cdef fgh hiii ') );
 console.log('');
 console.log('17 | map');
 
-/*function map {
+function map(array, ftn) {
+	let mappedArray = [];
 	
-}*/
+	for (let i=0; i<array.length; i++) {
+		mappedArray.push( ftn(array[i]) );
+	}
+	return mappedArray;
+}
+
+function calcCircumf(radius) {
+	return (2 * radius * Math.PI).toFixed(2);
+}
+
+let radii = [1, 2, 3, 4, 5];
+
+console.log( map(radii, calcCircumf) );
+
+
+/* 18 | filter */
+console.log('');
+console.log('18 | filter');
+
+function filter(ppl, listKardashians) {
+	let OGs = [];
+	listKardashians(ppl);
+	
+	for (let i=0; i<ppl.length; i++) {
+		if ( ppl[i].hasOwnProperty('OG') && ppl[i].OG === true ){
+			OGs.push(ppl[i].name);
+		}
+	}
+	
+	return OGs;
+}
+
+function findKardash(celebs) { // is she a ~true~ Kardashian?
+	for(let i=0; i<celebs.length; i++) {
+		if ( celebs[i].name.includes('Kardashian') === true) {
+			celebs[i]['OG'] = true;
+		} else {
+			celebs[i]['OG'] = false;
+		}
+	}
+}
+
+let badBitches = [
+	{	name: 'Kim Kardashian',
+		relationship: 'the one and only',
+	},
+	{	name: 'Kanye West',
+		relationship: 'husband',
+	},
+	{	name: 'Kourtney Kardashian',
+		relationship: 'sister',
+	},
+	{	name: 'Scott Disick', 
+		relationship: 'ex bro-in-law',
+	},
+	{	name: 'Kris Kardashian', 
+		relationship: 'mother',
+	},
+	{	name: 'Bruce Jenner', 
+		relationship: 'ex-step-father',
+	},
+	{	name: 'Khloe Kardashian', 
+		relationship: 'sister',
+	},
+	{	name: 'Kylie Jenner', 
+		relationship: 'half-sister',
+	},
+	{	name: 'Blac Chyna',
+		relationship: 'v complicated',
+	},
+]
+
+console.log( filter(badBitches, findKardash) );
+
+
+
+
+
+
