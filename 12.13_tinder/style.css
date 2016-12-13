@@ -1,0 +1,9 @@
+li {
+	width: 300px;
+	display: inline-block;
+	background-color: lightsalmon;
+}
+
+.faded {
+	opacity: 0.5;
+}

@@ -3,6 +3,10 @@ function init() {
 	// Wait for user to click getNew button
 	let fetchPerson = document.querySelector('#getNew');
 	
+	let index = 0;
+	
+	let liked = [];
+	
 	fetchPerson.addEventListener('click', function() {
 		
 		// Set ul as empty container
@@ -12,13 +16,15 @@ function init() {
 		let listItem = document.createElement('li');
 		list.appendChild(listItem);
 		
+		function createInner(parent) {
 			// Create list content
 			let avi = document.createElement('img');
-			avi.src = 'https://randomuser.me/api/portraits/men/18.jpg';
+			avi.src = dudes[index].img;
 			listItem.appendChild(avi);
 			
 			let name = document.createElement('p');
-			name.textContent = 'person 1';
+			//name.textContent = userName;
+			name.textContent = dudes[index].name;
 			listItem.appendChild(name);
 			
 			let likeBtn = document.createElement('button');
@@ -29,37 +35,49 @@ function init() {
 			nopeBtn.textContent = 'Nope';
 			listItem.appendChild(nopeBtn);
 			
+			// Add event listeners to buttons
+			likeBtn.addEventListener('click', function() {
+				listItem.classList.add('faded');
+				console.log('Likes ' + dudes[index].name);
+				liked.push(dudes[index]);
+
+			});
+
+			nopeBtn.addEventListener('click', function() {
+				listItem.classList.add('faded');
+				console.log(dudes[index].name + ' has been noped');
+			});
+
+			// Get index of dudes
+			if (index < dudes.length - 1) {
+				index++;
+			} else {
+				index = 0;
+			}
+		};
 		
-		
+		createInner(listItem);
 		
 	});
 	
-	/*
-	like_button.addEventListener('click', function() {
-			
-		});
-		
-		nope_button.addEventListener('click', function() {
-			child.classList.add('fade');
-		});
-	};*/
+	console.log(liked);
 	
 	
 }
 
 window.addEventListener('load', init);
 
-/*let people = [
+let dudes = [
 	{
 		img: 'https://randomuser.me/api/portraits/men/18.jpg',
-		name: 'Person 1',
+		name: 'Human 1',
 	},
 	{
 		img: 'https://randomuser.me/api/portraits/men/90.jpg',
-		name: 'Person 2',
+		name: 'Human 2',
 	},
 	{
 		img: 'https://randomuser.me/api/portraits/men/22.jpg',
-		name: 'Person 3',
+		name: 'Human 3',
 	},
-]*/
+]
