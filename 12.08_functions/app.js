@@ -372,7 +372,6 @@ console.log('16 | charFreq');
 
 function charFreq(string) {
 	let charList = {};
-	console.log(charList);
 	
 	// Iterate through each letter in string
 	for (let i=0; i<string.length; i++) {
@@ -457,7 +456,7 @@ let badBitches = [
 		relationship: 'mother',
 	},
 	{	name: 'Bruce Jenner', 
-		relationship: 'ex-step-father',
+		relationship: 'ex step-dad',
 	},
 	{	name: 'Khloe Kardashian', 
 		relationship: 'sister',
@@ -473,7 +472,51 @@ let badBitches = [
 console.log( filter(badBitches, findKardash) );
 
 
+/* 19 | find */
+console.log('');
+console.log('19 | find');
+
+function find(numbers, number) {
+	let match = numbers.indexOf(number);
+	if (match != -1) {
+		return match;
+	} else {
+		return null;
+	}
+}
+
+let someNums = [9, 8, 7, 6, 5, 4, 3, 2];
+console.log( find(someNums, 6) );
 
 
+/* 20 | scrabble */
+console.log('');
+console.log('20 | scrabble');
+
+function scrabble(string, scoring) {
+	let score = 0;
+	
+	for(let i=0; i<string.length; i++) {
+		score += scoring[0][string[i]];
+	}
+	
+	return score;
+}
+
+let scoring = [
+	{	a: 2,
+		b: 3,
+		c: 1,
+		d: 1,
+		e: 4,
+		f: 5,
+		g: 1,
+	}
+];
+
+console.log( scrabble('efg', scoring) );
+
+
+// efg, e = string[0], scoring.e = 4
 
 
