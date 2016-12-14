@@ -1,7 +1,7 @@
 function init() {
 	
 	// Gender preference determines which array to use
-	let selectGender = document.getElementsByName('gender');
+	let selectGender = document.querySelector('gender');
 	let gender = male;
 	
 	for (let i=0; i<selectGender.length; i++) {
@@ -28,7 +28,7 @@ function init() {
 	fetchProfile.addEventListener('click', createProfile);
 	
 	// User chooses to fetch profiles automatically or manually
-	let autoMode = document.getElementsByName('autoMode');
+	let autoMode = document.querySelector('autoMode');
 	let mode = false;
 	
 	for (let i=0; i<autoMode.length; i++) {
@@ -172,7 +172,6 @@ let female = [
 let both = male.concat(female);
 
 function shuffle(a) {
-	// don't see any reason to do this myself
 	// http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
     var j, x, i;
     for (i = a.length; i; i--) {
