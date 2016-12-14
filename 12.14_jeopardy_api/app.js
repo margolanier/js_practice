@@ -1,5 +1,11 @@
+let currentQ;
+/*let score = 0;
+let displayScore = document.querySelector('.score');*/
+
 function init() {
 	newQ();
+	
+	displayScore.textContent = score;
 	
 	let submit = document.querySelector('#submit');
 	submit.addEventListener('click', checkAns);
@@ -12,16 +18,16 @@ function newQ() {
 	
 	request.addEventListener('load', function() {
 		let response = JSON.parse(request.responseText);
-		let Q = response[0];
-		console.log(Q);
-		displayQ(Q);
+		
+		currentQ = response[0];
+		console.log(currentQ);
+		displayQ(currentQ);
 	});
 	
 	request.send();
 }
 
 function displayQ(Q) {
-	let parent = document.querySelector('.questionWrap');
 	
 	let question = document.querySelector('.question');
 	question.textContent = Q.question;
@@ -34,10 +40,27 @@ function displayQ(Q) {
 }
 
 function checkAns() {
+	let correctAns = currentQ.answer;
+	
 	let textBox = document.querySelector('input');
 	let userAns = textBox.value;
 	textBox.value = '';
 	
-	console.log(userAns);
+	let response = document.querySelector('.response');
+	
+	let score = 0;
+	let displayScore = document.querySelector('.score');
+	
+	if ( userAns.toLowerCase === correctAns.toLowerCase ) {
+		// User is correct, award points
+		response.textContent = 'You are correct.';
+		score += currentQ.value;
+		displayScore.textContent = score;
+		
+	} else {
+		response.textContent = 'Incorrect.  The correct answer is ' + correctAns;
+	}
+	
+	//newQ();
 }
 
