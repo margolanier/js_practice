@@ -1,10 +1,13 @@
 /* Variables */
 $lt-grey: #ccc;
+$dk-grey: #2f2f2f;
 
 /* Global */
 html, body {
 	margin: 0;
 	padding: 0;
+	color: $dk-grey;
+	font-family: sans-serif;
 }
 
 header, section {
@@ -28,6 +31,21 @@ h1:before{
 
 /* Form */
 form.genderPref {
+	border: 1px solid $dk-grey;
+	display: inline-block;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+
+#update, #printList {
+	display: inline-block;
+	background-color: $lt-grey;
+	border: 1px solid $dk-grey;
+	font-size: 1rem;
+	padding: 1rem 2rem;
+	box-sizing: border-box;
+	vertical-align: top;
+	margin: 1rem 0;
 }
 
 /* Profiles */
@@ -37,9 +55,16 @@ ul#list {
 }
 
 li {
-	width: 300px;
 	display: inline-block;
+	min-width: 300px;
 	background-color: $lt-grey;
+	padding: 1rem;
+	margin: 1rem 1rem 0 0;
+	
+	img {
+		float: left;
+		margin-right: 1rem;
+	}
 }
 
 .faded {
@@ -51,5 +76,5 @@ li {
 }
 
 .faded.nope {
-	background-color: red;
+	background-color: #C8201B;
 }

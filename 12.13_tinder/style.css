@@ -2,7 +2,9 @@
 /* Global */
 html, body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  color: #2f2f2f;
+  font-family: sans-serif; }
 
 header, section {
   padding: 0 1rem; }
@@ -20,15 +22,36 @@ h1:before {
   font-size: 1rem; }
 
 /* Form */
+form.genderPref {
+  border: 1px solid #2f2f2f;
+  display: inline-block;
+  padding: 1rem;
+  margin: 1rem 0; }
+
+#update, #printList {
+  display: inline-block;
+  background-color: #ccc;
+  border: 1px solid #2f2f2f;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  vertical-align: top;
+  margin: 1rem 0; }
+
 /* Profiles */
 ul#list {
   list-style: none;
   padding-left: 0; }
 
 li {
-  width: 300px;
   display: inline-block;
-  background-color: #ccc; }
+  min-width: 300px;
+  background-color: #ccc;
+  padding: 1rem;
+  margin: 1rem 1rem 0 0; }
+  li img {
+    float: left;
+    margin-right: 1rem; }
 
 .faded {
   opacity: 0.5; }
@@ -37,6 +60,6 @@ li {
   background-color: green; }
 
 .faded.nope {
-  background-color: red; }
+  background-color: #C8201B; }
 
 /*# sourceMappingURL=style.css.map */
