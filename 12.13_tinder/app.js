@@ -1,11 +1,22 @@
 function init() {
 	
-	// Wait for user to click getNew button
-	let fetchPerson = document.querySelector('#getNew');
+	// Gender preference determines which array to use
+	let selectGender = document.getElementsByName('gender');
+	let gender = male;
+	
+	for (let i=0; i<selectGender.length; i++) {
+		selectGender[i].addEventListener('click', function() {
+			if (selectGender[i].checked) {
+				gender = eval('(' + selectGender[i].value + ')');
+			}
+		});
+	};
 	
 	let index = 0;
-	
 	let liked = [];
+	
+	// Wait for user to click getNew button
+	let fetchPerson = document.querySelector('#getNew');
 	
 	fetchPerson.addEventListener('click', function() {
 		
@@ -16,68 +27,126 @@ function init() {
 		let listItem = document.createElement('li');
 		list.appendChild(listItem);
 		
-		function createInner(parent) {
+		function createInner(parent, array) {
 			// Create list content
 			let avi = document.createElement('img');
-			avi.src = dudes[index].img;
-			listItem.appendChild(avi);
+			avi.src = array[index].img;
+			parent.appendChild(avi);
 			
 			let name = document.createElement('p');
-			//name.textContent = userName;
-			name.textContent = dudes[index].name;
-			listItem.appendChild(name);
+			name.textContent = array[index].name;
+			parent.appendChild(name);
 			
 			let likeBtn = document.createElement('button');
 			likeBtn.textContent = 'Like';
-			listItem.appendChild(likeBtn);
+			parent.appendChild(likeBtn);
 			
 			let nopeBtn = document.createElement('button');
 			nopeBtn.textContent = 'Nope';
-			listItem.appendChild(nopeBtn);
+			parent.appendChild(nopeBtn);
 			
 			// Add event listeners to buttons
 			likeBtn.addEventListener('click', function() {
-				listItem.classList.add('faded');
-				console.log('Likes ' + dudes[index].name);
-				liked.push(dudes[index]);
+				parent.classList.add('faded', 'like');
+				console.log('Likes ' + array[index].name);
+				liked.push(array[index]);
 
 			});
 
 			nopeBtn.addEventListener('click', function() {
-				listItem.classList.add('faded');
-				console.log(dudes[index].name + ' has been noped');
+				parent.classList.add('faded', 'nopeg');
+				console.log(array[index].name + ' has been noped');
 			});
 
-			// Get index of dudes
-			if (index < dudes.length - 1) {
-				index++;
-			} else {
-				index = 0;
-			}
+			// Get index of people
+			index = (index + 1) % array.length;
 		};
 		
-		createInner(listItem);
+		createInner(listItem, gender);
 		
 	});
 	
-	console.log(liked);
+	//console.log(liked);
 	
 	
 }
 
 window.addEventListener('load', init);
 
-let dudes = [
-	{
-		img: 'https://randomuser.me/api/portraits/men/18.jpg',
-		name: 'Human 1',
+let male = [
+	{	img: 'https://randomuser.me/api/portraits/men/18.jpg',
+		name: 'Man 1',
 	},
-	{
-		img: 'https://randomuser.me/api/portraits/men/90.jpg',
-		name: 'Human 2',
+	{	img: 'https://randomuser.me/api/portraits/men/90.jpg',
+		name: 'Man 2',
 	},
-	{
-		img: 'https://randomuser.me/api/portraits/men/22.jpg',
-		name: 'Human 3',
+	{	img: 'https://randomuser.me/api/portraits/men/22.jpg',
+		name: 'Man 3',
 	},
+	{	img: 'https://randomuser.me/api/portraits/men/25.jpg',
+		name: 'Man 4',
+	},
+	{	img: 'https://randomuser.me/api/portraits/men/42.jpg',
+		name: 'Man 5',
+	},
+	{	img: 'https://randomuser.me/api/portraits/men/58.jpg',
+		name: 'Man 6',
+	},
+	{	img: 'https://randomuser.me/api/portraits/men/3.jpg',
+		name: 'Man 7',
+	},
+	{	img: 'https://randomuser.me/api/portraits/men/2.jpg',
+		name: 'Man 8',
+	},
+	{	img: 'https://randomuser.me/api/portraits/men/0.jpg',
+		name: 'Man 9',
+	},
+	{	img: 'https://randomuser.me/api/portraits/men/26.jpg',
+		name: 'Man 10',
+	}
+];
+
+let female = [
+	{	img: 'https://randomuser.me/api/portraits/women/1.jpg',
+		name: 'Woman 1',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/72.jpg',
+		name: 'Woman 2',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/92.jpg',
+		name: 'Woman 3',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/82.jpg',
+		name: 'Woman 4',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/38.jpg',
+		name: 'Woman 5',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/84.jpg',
+		name: 'Woman 6',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/85.jpg',
+		name: 'Woman 7',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/40.jpg',
+		name: 'Woman 8',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/52.jpg',
+		name: 'Woman 9',
+	},
+	{	img: 'https://randomuser.me/api/portraits/women/9.jpg',
+		name: 'Woman 10',
+	}
 ]
+
+let both = male.concat(female);
+function shuffle(a) { // http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+shuffle(both);

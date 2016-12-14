@@ -1,0 +1,55 @@
+/* Variables */
+$lt-grey: #ccc;
+
+/* Global */
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+header, section {
+	padding: 0 1rem;
+}
+
+/* Header */
+header {
+	background-color: $lt-grey;
+}
+
+h1 {
+	margin: 0;
+	padding: 1rem 0;
+}
+
+h1:before{
+	content: '[Less buggy than] ';
+	font-size: 1rem;
+}
+
+/* Form */
+form.genderPref {
+}
+
+/* Profiles */
+ul#list {
+	list-style: none;
+	padding-left: 0;
+}
+
+li {
+	width: 300px;
+	display: inline-block;
+	background-color: $lt-grey;
+}
+
+.faded {
+	opacity: 0.5;
+}
+
+.faded.like {
+	background-color: green;
+}
+
+.faded.nope {
+	background-color: red;
+}

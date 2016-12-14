@@ -1,9 +1,42 @@
+/* Variables */
+/* Global */
+html, body {
+  margin: 0;
+  padding: 0; }
+
+header, section {
+  padding: 0 1rem; }
+
+/* Header */
+header {
+  background-color: #ccc; }
+
+h1 {
+  margin: 0;
+  padding: 1rem 0; }
+
+h1:before {
+  content: '[Less buggy than] ';
+  font-size: 1rem; }
+
+/* Form */
+/* Profiles */
+ul#list {
+  list-style: none;
+  padding-left: 0; }
+
 li {
-	width: 300px;
-	display: inline-block;
-	background-color: lightsalmon;
-}
+  width: 300px;
+  display: inline-block;
+  background-color: #ccc; }
 
 .faded {
-	opacity: 0.5;
-}
+  opacity: 0.5; }
+
+.faded.like {
+  background-color: green; }
+
+.faded.nope {
+  background-color: red; }
+
+/*# sourceMappingURL=style.css.map */
