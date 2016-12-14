@@ -15,11 +15,19 @@ function init() {
 	let index = 0;
 	let liked = [];
 	
-	// Wait for user to click getNew button
-	let fetchPerson = document.querySelector('#getNew');
+	let printLikes = document.querySelector('#printList');
+	printLikes.addEventListener('click', function() {
+		console.log(liked);
+	});
 	
-	fetchPerson.addEventListener('click', function() {
-		
+	// Wait for user to click getNew button
+	let fetchProfile = document.querySelector('#update');
+	
+	// Run createProfile if user clicks button and on interval
+	fetchProfile.addEventListener('click', createProfile);
+	setInterval(createProfile, 1000);
+	
+	function createProfile() {
 		// Set ul as empty container
 		let list = document.querySelector('#list');
 		
@@ -45,16 +53,16 @@ function init() {
 			nopeBtn.textContent = 'Nope';
 			parent.appendChild(nopeBtn);
 			
+			
 			// Add event listeners to buttons
 			likeBtn.addEventListener('click', function() {
 				parent.classList.add('faded', 'like');
 				console.log('Likes ' + array[index].name);
-				liked.push(array[index]);
-
+				liked.push(array[index].name);
 			});
 
 			nopeBtn.addEventListener('click', function() {
-				parent.classList.add('faded', 'nopeg');
+				parent.classList.add('faded', 'nope');
 				console.log(array[index].name + ' has been noped');
 			});
 
@@ -64,7 +72,7 @@ function init() {
 		
 		createInner(listItem, gender);
 		
-	});
+	};
 	
 	//console.log(liked);
 	
@@ -72,6 +80,9 @@ function init() {
 }
 
 window.addEventListener('load', init);
+
+
+
 
 let male = [
 	{	img: 'https://randomuser.me/api/portraits/men/18.jpg',
@@ -140,7 +151,10 @@ let female = [
 ]
 
 let both = male.concat(female);
-function shuffle(a) { // http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+
+function shuffle(a) {
+	// don't see any reason to do this myself
+	// http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
     var j, x, i;
     for (i = a.length; i; i--) {
         j = Math.floor(Math.random() * i);
