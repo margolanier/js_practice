@@ -1,11 +1,11 @@
 let currentQ;
-/*let score = 0;
-let displayScore = document.querySelector('.score');*/
+let score = 0;
 
 function init() {
 	newQ();
 	
-	//displayScore.textContent = score;
+	let displayScore = document.querySelector('.score');
+	displayScore.textContent = score;
 	
 	let submit = document.querySelector('#submit');
 	submit.addEventListener('click', checkAns);
@@ -51,7 +51,6 @@ function checkAns() {
 	
 	let response = document.querySelector('.response');
 	
-	let score = 0;
 	let displayScore = document.querySelector('.score');
 	
 	if ( userAns.toLowerCase() === correctAns.toLowerCase() ) {
@@ -64,6 +63,6 @@ function checkAns() {
 		response.textContent = 'Incorrect.  The correct answer is ' + correctAns;
 	}
 	
-	//newQ();
+	newQ();
 }
 
