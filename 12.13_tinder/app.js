@@ -14,6 +14,7 @@ function init() {
 	
 	let index = 0;
 	let liked = [];
+	let timeout;
 	
 	let printLikes = document.querySelector('#printList');
 	printLikes.addEventListener('click', function() {
@@ -25,7 +26,25 @@ function init() {
 	
 	// Run createProfile if user clicks button and on interval
 	fetchProfile.addEventListener('click', createProfile);
-	setInterval(createProfile, 1000);
+	
+	// User chooses to fetch profiles automatically or manually
+	let autoMode = document.getElementsByName('autoMode');
+	let mode = false;
+	
+	for (let i=0; i<autoMode.length; i++) {
+		autoMode[i].addEventListener('click', function() {
+			if (autoMode[i].checked) {
+				mode = eval('(' + autoMode[i].value + ')');
+				
+				if (mode) {
+					timeout = setInterval(createProfile, 1000);
+				} else {
+					clearInterval(timeout);
+					timeout = 0;
+				}
+			}
+		});
+	};
 	
 	function createProfile() {
 		// Set ul as empty container

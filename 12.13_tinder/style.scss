@@ -30,10 +30,13 @@ h1:before{
 }
 
 /* Form */
-form.genderPref {
+form.genderPref, form.autoMode {
 	border: 1px solid $dk-grey;
 	display: inline-block;
 	padding: 1rem;
+	margin: 1rem 0;
+	box-sizing: border-box;
+	vertical-align: top;
 	margin: 1rem 0;
 }
 

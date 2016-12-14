@@ -22,10 +22,13 @@ h1:before {
   font-size: 1rem; }
 
 /* Form */
-form.genderPref {
+form.genderPref, form.autoMode {
   border: 1px solid #2f2f2f;
   display: inline-block;
   padding: 1rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  vertical-align: top;
   margin: 1rem 0; }
 
 #update, #printList {
