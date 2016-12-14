@@ -5,7 +5,7 @@ let displayScore = document.querySelector('.score');*/
 function init() {
 	newQ();
 	
-	displayScore.textContent = score;
+	//displayScore.textContent = score;
 	
 	let submit = document.querySelector('#submit');
 	submit.addEventListener('click', checkAns);
@@ -41,17 +41,20 @@ function displayQ(Q) {
 
 function checkAns() {
 	let correctAns = currentQ.answer;
+	console.log('correct = ' + correctAns);
 	
 	let textBox = document.querySelector('input');
 	let userAns = textBox.value;
 	textBox.value = '';
+	
+	console.log('user = ' + userAns);
 	
 	let response = document.querySelector('.response');
 	
 	let score = 0;
 	let displayScore = document.querySelector('.score');
 	
-	if ( userAns.toLowerCase === correctAns.toLowerCase ) {
+	if ( userAns.toLowerCase() === correctAns.toLowerCase() ) {
 		// User is correct, award points
 		response.textContent = 'You are correct.';
 		score += currentQ.value;
