@@ -54,14 +54,42 @@ function init() {
 		let listItem = document.createElement('li');
 		list.appendChild(listItem);
 		
-		function createInner(parent, array) {
+		/*
+		Dear future Margo:
+		
+		Here are a handful of positive vibes.
+		
+		Now, on to the description of what changed:
+		
+		PROBLEM: your event handler (function that runs when you click) doesn't execute until the click. The value of `index` has changed
+		by then.
+		
+		What you *want* is the value of index WHEN THE HANDLER WAS CREATED.
+		So you can't use `index`, which is going to be moving all over the 
+		place. You need a different variable that shares the same value
+		with index at the time the handler was created.
+		
+		Here we're doing that by passing in index as a parameter (which we
+		call current). That creates a second variable with the same value, but when we change `index` the value of `current` will stay the
+		same. Word.
+		
+		There's only one `index` variable shared across all of these functions (b/c its global). EACH createInner() will have its own
+		`current` variable, which will be the value of `index` at the time
+		that createInner() was called.
+		
+		That's how we get around the whole moving target issue with `index`.
+		
+		Sincerely,
+		Your instructor
+		*/
+		function createInner(parent, array, current) {
 			// Create list content
 			let avi = document.createElement('img');
-			avi.src = array[index].img;
+			avi.src = array[current].img;
 			parent.appendChild(avi);
 			
 			let name = document.createElement('p');
-			name.textContent = array[index].name;
+			name.textContent = array[current].name;
 			parent.appendChild(name);
 			
 			let likeBtn = document.createElement('button');
@@ -76,21 +104,20 @@ function init() {
 			// Add event listeners to buttons
 			likeBtn.addEventListener('click', function() {
 				parent.classList.add('faded', 'like');
-				console.log('Likes ' + array[index].name);
-				liked.push(array[index].name);
+				console.log('Likes ' + array[current].name);
+				liked.push(array[current].name);
 			});
 
 			nopeBtn.addEventListener('click', function() {
 				parent.classList.add('faded', 'nope');
-				console.log(array[index].name + ' has been noped');
+				console.log(array[current].name + ' has been noped');
 			});
 
 			// Get index of people
 			index = (index + 1) % array.length;
 		};
 		
-		createInner(listItem, gender);
-		
+		createInner(listItem, gender, index);
 	};
 	
 	//console.log(liked);
