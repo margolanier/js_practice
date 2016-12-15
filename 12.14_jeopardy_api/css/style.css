@@ -1325,45 +1325,43 @@ section {
   section span.category {
     text-transform: capitalize; }
 
-form {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto; }
-  form::before, form::after {
-    content: ' ';
-    display: table; }
-  form::after {
-    clear: both; }
-  form p {
-    width: 66.66667%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem; }
-    @media screen and (min-width: 40em) {
-      form p {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    form p:last-child:not(:first-child) {
-      float: right; }
-  form input[type='text'] {
-    width: 300px;
-    float: none;
-    display: inline; }
-  form button, form div {
-    width: 16.66667%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem; }
-    @media screen and (min-width: 40em) {
-      form button, form div {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    form button:last-child:not(:first-child), form div:last-child:not(:first-child) {
-      float: right; }
+section.form p {
+  width: 50%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 40em) {
+    section.form p {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  section.form p:last-child:not(:first-child) {
+    float: right; }
+section.form input[type='text'] {
+  width: 400px;
+  float: none;
+  display: inline; }
+section.form button {
+  width: 50%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: auto; }
+  @media screen and (min-width: 40em) {
+    section.form button {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  section.form button:last-child:not(:first-child) {
+    float: right; }
+section.form button:last-child:not(:first-child) {
+  float: none; }
 
 button {
   background-color: #6DB9FE;
   height: 40px;
-  width: auto; }
+  width: auto;
+  min-width: 150px; }
+
+#next {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
