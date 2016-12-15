@@ -1,3 +1,6 @@
+let totalResults;
+let keyword;
+
 function init() {
 	
 	let search = document.querySelector('#submit');
@@ -7,7 +10,7 @@ function init() {
 function searchMovies() {
 	
 	let searchBox = document.querySelector('#search');
-	let keyword = searchBox.value;
+	keyword = searchBox.value;
 	
 	let url = 'https://api.themoviedb.org/3/search/movie?api_key=31350063b13fb0b35d7f345da14d179b&query=' + keyword;
 	
@@ -30,13 +33,25 @@ function searchMovies() {
 }
 
 function movieResults(movie) {
+	
+	// clear any existing results
 	let parent = document.querySelector('#movies');
+	parent.innerHTML = '';
 	
 	let item = document.createElement('li');
-	item.textContent = 'movie';
 	parent.appendChild(item);
 	
+	let image = document.createElement('img');
+	image.src = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2' + movie.poster_path;
+	item.appendChild(image);
 	
+	let title = document.createElement('p');
+	title.textContent = movie.title;
+	item.appendChild(title);
+	
+	let year = document.createElement('p');
+	year.textContent = movie.release_date;
+	item.appendChild(year);
 	
 	
 }
