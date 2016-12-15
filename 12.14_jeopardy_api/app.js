@@ -1,4 +1,5 @@
 let currentQ;
+let nextQ;
 let score = 0;
 
 function init() {
@@ -9,6 +10,12 @@ function init() {
 	
 	let submit = document.querySelector('#submit');
 	submit.addEventListener('click', checkAns);
+	
+	let buttonExists = document.querySelector('#next');
+	if (buttonExists != null) {
+		let getNextQ = document.querySelector('#next');
+		getNextQ.addEventListener('click', newQ);
+	}
 }
 window.addEventListener('load', init);
 
@@ -63,6 +70,11 @@ function checkAns() {
 		response.textContent = 'Incorrect.  The correct answer is ' + correctAns;
 	}
 	
-	newQ();
+	// After user answers question, add NEXT button
+	let nextQparent = document.querySelector('#next-question');
+	nextQ = document.createElement('button');
+	nextQ.setAttribute('id', 'next');
+	nextQ.textContent = 'Next Question';
+	nextQparent.appendChild(nextQ);
 }
 

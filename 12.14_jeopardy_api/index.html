@@ -1,35 +1,38 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="UTF-8"> 
-		<link rel="stylesheet" href="style.css">
-		<script src="app.js"></script>
-	</head>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<header>
+		<h1>Jeopardy</h1>
+		<p>Score: <span class="score"></span></p>
+	</header>
+
+	<section>
+		<p>Question: <span class="question"></span></p>
+
+		<p>Category: <span class="category"></span></p>
+
+		<p>Value: <span class="value"></span></p>
+
+		<p class="response">asdf</p>
+	</section>
 	
-	<body>
-		<header>
-			<h1>Jeopardy</h1>
-		</header>
-		
-		<section id="score">
-			Score:
-			<p class="score"></p>
-		</section>
-		
-		<section id="questionWrap">
-			Q:
-			<p class="question"></p>
-			Cat:
-			<p class="category"></p>
-			Val:
-			<p class="value"></p>
-			Your Answer:
-			<p class="response"></p>
-			
-			<input type="text" placeholder="What is [answer]">
+	<form>
+		<p>What is <input type="text" placeholder="Benjamin Franklin"> ?</p>
 			<button id="submit">Guess</button>
-		</section>
-		
-		<footer></footer>
-	</body>
+			<div id="next-question"></div>
+	</form>
+
+	<footer></footer>
+
+	<script src="app.js"></script>
+</body>
+
 </html>
