@@ -8,26 +8,46 @@
 
 	<title>Parking App</title>
 	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="css/style.css">
 	
 	<script type="x-mustache-template" id="lotInfo-template">
-		<h3>Lot {{ lotID }}</h3>
-		<p>Rate: {{ lotRate }}</p>
-		<p>Capacity: {{ lotCapacity }}</p>
-		<p>Currently holds: {{ lotCars }}</p>
+		<div class="panel">
+			<h3>Lot {{ lotID }}</h3>
+			<p>Rate: ${{ lotRate }} / space</p>
+			<p>Capacity: {{ lotCapacity }}</p>
+			<p>Currently holds: {{ lotCars }}</p>
+		</div>
+	</script>
+	
+	<script type="x-mustache-template" id="carInfo-template">
+		<div class="panel">
+			<h3>{{ carName }}</h3>
+			<p>Size: {{ carSize }} space(s)</p>
+			<p>Budget: ${{ carMoney }}</p>
+		</div>
 	</script>
 </head>
 
 <body>
-	<h1>Parking App</h1>
+	<header>
+		<h1>Parking App</h1>
+	</header>
 	
 	<section id="lotInfo">
 		<h2>Available Lots</h2>
 		<ul id="parking"></ul>
 	</section>
 	
+	<section id="carInfo">
+		<h2>Vehicles</h2>
+		<ul id="details"></ul>
+	</section>
+	
 	<section id="carForm">
 		<h2>Add Car to Lot</h2>
+		
+		<p>Select a car first to view available parking for it.</p>
 		
 		<select id="selectCar">
 			<option value="">Car type</option>
@@ -39,7 +59,6 @@
 		
 		<button id="addCar">Add Car</button>
 	</section>
-	
 	
 	
 	

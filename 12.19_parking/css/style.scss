@@ -4,11 +4,11 @@
 @include foundation-grid;
 
 $lot-bg-color: #ccc;
-$button-color: #ccc;
+$button-color: #61C45C;
 
 
 html, body {
-	padding: 1rem;
+	margin: 0;
 }
 
 h1 {
@@ -19,30 +19,71 @@ h2 {
 	font-size: 2rem;
 }
 
+header {
+	@include grid-row();
+}
+
 section {
 	@include grid-row();
 	
-	&#lotInfo {
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	
+	li {
+		margin-bottom: 1rem;
 		
-		ul {
-			padding: 0;
-			margin: 0;
-			list-style: none;
-		}
-		
-		li.lot {
-			background: $lot-bg-color;
-			margin-bottom: 1rem;
-		}
-		
-		li.fourCol {
+		&.fourCol {
 			@include grid-column(3);
+			padding-left: 0 !important;
 		}
 		
-		li.threeCol {
+		&.threeCol {
 			@include grid-column(4);
+			padding-left: 0 !important;
+		}
+		
+		.panel {
+			border: 2px solid $lot-bg-color;
+			padding-bottom: 0.5rem;
+		}
+		
+		/*.panel:last-child {
+			border-color: red;
+		}*/
+		
+		// override foundation
+		/*&:last-child:not(:first-child) {
+			float: none !important;
+		}*/
+		
+		h3 {
+			background-color: $lot-bg-color;
+			padding: 0 1rem;
+		}
+		
+		p {
+			margin-bottom: 0;
+			padding: 0 1rem;
 		}
 	}
+	
+	&#lotInfo {
+		
+	}
+	
+	&#carInfo {
+		h3:before {
+			content: "\f1b9";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			margin-right: 1rem;
+		}
+	}
+	
 	
 	&#carForm {
 		select {

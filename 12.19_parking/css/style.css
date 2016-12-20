@@ -1289,13 +1289,23 @@ button {
     margin-right: 0;
     float: left; } }
 html, body {
-  padding: 1rem; }
+  margin: 0; }
 
 h1 {
   font-size: 3rem; }
 
 h2 {
   font-size: 2rem; }
+
+header {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto; }
+  header::before, header::after {
+    content: ' ';
+    display: table; }
+  header::after {
+    clear: both; }
 
 section {
   max-width: 75rem;
@@ -1306,35 +1316,57 @@ section {
     display: table; }
   section::after {
     clear: both; }
-  section#lotInfo ul {
+  section ul {
     padding: 0;
     margin: 0;
     list-style: none; }
-  section#lotInfo li.lot {
-    background: #ccc;
-    margin-bottom: 1rem; }
-  section#lotInfo li.fourCol {
-    width: 25%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem; }
-    @media screen and (min-width: 40em) {
-      section#lotInfo li.fourCol {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    section#lotInfo li.fourCol:last-child:not(:first-child) {
-      float: right; }
-  section#lotInfo li.threeCol {
-    width: 33.33333%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem; }
-    @media screen and (min-width: 40em) {
-      section#lotInfo li.threeCol {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    section#lotInfo li.threeCol:last-child:not(:first-child) {
-      float: right; }
+  section li {
+    margin-bottom: 1rem;
+    /*.panel:last-child {
+    	border-color: red;
+    }*/
+    /*&:last-child:not(:first-child) {
+    	float: none !important;
+    }*/ }
+    section li.fourCol {
+      width: 25%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      padding-left: 0 !important; }
+      @media screen and (min-width: 40em) {
+        section li.fourCol {
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem; } }
+      section li.fourCol:last-child:not(:first-child) {
+        float: right; }
+    section li.threeCol {
+      width: 33.33333%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      padding-left: 0 !important; }
+      @media screen and (min-width: 40em) {
+        section li.threeCol {
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem; } }
+      section li.threeCol:last-child:not(:first-child) {
+        float: right; }
+    section li .panel {
+      border: 2px solid #ccc;
+      padding-bottom: 0.5rem; }
+    section li h3 {
+      background-color: #ccc;
+      padding: 0 1rem; }
+    section li p {
+      margin-bottom: 0;
+      padding: 0 1rem; }
+  section#carInfo h3:before {
+    content: "\f1b9";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 1rem; }
   section#carForm select {
     width: 50%;
     float: left;
@@ -1349,6 +1381,6 @@ section {
 
 button {
   padding: 1rem;
-  background-color: #ccc; }
+  background-color: #61C45C; }
 
 /*# sourceMappingURL=style.css.map */

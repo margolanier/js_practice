@@ -51,6 +51,7 @@ let lots = [
 
 function init() {
 	getLots();
+	displayCars();
 	
 	let submitCar = document.querySelector('#addCar');
 	submitCar.addEventListener('click', addCar);
@@ -58,7 +59,7 @@ function init() {
 
 function getLots() {
 	/*let request = new XMLHttpRequest();
-	request.open('GET', 'IP/lots');
+	request.open('GET', 'https://stark-anchorage-76424.herokuapp.com/lots');
 	
     request.addEventListener('load', function() {
 		console.log('getting lots');
@@ -93,14 +94,36 @@ function getLots() {
 	setupForm();
 }
 
+function displayCars() {
+	let carInfo = document.querySelector('#details');
+	for (let i=0; i<cars.length; i++) {
+		
+		let car = document.createElement('li');
+		let carCol = 'fourCol';
+		if (cars.length % 3 === 0) {
+			carCol = 'threeCol';
+		}
+		car.classList.add('car', carCol);
+		
+		car.innerHTML = Mustache.render(
+			document.querySelector('#carInfo-template').innerHTML,
+			{carName: cars[i].make + ' ' + cars[i].model,
+			carSize: cars[i].size,
+			carMoney: cars[i].money}
+		);
+		
+		carInfo.appendChild(car);
+	}
+}
+
 function setupForm() {
 	
-	// Get car options
 	let carSelection = document.querySelector('#selectCar');
+	
+	// Get car options
 	for (let i=0; i<cars.length; i++) {
 		let car = document.createElement('option');
 		let make_model = cars[i].make + ' ' + cars[i].model;
-		//car.setAttribute('value', make_model);
 		car.setAttribute('value', i);
 		car.textContent = make_model;		
 		carSelection.appendChild(car);
@@ -110,14 +133,12 @@ function setupForm() {
 	carSelection.addEventListener('change', function() {
 		let lotSelection = document.querySelector('#selectLot');
 		
-		// Get index of selected car
-		console.log(carSelection.value);
-		
-		for (let i=0; i<cars.length; i++) {
+		for (let i=0; i<lots.length; i++) {
 			
 			// Only show lots with available space
 			let emptySpaces = availSpace(lots[i]);
-			console.log(emptySpaces);
+			
+			// carSelection.value = index of selected car
 			
 			// if available space >= selected car size
 			if ( emptySpaces >= cars[carSelection.value].size) { 
@@ -149,7 +170,7 @@ function addCarToLot() {
 	/*let request = new XMLHttpRequest();
 	
 	let carID = 
-	request.open('POST', 'IP/cars/#');
+	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/cars/#');
 	
     request.addEventListener('load', function() {
 		console.log('adding cars');
