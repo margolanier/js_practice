@@ -19,9 +19,38 @@ let cars = [
 	}
 ]
 
+
+// Test Data
+let lots = [
+	{
+		id: 0,
+		capacity: 0,
+		rate: 4,
+		//cars: [],
+		cars: [0, 2],
+	},
+	{
+		id: 1,
+		capacity: 1,
+		rate: 5,
+		cars: [],
+	},
+	{
+		id: 2,
+		capacity: 12,
+		rate: 6,
+		cars: [],
+	},
+	{
+		id: 3,
+		capacity: 12,
+		rate: 2,
+		cars: [],
+	},
+]
+
 function init() {
 	getLots();
-	//setInterval(getLots, 5000);
 	
 	let submitCar = document.querySelector('#addCar');
 	submitCar.addEventListener('click', addCar);
@@ -38,33 +67,20 @@ function getLots() {
 	request.send();*/
 	
 	
-	// Test Data
-	let lots = [
-		{
-			id: 0,
-			capacity: 10,
-			rate: 4,
-			cars: [],
-		},
-		{
-			id: 1,
-			capacity: 8,
-			rate: 5,
-			cars: [],
-		},
-		{
-			id: 2,
-			capacity: 12,
-			rate: 6,
-			cars: [],
-		},
-	]
-	
 	let parking = document.querySelector('#parking');
 	
 	for (let i=0; i<lots.length; i++) {
+		
 		let lot = document.createElement('li');
-		lot.textContent = lots[i].id + ', capacity: ' + lots[i].capacity + ', rate: ' + lots[i].rate;
+		
+		lot.innerHTML = Mustache.render(
+			document.querySelector('#lotInfo-template').innerHTML,
+			{lotID: lots[i].id,
+			lotRate: lots[i].rate,
+			lotCapacity: lots[i].capacity,
+			lotCars: lots[i].cars}
+		);
+		
 		parking.appendChild(lot);
 	}
 	
@@ -80,43 +96,55 @@ function setupForm() {
 		let car = document.createElement('option');
 		let make_model = cars[i].make + ' ' + cars[i].model;
 		//car.setAttribute('value', make_model);
-		car.setAttribute('value', make_model);
+		car.setAttribute('value', i);
 		car.textContent = make_model;		
 		carSelection.appendChild(car);
 	}
 	
 	// Get lot options
 	carSelection.addEventListener('change', function() {
+		let lotSelection = document.querySelector('#selectLot');
 		
 		// Get index of selected car
 		console.log(carSelection.value);
 		
-		/*for (let i=0; i<cars.length; i++) {
+		for (let i=0; i<cars.length; i++) {
 			
 			// Only show lots with available space
-			if () { // if available space >= selected car size
+			let emptySpaces = availSpace(lots[i]);
+			console.log(emptySpaces);
+			
+			// if available space >= selected car size
+			if ( emptySpaces >= cars[carSelection.value].size) { 
+				console.log(emptySpaces + ' spaces exists for Lot ' + i);
 				
 				// Check if driver has enough money
-				if () { // if money >= rate*spaces
+				let costToPark = cars[carSelection.value].size * lots[i].rate
+				// if money >= rate*spaces
+				if (cars[carSelection.value].money >= costToPark) { 
 					let lot = document.createElement('option');
 					lot.setAttribute('value', lots[i].id);
 					lot.textContent = lots[i].id;
 					lotSelection.appendChild(lot);
 				}
 			}
-		}*/
+		}
 	});
 }
 
 function availSpace(lot) {
-	let capacity = lots[lot].capacity;
-	let 
+	//let capacity = lots[lot].capacity;
+	//let spacesFilled = // for loop in lot.cars array to get size of each car and add to total
+	//return (capacity - spacesFilled);
+	return 8;
 }
 
-function addCar() {
+function addCarToLot() {
 	console.log('submit car');
 	/*let request = new XMLHttpRequest();
-	request.open('POST', 'IP/cars');
+	
+	let carID = 
+	request.open('POST', 'IP/cars/#');
 	
     request.addEventListener('load', function() {
 		console.log('adding cars');
