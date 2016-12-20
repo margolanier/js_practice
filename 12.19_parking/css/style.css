@@ -1306,27 +1306,45 @@ section {
     display: table; }
   section::after {
     clear: both; }
-  section #lotInfo li {
+  section#lotInfo ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+  section#lotInfo li.lot {
+    background: #ccc;
+    margin-bottom: 1rem; }
+  section#lotInfo li.fourCol {
+    width: 25%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem; }
+    @media screen and (min-width: 40em) {
+      section#lotInfo li.fourCol {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    section#lotInfo li.fourCol:last-child:not(:first-child) {
+      float: right; }
+  section#lotInfo li.threeCol {
     width: 33.33333%;
     float: left;
     padding-left: 0.625rem;
     padding-right: 0.625rem; }
     @media screen and (min-width: 40em) {
-      section #lotInfo li {
+      section#lotInfo li.threeCol {
         padding-left: 0.9375rem;
         padding-right: 0.9375rem; } }
-    section #lotInfo li:last-child:not(:first-child) {
+    section#lotInfo li.threeCol:last-child:not(:first-child) {
       float: right; }
-  section #carForm select {
+  section#carForm select {
     width: 50%;
     float: left;
     padding-left: 0.625rem;
     padding-right: 0.625rem; }
     @media screen and (min-width: 40em) {
-      section #carForm select {
+      section#carForm select {
         padding-left: 0.9375rem;
         padding-right: 0.9375rem; } }
-    section #carForm select:last-child:not(:first-child) {
+    section#carForm select:last-child:not(:first-child) {
       float: right; }
 
 button {

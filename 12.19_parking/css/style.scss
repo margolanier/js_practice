@@ -3,6 +3,9 @@
 @include foundation-global-styles;
 @include foundation-grid;
 
+$lot-bg-color: #ccc;
+$button-color: #ccc;
+
 
 html, body {
 	padding: 1rem;
@@ -19,13 +22,29 @@ h2 {
 section {
 	@include grid-row();
 	
-	#lotInfo {
-		li {
+	&#lotInfo {
+		
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		
+		li.lot {
+			background: $lot-bg-color;
+			margin-bottom: 1rem;
+		}
+		
+		li.fourCol {
+			@include grid-column(3);
+		}
+		
+		li.threeCol {
 			@include grid-column(4);
 		}
 	}
 	
-	#carForm {
+	&#carForm {
 		select {
 			@include grid-column(6);
 		}
@@ -36,5 +55,5 @@ section {
 
 button {
 	padding: 1rem;
-	background-color: #ccc;
+	background-color: $button-color;
 }

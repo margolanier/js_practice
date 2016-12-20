@@ -72,6 +72,11 @@ function getLots() {
 	for (let i=0; i<lots.length; i++) {
 		
 		let lot = document.createElement('li');
+		let lotCol = 'fourCol';
+		if (lots.length % 3 === 0) {
+			lotCol = 'threeCol';
+		}
+		lot.classList.add('lot', lotCol);
 		
 		lot.innerHTML = Mustache.render(
 			document.querySelector('#lotInfo-template').innerHTML,
