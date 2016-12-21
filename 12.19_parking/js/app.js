@@ -19,7 +19,7 @@ let cars = [
 		size: 2,
 		money: 8,
 		iD: null,
-	}
+	},
 ]
 
 function init() {
@@ -136,7 +136,7 @@ function setupForm(lots) {
 }
 
 function availSpace(lot) {
-	return 8;
+	return 8; // REMOVE WHEN DATA EXISTS
 	
 	let capacity = lots[lot].capacity;
 	
@@ -176,18 +176,21 @@ function addCarToLot() {
 		getLots();
 	});
 	
-	//request.send(body);
+	//request.send(body);  // UNCOMMENT WHEN DATA EXISTS
 }
 
 function addNewCar() {
 	
 	let carInfo = {
-		make: document.querySelector('#setMake').value,
-		model: document.querySelector('#setModel').value,
+		make: '"' + document.querySelector('#setMake').value + '"',
+		model: '"' + document.querySelector('#setModel').value + '"',
 		size: document.querySelector('#setSize').value,
 		money: document.querySelector('#setMoney').value,
 		iD: null,
 	}
+	
+	cars.push(carInfo);
+	displayCars();
 }
 
 window.addEventListener('load', init);

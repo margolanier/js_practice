@@ -1365,31 +1365,37 @@ section {
     font-style: normal;
     font-weight: normal;
     margin-right: 1rem; }
-  section#carForm select, section#carForm button {
+  section#carForm .panel {
     width: 33.33333%;
     float: left;
     padding-left: 0.625rem;
-    padding-right: 0.625rem; }
+    padding-right: 0.625rem;
+    padding-left: 0 !important; }
     @media screen and (min-width: 40em) {
-      section#carForm select, section#carForm button {
+      section#carForm .panel {
         padding-left: 0.9375rem;
         padding-right: 0.9375rem; } }
-    section#carForm select:last-child:not(:first-child), section#carForm button:last-child:not(:first-child) {
+    section#carForm .panel:last-child:not(:first-child) {
       float: right; }
-  section#newCarType input, section#newCarType button {
+  section#newCarType .panel {
     width: 50%;
     float: left;
     padding-left: 0.625rem;
-    padding-right: 0.625rem; }
+    padding-right: 0.625rem;
+    padding-left: 0 !important; }
     @media screen and (min-width: 40em) {
-      section#newCarType input, section#newCarType button {
+      section#newCarType .panel {
         padding-left: 0.9375rem;
         padding-right: 0.9375rem; } }
-    section#newCarType input:last-child:not(:first-child), section#newCarType button:last-child:not(:first-child) {
+    section#newCarType .panel:last-child:not(:first-child) {
       float: right; }
 
+/*:last-child:not(:first-child) {
+	float: none !important; 
+}*/
 button {
   padding: .75rem;
-  background-color: #61C45C; }
+  background-color: #61C45C;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

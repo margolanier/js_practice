@@ -81,20 +81,27 @@ section {
 	
 	
 	&#carForm {
-		select, button {
+		.panel {
 			@include grid-column(4);
+			padding-left: 0 !important;
 		}
 	}
 	
 	&#newCarType {
-		input, button {
+		.panel {
 			@include grid-column(6);
+			padding-left: 0 !important;
 		}
 	}
 }
 
+// override foundation float for extra columns
+/*:last-child:not(:first-child) {
+	float: none !important; 
+}*/
 
 button {
 	padding: .75rem;
 	background-color: $button-color;
+	width: 100%;
 }

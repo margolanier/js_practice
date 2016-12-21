@@ -49,15 +49,22 @@
 		
 		<p>Select a car first to view available parking for it.</p>
 		
-		<select id="selectCar">
-			<option value="">Car type</option>
-		</select>
+		<div class="panel">
+			<select id="selectCar">
+				<option value="">Car type</option>
+			</select>
+		</div>
 		
-		<select id="selectLot">
-			<option value="">Available Lots</option>
-		</select>
+		<div class="panel">
+			<select id="selectLot">
+				<option value="">Available Lots</option>
+			</select>
+		</div>
 		
-		<button id="parkCar">Add Car to Lot</button>
+		<div class="panel">
+			<button id="parkCar">Add Car to Lot</button>
+		</div>
+		
 	</section>
 	
 	<section id="newCarType">
@@ -65,15 +72,25 @@
 		
 		<p>Add another type of car that needs to find parking.</p>
 		
-		<input type="text" placeholder="Make" id="setMake">
+		<div class="panel">
+			<input type="text" placeholder="Make" id="setMake">
+		</div>
 		
-		<input type="text" placeholder="Model" id="setModel">
+		<div class="panel">
+			<input type="text" placeholder="Model" id="setModel">
+		</div>
 		
-		<input type="number"  min="1" max="4" placeholder="Size" id="setSize">
+		<div class="panel">
+			<input type="number"  min="1" max="4" placeholder="Size" id="setSize">
+		</div>
 		
-		<input type="number"  min="1" max="100" placeholder="Budget" id="setMoney">
+		<div class="panel">
+			<input type="number"  min="1" max="100" placeholder="Budget" id="setMoney">
+		</div>
 		
-		<button id="newCar">Add New Car Option</button>
+		<div class="panel">
+			<button id="newCar">Add New Car Option</button>
+		</div>
 	</section>
 	
 	
