@@ -13,10 +13,13 @@ html, body {
 
 h1 {
 	font-size: 3rem;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 h2 {
 	font-size: 2rem;
+	font-weight: bold;
 }
 
 header {
@@ -25,6 +28,7 @@ header {
 
 section {
 	@include grid-row();
+	margin-bottom: 2rem;
 	
 	ul {
 		padding: 0;
@@ -49,15 +53,6 @@ section {
 			border: 2px solid $lot-bg-color;
 			padding-bottom: 0.5rem;
 		}
-		
-		/*.panel:last-child {
-			border-color: red;
-		}*/
-		
-		// override foundation
-		/*&:last-child:not(:first-child) {
-			float: none !important;
-		}*/
 		
 		h3 {
 			background-color: $lot-bg-color;
@@ -86,15 +81,20 @@ section {
 	
 	
 	&#carForm {
-		select {
+		select, button {
+			@include grid-column(4);
+		}
+	}
+	
+	&#newCarType {
+		input, button {
 			@include grid-column(6);
 		}
 	}
 }
 
 
-
 button {
-	padding: 1rem;
+	padding: .75rem;
 	background-color: $button-color;
 }

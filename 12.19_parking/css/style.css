@@ -1292,10 +1292,13 @@ html, body {
   margin: 0; }
 
 h1 {
-  font-size: 3rem; }
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase; }
 
 h2 {
-  font-size: 2rem; }
+  font-size: 2rem;
+  font-weight: bold; }
 
 header {
   max-width: 75rem;
@@ -1310,7 +1313,8 @@ header {
 section {
   max-width: 75rem;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 2rem; }
   section::before, section::after {
     content: ' ';
     display: table; }
@@ -1321,13 +1325,7 @@ section {
     margin: 0;
     list-style: none; }
   section li {
-    margin-bottom: 1rem;
-    /*.panel:last-child {
-    	border-color: red;
-    }*/
-    /*&:last-child:not(:first-child) {
-    	float: none !important;
-    }*/ }
+    margin-bottom: 1rem; }
     section li.fourCol {
       width: 25%;
       float: left;
@@ -1367,20 +1365,31 @@ section {
     font-style: normal;
     font-weight: normal;
     margin-right: 1rem; }
-  section#carForm select {
+  section#carForm select, section#carForm button {
+    width: 33.33333%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem; }
+    @media screen and (min-width: 40em) {
+      section#carForm select, section#carForm button {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    section#carForm select:last-child:not(:first-child), section#carForm button:last-child:not(:first-child) {
+      float: right; }
+  section#newCarType input, section#newCarType button {
     width: 50%;
     float: left;
     padding-left: 0.625rem;
     padding-right: 0.625rem; }
     @media screen and (min-width: 40em) {
-      section#carForm select {
+      section#newCarType input, section#newCarType button {
         padding-left: 0.9375rem;
         padding-right: 0.9375rem; } }
-    section#carForm select:last-child:not(:first-child) {
+    section#newCarType input:last-child:not(:first-child), section#newCarType button:last-child:not(:first-child) {
       float: right; }
 
 button {
-  padding: 1rem;
+  padding: .75rem;
   background-color: #61C45C; }
 
 /*# sourceMappingURL=style.css.map */

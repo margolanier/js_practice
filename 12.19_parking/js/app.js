@@ -4,18 +4,21 @@ let cars = [
 		model: 'Camry',
 		size: 1,
 		money: 14,
+		iD: null,
 	},
 	{
 		make: 'Honda',
 		model: 'Civic',
 		size: 1,
 		money: 20,
+		iD: null,
 	},
 	{
 		make: 'Hummer',
 		model: 'H2',
 		size: 2,
 		money: 8,
+		iD: null,
 	}
 ]
 
@@ -23,8 +26,11 @@ function init() {
 	getLots();
 	displayCars();
 	
-	let submitCar = document.querySelector('#addCar');
+	let submitCar = document.querySelector('#parkCar');
 	submitCar.addEventListener('click', addCar);
+	
+	let newCar = document.querySelector('#newCar');
+	newCar.addEventListener('click', addNewCar);
 }
 
 function getLots() {
@@ -50,6 +56,7 @@ function getLots() {
 				{lotID: lots[i].iD,
 				lotRate: lots[i].rate,
 				lotCapacity: lots[i].capacity,
+				lotFilled: lots[i].capacity - availSpace(lots[i]),
 				lotCars: lots[i].cars}
 			);
 			
@@ -129,24 +136,58 @@ function setupForm(lots) {
 }
 
 function availSpace(lot) {
-	//let capacity = lots[lot].capacity;
-	//let spacesFilled = // for loop in lot.cars array to get size of each car and add to total
-	//return (capacity - spacesFilled);
 	return 8;
+	
+	let capacity = lots[lot].capacity;
+	
+	let spacesFilled = 0;
+	let cars = lots[lot].cars;
+	// loop through current cars in lot to get size of each car and add to total
+	for (let i=0; i<cars.length; i++) {
+		spacesFilled += cars[i].size;
+	}
+	
+	return (capacity - spacesFilled);
 }
 
 function addCarToLot() {
-	console.log('submit car');
 	let request = new XMLHttpRequest();
 	
-	let carID = 
 	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/lot-info');
+	
+	// Get form values to send
+	let selectedCar = document.querySelector('#selectCar');
+	let car = cars[selectedCar.value];
+	console.log(car);
+	
+	let selectedLot = document.querySelector('#selectLot');
+	
+	let body = JSON.stringify({
+		make: car.make,
+		model: car.model,
+		size: car.size,
+		money: car.money,
+		iD: selectedLot.value,
+	});
 	
     request.addEventListener('load', function() {
 		console.log('adding cars');
+		
+		getLots();
 	});
 	
-	request.send();
+	//request.send(body);
+}
+
+function addNewCar() {
+	
+	let carInfo = {
+		make: document.querySelector('#setMake').value,
+		model: document.querySelector('#setModel').value,
+		size: document.querySelector('#setSize').value,
+		money: document.querySelector('#setMoney').value,
+		iD: null,
+	}
 }
 
 window.addEventListener('load', init);

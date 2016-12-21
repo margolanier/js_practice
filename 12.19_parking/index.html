@@ -15,8 +15,8 @@
 		<div class="panel">
 			<h3>Lot {{ lotID }}</h3>
 			<p>Rate: ${{ lotRate }} / space</p>
-			<p>Capacity: {{ lotCapacity }}</p>
-			<p>Currently holds: {{ lotCars }}</p>
+			<p>Capacity: {{ lotFilled }} / {{ lotCapacity }} cars</p>
+			<p>Cars Parked: {{ lotCars }}</p>
 		</div>
 	</script>
 	
@@ -57,7 +57,23 @@
 			<option value="">Available Lots</option>
 		</select>
 		
-		<button id="addCar">Add Car</button>
+		<button id="parkCar">Add Car to Lot</button>
+	</section>
+	
+	<section id="newCarType">
+		<h2>Add More Car Options</h2>
+		
+		<p>Add another type of car that needs to find parking.</p>
+		
+		<input type="text" placeholder="Make" id="setMake">
+		
+		<input type="text" placeholder="Model" id="setModel">
+		
+		<input type="number"  min="1" max="4" placeholder="Size" id="setSize">
+		
+		<input type="number"  min="1" max="100" placeholder="Budget" id="setMoney">
+		
+		<button id="newCar">Add New Car Option</button>
 	</section>
 	
 	
