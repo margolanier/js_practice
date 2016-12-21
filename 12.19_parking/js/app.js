@@ -19,36 +19,6 @@ let cars = [
 	}
 ]
 
-
-// Test Data
-let lots = [
-	{
-		id: 0,
-		capacity: 0,
-		rate: 4,
-		//cars: [],
-		cars: [0, 2],
-	},
-	{
-		id: 1,
-		capacity: 1,
-		rate: 5,
-		cars: [],
-	},
-	{
-		id: 2,
-		capacity: 12,
-		rate: 6,
-		cars: [],
-	},
-	{
-		id: 3,
-		capacity: 12,
-		rate: 2,
-		cars: [],
-	},
-]
-
 function init() {
 	getLots();
 	displayCars();
@@ -58,40 +28,40 @@ function init() {
 }
 
 function getLots() {
-	/*let request = new XMLHttpRequest();
-	request.open('GET', 'https://stark-anchorage-76424.herokuapp.com/lots');
+	let request = new XMLHttpRequest();
+	request.open('GET', 'https://stark-anchorage-76424.herokuapp.com/lot-info');
 	
     request.addEventListener('load', function() {
-		console.log('getting lots');
+		
+		let parking = document.querySelector('#parking');
+		let lots = JSON.parse(request.responseText);
+		
+		for (let i=0; i<lots.length; i++) {
+			
+			let lot = document.createElement('li');
+			let lotCol = 'fourCol';
+			if (lots.length % 3 === 0) {
+				lotCol = 'threeCol';
+			}
+			lot.classList.add('lot', lotCol);
+			
+			lot.innerHTML = Mustache.render(
+				document.querySelector('#lotInfo-template').innerHTML,
+				{lotID: lots[i].iD,
+				lotRate: lots[i].rate,
+				lotCapacity: lots[i].capacity,
+				lotCars: lots[i].cars}
+			);
+			
+			parking.appendChild(lot);
+		}
+		
+		// Set up form after getting lot info
+		setupForm(lots);
 	});
 	
-	request.send();*/
+	request.send();
 	
-	
-	let parking = document.querySelector('#parking');
-	
-	for (let i=0; i<lots.length; i++) {
-		
-		let lot = document.createElement('li');
-		let lotCol = 'fourCol';
-		if (lots.length % 3 === 0) {
-			lotCol = 'threeCol';
-		}
-		lot.classList.add('lot', lotCol);
-		
-		lot.innerHTML = Mustache.render(
-			document.querySelector('#lotInfo-template').innerHTML,
-			{lotID: lots[i].id,
-			lotRate: lots[i].rate,
-			lotCapacity: lots[i].capacity,
-			lotCars: lots[i].cars}
-		);
-		
-		parking.appendChild(lot);
-	}
-	
-	// Set up form after getting lot info
-	setupForm();
 }
 
 function displayCars() {
@@ -116,7 +86,7 @@ function displayCars() {
 	}
 }
 
-function setupForm() {
+function setupForm(lots) {
 	
 	let carSelection = document.querySelector('#selectCar');
 	
@@ -149,8 +119,8 @@ function setupForm() {
 				// if money >= rate*spaces
 				if (cars[carSelection.value].money >= costToPark) { 
 					let lot = document.createElement('option');
-					lot.setAttribute('value', lots[i].id);
-					lot.textContent = lots[i].id;
+					lot.setAttribute('value', lots[i].iD);
+					lot.textContent = lots[i].iD;
 					lotSelection.appendChild(lot);
 				}
 			}
@@ -167,16 +137,16 @@ function availSpace(lot) {
 
 function addCarToLot() {
 	console.log('submit car');
-	/*let request = new XMLHttpRequest();
+	let request = new XMLHttpRequest();
 	
 	let carID = 
-	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/cars/#');
+	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/lot-info');
 	
     request.addEventListener('load', function() {
 		console.log('adding cars');
 	});
 	
-	request.send();*/
+	request.send();
 }
 
 window.addEventListener('load', init);
