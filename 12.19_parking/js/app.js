@@ -4,21 +4,21 @@ let cars = [
 		model: 'Camry',
 		size: 1,
 		money: 14,
-		iD: null,
+		lotId: null,
 	},
 	{
 		make: 'Honda',
 		model: 'Civic',
 		size: 1,
 		money: 20,
-		iD: null,
+		lotId: null,
 	},
 	{
 		make: 'Hummer',
 		model: 'H2',
 		size: 2,
-		money: 8,
-		iD: null,
+		money: 18,
+		lotId: null,
 	},
 ]
 
@@ -45,6 +45,7 @@ function getLots() {
 		for (let i=0; i<lots.length; i++) {
 			
 			let lot = document.createElement('li');
+			lot.setAttribute('data-equalizer-watch', 'lots');
 			let lotCol = 'fourCol';
 			if (lots.length % 3 === 0) {
 				lotCol = 'threeCol';
@@ -53,11 +54,16 @@ function getLots() {
 			
 			lot.innerHTML = Mustache.render(
 				document.querySelector('#lotInfo-template').innerHTML,
-				{lotID: lots[i].iD,
-				lotRate: lots[i].rate,
-				lotCapacity: lots[i].capacity,
-				lotFilled: lots[i].capacity - availSpace(lots[i]),
-				lotCars: lots[i].cars}
+				{
+					lotID: lots[i].id,
+					lotRate: lots[i].rate,
+					lotCapacity: lots[i].capacity,
+					lotFilled: lots[i].capacity - availSpace(lots[i]),
+					carList: lots[i].cars,
+					carType: function () {
+						return this.make + ' ' + this.model;
+					}
+				}
 			);
 			
 			parking.appendChild(lot);
@@ -119,15 +125,15 @@ function setupForm(lots) {
 			
 			// if available space >= selected car size
 			if ( emptySpaces >= cars[carSelection.value].size) { 
-				console.log(emptySpaces + ' spaces exists for Lot ' + i);
+				//console.log(emptySpaces + ' spaces exist for Lot ' + i);
 				
 				// Check if driver has enough money
 				let costToPark = cars[carSelection.value].size * lots[i].rate
 				// if money >= rate*spaces
 				if (cars[carSelection.value].money >= costToPark) { 
 					let lot = document.createElement('option');
-					lot.setAttribute('value', lots[i].iD);
-					lot.textContent = lots[i].iD;
+					lot.setAttribute('value', lots[i].id);
+					lot.textContent = lots[i].id;
 					lotSelection.appendChild(lot);
 				}
 			}
@@ -136,12 +142,10 @@ function setupForm(lots) {
 }
 
 function availSpace(lot) {
-	return 8; // REMOVE WHEN DATA EXISTS
-	
-	let capacity = lots[lot].capacity;
+	let capacity = lot.capacity;
 	
 	let spacesFilled = 0;
-	let cars = lots[lot].cars;
+	let cars = lot.cars;
 	// loop through current cars in lot to get size of each car and add to total
 	for (let i=0; i<cars.length; i++) {
 		spacesFilled += cars[i].size;
@@ -153,7 +157,7 @@ function availSpace(lot) {
 function addCarToLot() {
 	let request = new XMLHttpRequest();
 	
-	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/lot-info');
+	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/park-car');
 	
 	// Get form values to send
 	let selectedCar = document.querySelector('#selectCar');
@@ -167,16 +171,19 @@ function addCarToLot() {
 		model: car.model,
 		size: car.size,
 		money: car.money,
-		iD: selectedLot.value,
+		lotId: selectedLot.value,
 	});
 	
     request.addEventListener('load', function() {
 		console.log('adding cars');
 		
+		let allItems = document.querySelector('li');
+		allItems.innerHTML = '';
 		getLots();
+		displayCars();
 	});
 	
-	//request.send(body);  // UNCOMMENT WHEN DATA EXISTS
+	request.send(body);
 }
 
 function addNewCar() {
@@ -186,10 +193,15 @@ function addNewCar() {
 		model: document.querySelector('#setModel').value,
 		size: document.querySelector('#setSize').value,
 		money: document.querySelector('#setMoney').value,
-		iD: null,
+		lotId: null,
 	}
 	
 	cars.push(carInfo);
+	
+	lot.innerHTML = '';
+	getLots();
+	
+	car.innerHTML = '';
 	displayCars();
 }
 
