@@ -141,6 +141,17 @@ function setupForm(lots) {
 	});
 }
 
+function refreshData() {
+	let lots = document.querySelector('#parking');
+	lots.innerHTML = '';
+	
+	let cars = document.querySelector('#details');
+	cars.innerHTML = '';
+	
+	getLots();
+	displayCars();
+}
+
 function availSpace(lot) {
 	let capacity = lot.capacity;
 	
@@ -175,12 +186,7 @@ function addCarToLot() {
 	});
 	
     request.addEventListener('load', function() {
-		console.log('adding cars');
-		
-		let allItems = document.querySelector('li');
-		allItems.innerHTML = '';
-		getLots();
-		displayCars();
+		refreshData();
 	});
 	
 	request.send(body);
@@ -198,11 +204,7 @@ function addNewCar() {
 	
 	cars.push(carInfo);
 	
-	lot.innerHTML = '';
-	getLots();
-	
-	car.innerHTML = '';
-	displayCars();
+	refreshData();
 }
 
 window.addEventListener('load', init);
