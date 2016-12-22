@@ -27,7 +27,7 @@ function init() {
 	displayCars();
 	
 	let submitCar = document.querySelector('#parkCar');
-	submitCar.addEventListener('click', addCar);
+	submitCar.addEventListener('click', addCarToLot);
 	
 	let newCar = document.querySelector('#newCar');
 	newCar.addEventListener('click', addNewCar);
@@ -182,8 +182,8 @@ function addCarToLot() {
 function addNewCar() {
 	
 	let carInfo = {
-		make: '"' + document.querySelector('#setMake').value + '"',
-		model: '"' + document.querySelector('#setModel').value + '"',
+		make: document.querySelector('#setMake').value,
+		model: document.querySelector('#setModel').value,
 		size: document.querySelector('#setSize').value,
 		money: document.querySelector('#setMoney').value,
 		iD: null,
