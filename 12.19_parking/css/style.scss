@@ -3,8 +3,8 @@
 @include foundation-global-styles;
 @include foundation-grid;
 
-$lot-bg-color: #ccc;
-$button-color: #61C45C;
+$lot-bg-color: #640529;
+$button-color: #E5E5E5; //#61C45C;
 
 
 html, body {
@@ -13,6 +13,7 @@ html, body {
 
 h1 {
 	font-size: 3rem;
+	color: $lot-bg-color;
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -52,9 +53,20 @@ section {
 		.panel {
 			border: 2px solid $lot-bg-color;
 			padding-bottom: 0.5rem;
+			
+			ul#parkedCars {
+				list-style: disc;
+				margin: 0;
+				padding-left: 3rem;
+				
+				li {
+					margin-bottom: 0;
+				}
+			}
 		}
 		
 		h3 {
+			color: white;
 			background-color: $lot-bg-color;
 			padding: 0 1rem;
 		}
@@ -104,4 +116,16 @@ button {
 	padding: .75rem;
 	background-color: $button-color;
 	width: 100%;
+	font-weight: bold;
+	color: $lot-bg-color;
+	border: 2px solid $lot-bg-color;
+}
+
+select, input {
+	height: 44px !important;
+	border: 2px solid $lot-bg-color !important;
+}
+
+input::-webkit-input-placeholder {
+	color: #828282;
 }

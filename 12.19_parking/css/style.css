@@ -1293,6 +1293,7 @@ html, body {
 
 h1 {
   font-size: 3rem;
+  color: #640529;
   font-weight: bold;
   text-transform: uppercase; }
 
@@ -1351,10 +1352,17 @@ section {
       section li.threeCol:last-child:not(:first-child) {
         float: right; }
     section li .panel {
-      border: 2px solid #ccc;
+      border: 2px solid #640529;
       padding-bottom: 0.5rem; }
+      section li .panel ul#parkedCars {
+        list-style: disc;
+        margin: 0;
+        padding-left: 3rem; }
+        section li .panel ul#parkedCars li {
+          margin-bottom: 0; }
     section li h3 {
-      background-color: #ccc;
+      color: white;
+      background-color: #640529;
       padding: 0 1rem; }
     section li p {
       margin-bottom: 0;
@@ -1395,7 +1403,17 @@ section {
 }*/
 button {
   padding: .75rem;
-  background-color: #61C45C;
-  width: 100%; }
+  background-color: #E5E5E5;
+  width: 100%;
+  font-weight: bold;
+  color: #640529;
+  border: 2px solid #640529; }
+
+select, input {
+  height: 44px !important;
+  border: 2px solid #640529 !important; }
+
+input::-webkit-input-placeholder {
+  color: #828282; }
 
 /*# sourceMappingURL=style.css.map */

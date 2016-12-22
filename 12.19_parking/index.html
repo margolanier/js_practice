@@ -16,7 +16,12 @@
 			<h3>Lot {{ lotID }}</h3>
 			<p>Rate: ${{ lotRate }} / space</p>
 			<p>Capacity: {{ lotFilled }} / {{ lotCapacity }} cars</p>
-			<p>Cars Parked: {{ lotCars }}</p>
+			<p>Cars Parked:</p>
+			<ul id="parkedCars">
+			{{ #carList }}
+				<li>{{ carType }}</li>
+			{{ /carList }}
+			</ul>
 		</div>
 	</script>
 	
@@ -36,7 +41,7 @@
 	
 	<section id="lotInfo">
 		<h2>Available Lots</h2>
-		<ul id="parking"></ul>
+		<ul id="parking" data-equalizer="lots"></ul>
 	</section>
 	
 	<section id="carInfo">
