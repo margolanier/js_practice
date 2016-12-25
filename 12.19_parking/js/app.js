@@ -22,7 +22,12 @@ let cars = [
 	},
 ]
 
+let carSelection = document.querySelector('#selectCar');
+let lotSelection = document.querySelector('#selectLot');
+
 function init() {
+	$(document).foundation();
+	
 	getLots();
 	displayCars();
 	
@@ -101,8 +106,6 @@ function displayCars() {
 
 function setupForm(lots) {
 	
-	let carSelection = document.querySelector('#selectCar');
-	
 	// Get car options
 	for (let i=0; i<cars.length; i++) {
 		let car = document.createElement('option');
@@ -114,7 +117,8 @@ function setupForm(lots) {
 	
 	// Get lot options
 	carSelection.addEventListener('change', function() {
-		let lotSelection = document.querySelector('#selectLot');
+		// Clear options before loop to prevent duplicates
+		lotSelection.options.length = 1;
 		
 		for (let i=0; i<lots.length; i++) {
 			
@@ -142,11 +146,16 @@ function setupForm(lots) {
 }
 
 function refreshData() {
+	// Refresh list data
 	let lots = document.querySelector('#parking');
 	lots.innerHTML = '';
 	
 	let cars = document.querySelector('#details');
 	cars.innerHTML = '';
+	
+	// Refresh form data
+	carSelection.options.length = 1;
+	/*http://stackoverflow.com/questions/47824/how-do-you-remove-all-the-options-of-a-select-box-and-then-add-one-option-and-se*/
 	
 	getLots();
 	displayCars();
@@ -171,18 +180,14 @@ function addCarToLot() {
 	request.open('POST', 'https://stark-anchorage-76424.herokuapp.com/park-car');
 	
 	// Get form values to send
-	let selectedCar = document.querySelector('#selectCar');
-	let car = cars[selectedCar.value];
-	console.log(car);
-	
-	let selectedLot = document.querySelector('#selectLot');
+	let car = cars[carSelection.value];
 	
 	let body = JSON.stringify({
 		make: car.make,
 		model: car.model,
 		size: car.size,
 		money: car.money,
-		lotId: selectedLot.value,
+		lotId: lotSelection.value,
 	});
 	
     request.addEventListener('load', function() {
@@ -207,4 +212,5 @@ function addNewCar() {
 	refreshData();
 }
 
-window.addEventListener('load', init);
+$(window).on('load', init);
+
