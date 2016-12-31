@@ -2,7 +2,7 @@ function init() {
 	
 	// Gender preference determines which array to use
 	let selectGender = document.querySelectorAll('input[name="gender"]');
-	let gender = male;
+	let gender = 'male';
 	
 	for (let i=0; i<selectGender.length; i++) {
 		selectGender[i].addEventListener('click', function() {
@@ -199,10 +199,9 @@ let female = [
 let both = male.concat(female);
 
 function shuffle(a) {
-	// don't see any reason to do this myself
 	// http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
     var j, x, i;
-    for (i = a.length; i; i--) {
+    for (let i = a.length; i; i--) {
         j = Math.floor(Math.random() * i);
         x = a[i - 1];
         a[i - 1] = a[j];
