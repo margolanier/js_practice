@@ -1,1 +1,2 @@
-# tiy_hw
+# js_practice
+Practicing JS things.
