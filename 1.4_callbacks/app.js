@@ -2,30 +2,11 @@
 console.log('01 | contains vowel');
 
 function containsVowel(word) {
-	let vowels = ['a', 'e', 'i', 'o', 'u'];
-	
-	// 1. break the word into array of letters
-	let letters = word.split('');
-	
-	// 2. find out which letters are vowels
-	function isVowel(letter) {
-		// Option 1
-		return vowels.includes(letter);
-		
-		// Option 2
-		// return vowels.indexOf(letter) !== -1;
-		
-		// Option 3
-		/*
-		function isLetter(current) {
-			return currrent === letter;
-		}
-		return (vowels.filter(isLetter).length > 0);
-		*/
-	}
-	
-	// 3. if one or more letters are a vowel, return true
-	return letters.filter(isVowel).length > 0;
+	let vowels = ['a', 'e', 'i', 'o', 'u'];		// break word into array of letters
+	let letters = word.split('').filter(function(letter) {
+		return vowels.includes(letter);			// filter vowel letters through
+	});
+	return letters.length > 0;					// if 1+ letters are vowel, return true
 }
 console.log(containsVowel('hey'));
 
@@ -44,13 +25,10 @@ function range(min, max) {
 console.log('02 | divisors');
 
 function divisors(num) {
-	let numbers = range(1, num);
-	
-	function isDivisor(x) {
+	let numbers = range(1, num).filter(function(x) {
 		return num % x === 0;
-	}
-	
-	return numbers.filter(isDivisor);
+	});
+	return numbers;
 }
 console.log(divisors(20));
 
@@ -60,17 +38,13 @@ console.log('03 | boost');
 
 function boost(num) {
 	let digits = num.toString().split('');
-	
-	function parse(digit) {
+	let incString = digits.map(function(digit) { 	// parse array of string numbers
 		return parseInt(digit);
-	}
-	
-	function increment(digit) {
+	}).map(function(digit) {						// increment digits
 		let newDigit = (digit < 9) ? (digit + 1) : 0;
 		return newDigit;
-	}
-	
-	return digits.map(parse).map(increment).join('');
+	}).join('');									// join elements into one string
+	return parseInt(incString);
 }
 console.log(boost(293));
 
@@ -79,21 +53,10 @@ console.log(boost(293));
 console.log('04 | multiples');
 
 function multiples(num1, num2) {
-	let numbers = range(1, 100);
-	
-	function isMultiple(number) {
-		return (number % num1 === 0 && number % num2 === 0);
-	}
-	
-	return numbers.filter(isMultiple);
-	
-	// Anonymous version
-	/*
-	let numbers = range(1, 100).filter(function(number) {
-		return (number % num1 === 0 && number % num2 === 0);
+	let numbers = range(1, 100).filter(function(number) {		// get array of #s in range
+		return (number % num1 === 0 && number % num2 === 0);	// filter multiples through
 	});
 	return numbers;
-	*/
 }
 console.log(multiples(2, 5));
 
@@ -121,7 +84,6 @@ function map(array, callback) {
 	for (let i=0; i<array.length; i++) {
 		mapped.push(callback(array[i]));
 	}
-	
 	return mapped;
 }
 console.log(map([7, 1, 5, 2], addFive)); 
@@ -141,7 +103,6 @@ function filter(array, callback) {
 			filtered.push(array[i]);
 		}
 	}
-	
 	return filtered;
 }
 console.log(filter([7, 21, 45, 102], greaterThanEleven));
