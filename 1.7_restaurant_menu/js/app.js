@@ -19,8 +19,8 @@ window.addEventListener('load', function() {
 	});
 	
 	// watch for filtering items
-	let filterBtn = document.querySelector('#quick-find');
-	filterBtn.addEventListener('click', filter);
+	let search = document.querySelector('#filter');
+	search.addEventListener('input', filter);
 	
 	// watch for adding items
 	let addBtn = document.querySelector('#add-item');

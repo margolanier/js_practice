@@ -4,7 +4,9 @@ module.exports = function() {
 	
 	menu.forEach(function(item) {
 		let name = item.innerHTML.toLowerCase();
-		if (!name.includes(query)) {
+		if (name.includes(query)) {
+			item.parentElement.classList.remove('hidden');
+		} else {
 			item.parentElement.classList.add('hidden');
 		};
 	});
