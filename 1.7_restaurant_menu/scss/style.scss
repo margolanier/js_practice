@@ -29,26 +29,21 @@ section {
 	@include grid-row();
 	@include panel;
 	
-	&.hidden {
-		display: none;
+	input {
+		display: block;
+		margin-bottom: 10px;
+		padding: 5px 10px;
+		width: 100%;
+		max-width: 300px;
 	}
 	
-	&#add-view {
-		input[type="text"], input[type="text-area"], input[type="number"] {
-			display: block;
-			margin-bottom: 10px;
-			padding: 5px 10px;
-			width: 100%;
-			max-width: 300px;
-		}
-		button#add-item {
-			display: block;
-			width: 100%;
-			max-width: 300px;
-			padding: 8px;
-			margin: 10px 0;
-			background-color: #eaeaea;
-		}
+	button {
+		display: block;
+		width: 100%;
+		max-width: 300px;
+		padding: 8px;
+		margin: 10px 0;
+		background-color: #eaeaea;
 	}
 	
 	&#list-view {
@@ -56,4 +51,8 @@ section {
 			font-weight: bold;
 		}
 	}
+}
+
+.hidden {
+	display: none;
 }

@@ -7,10 +7,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 		<script type="x-mustache-template" id="food-template">
 			{{ #food }}
-			<li>
-				<p>{{.}}<span class="name">{{ name }}</span> - ${{ price }}
+				<span class="name">{{ name }}</span> - ${{ price }}
 				<br>{{ description }}
-			</li>
 			{{ /food }}
 		</script>
 		<script src="app.js"></script>
@@ -29,6 +27,8 @@
 		
 		<section id="list-view">
 			<h2>Menu</h2>
+			<input id="filter" type="text" placeholder="Waffles">
+			<button id="quick-find">Quick Find</button>
 			<ul id="menu"></ul>
 		</section>
 		

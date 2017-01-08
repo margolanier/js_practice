@@ -2,6 +2,7 @@
 let ajax = require('./ajax');
 let refineData = require('./refine');
 let generateList = require('./generate');
+let filter = require('./filter');
 let newView = require('./view');
 
 
@@ -17,6 +18,10 @@ window.addEventListener('load', function() {
 		});
 	});
 	
+	// watch for filtering items
+	let filterBtn = document.querySelector('#quick-find');
+	filterBtn.addEventListener('click', filter);
+	
 	// watch for adding items
 	let addBtn = document.querySelector('#add-item');
 	addBtn.addEventListener('click', addItem);
@@ -25,7 +30,8 @@ window.addEventListener('load', function() {
 
 
 function showMenu(response) {
-	let menu = refineData(response.chats);
+	// let menu = refineData(response.chats);
+	let menu = response.chats;
 	generateList(menu);
 }
 
