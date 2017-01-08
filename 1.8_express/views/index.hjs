@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>{{ body }}</p>
+	
+	<form id="formA" action="userlogin" method="post">
+		<div>
+			<label for="name">Ingredient Name: </label>
+			<input type="text" id="name" name="name"></input>
+		</div>
+		<input type="submit" value="Submit"></input>
+	</form>
+  </body>
+</html>
