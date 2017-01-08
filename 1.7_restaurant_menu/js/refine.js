@@ -3,7 +3,7 @@ function refine(menu) {
 }
 
 function getInfo(item) {
-	return item.title;
+	return item.message;
 }
 
 module.exports = refine;

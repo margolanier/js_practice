@@ -32,4 +32,15 @@ section {
 	&.hidden {
 		display: none;
 	}
+	
+	&#add-view {
+		input[type="text"] {
+			padding: 5px 10px;
+		}
+		button#add-item {
+			padding: 8px;
+			margin: 10px 0;
+			background-color: #eaeaea;
+		}
+	}
 }

@@ -8,14 +8,14 @@ module.exports = {
 		});
 		request.send();
 	},
-	post: function(url, message, show) {
+	post: function(url, message, callback) {
 		let request = new XMLHttpRequest();
 		request.open('POST', url);
 		let body = JSON.stringify(message);
 		
 		let self = this;
 		request.addEventListener('load', function() {
-			self.get(url, show);
+			self.get(url, callback);
 		});
 		request.send(body);
 	},
