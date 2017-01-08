@@ -1,0 +1,35 @@
+@import '../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+
+@mixin panel {
+	padding: 0 2rem;
+}
+
+header {
+	@include grid-row();
+	@include panel;
+	display: flex;
+	background-color: #eaeaea;
+	
+	nav {
+		button {
+			line-height: 6rem;
+			margin-left: 20px;
+			&:hover,&:focus {
+				text-decoration: underline;
+				outline: none;
+			}
+		}
+	}
+}
+
+section {
+	@include grid-row();
+	@include panel;
+	
+	&.hidden {
+		display: none;
+	}
+}
