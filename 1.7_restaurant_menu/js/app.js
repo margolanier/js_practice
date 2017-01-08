@@ -31,8 +31,10 @@ function showMenu(response) {
 
 function addItem() {
 	let body = {
-		from: 'Human',
-		message: document.querySelector('#new-item').value,
+		//change from and message to 'name' and 'description'
+		from:  document.querySelector('#new-item').value,
+		message: document.querySelector('#new-description').value,
+		//price: document.querySelector('#new-price').value,
 	};
 	ajax.post('http://api.queencityiron.com/chats', body, success);
 }

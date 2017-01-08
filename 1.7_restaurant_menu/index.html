@@ -4,7 +4,14 @@
 		<title>Restaurant Menu</title>
 		<meta charset="UTF-8"> 
 		<link rel="stylesheet" href="style.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+		<script type="x-mustache-template" id="food-template">
+			{{ #food }}
+			<li>
+				<p>{{.}}<span class="name">{{ name }}</span> - ${{ price }}
+				<br>{{ description }}
+			</li>
+			{{ /food }}
 		</script>
 		<script src="app.js"></script>
 		
@@ -28,6 +35,8 @@
 		<section id="add-view" class="hidden">
 			<h2>Add menu item</h2>
 			<input id="new-item" type="text" placeholder="Biscuits and Gravy">
+			<input id="new-description" type="text-area" placeholder="Description">
+			<input id="new-price" type="number" placeholder="8.00">
 			<button id="add-item">Add Item</button>
 		</section>
 	</body>
