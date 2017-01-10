@@ -28,21 +28,15 @@ window.addEventListener('load', function() {
 
 function showMenu(response) {
 	let menu = response;
+	document.querySelector('#menu').textContent = '';
 	generateList(menu);
 }
 
 function addItem() {
 	let body = {
-		//change from and message to 'name' and 'description'
-		from:  document.querySelector('#new-item').value,
-		message: document.querySelector('#new-description').value,
-		//price: document.querySelector('#new-price').value,
+		name:  document.querySelector('#new-item').value,
+		description: document.querySelector('#new-description').value,
+		price: document.querySelector('#new-price').value,
 	};
-	ajax.post('http://api.queencityiron.com/chats', body, success);
-}
-
-function success() {
-	alert('Item added to menu.');
-	document.querySelector('#menu').textContent = '';
-	ajax.get('http://api.queencityiron.com/chats', showMenu);
+	ajax.post('http://localhost:8000/menu', body, showMenu);
 }

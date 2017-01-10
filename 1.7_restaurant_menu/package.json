@@ -10,7 +10,8 @@
     "gulp-browser": "^3.0.4",
     "gulp-sass": "^3.0.0",
     "gulp-watch": "^4.3.11",
-    "hapi": "^16.1.0"
+    "hapi": "^16.1.0",
+    "joi": "^10.1.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -17,6 +17,7 @@ module.exports = {
 		request.addEventListener('load', function() {
 			self.get(url, callback);
 		});
+		
 		request.send(body);
 	},
 };

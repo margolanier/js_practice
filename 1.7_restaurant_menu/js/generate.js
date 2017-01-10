@@ -9,7 +9,7 @@ module.exports = function(food) {
 				food: item,
 				name: item.name,
 				description: item.description,
-				price: item.price.toFixed(2),
+				price: item.price,
 			}
 		);
 		ul.appendChild(li);
