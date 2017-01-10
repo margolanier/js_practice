@@ -11,11 +11,15 @@ header {
 	@include grid-row();
 	@include panel;
 	display: flex;
-	background-color: #eaeaea;
+	border-bottom: 3px solid red;
+	
+	#logo {
+		padding: 5px;
+	}
 	
 	nav {
 		button {
-			line-height: 6rem;
+			line-height: 6.5rem;
 			margin-left: 20px;
 			&:hover,&:focus {
 				text-decoration: underline;

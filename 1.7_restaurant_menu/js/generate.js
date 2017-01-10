@@ -7,9 +7,9 @@ module.exports = function(food) {
 			document.querySelector('#food-template').innerHTML,
 			{
 				food: item,
-				name: item.from,
-				description: item.message,
-				price: 2.00.toFixed(2),
+				name: item.name,
+				description: item.description,
+				price: item.price.toFixed(2),
 			}
 		);
 		ul.appendChild(li);

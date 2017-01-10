@@ -1,14 +1,11 @@
-//let ajax = require('./server');
 let ajax = require('./ajax');
-let refineData = require('./refine');
 let generateList = require('./generate');
 let filter = require('./filter');
 let newView = require('./view');
 
 
 window.addEventListener('load', function() {
-	//ajax.get('localhost:8000/menu', showMenu);
-	ajax.get('http://api.queencityiron.com/chats', showMenu);
+	ajax.get('http://localhost:8000/menu', showMenu);
 	
 	// watch for changing views
 	let menuBtn = document.querySelectorAll('nav button');
@@ -30,8 +27,7 @@ window.addEventListener('load', function() {
 
 
 function showMenu(response) {
-	// let menu = refineData(response.chats);
-	let menu = response.chats;
+	let menu = response;
 	generateList(menu);
 }
 

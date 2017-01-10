@@ -6,7 +6,7 @@ let sass = require('gulp-sass');
 let browser = require('gulp-browser');
 
 // Default Task
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('default', ['html', 'css', 'js', 'assets']);
 
 // Subtasks
 gulp.task('html', function() {
@@ -28,6 +28,11 @@ gulp.task('js', function() {
 	return gulp.src('js/app.js')
 		.pipe(browser.browserify())
 		.pipe(gulp.dest('public/'));
+})
+
+gulp.task('assets', function() {
+	return gulp.src('assets/*')
+		.pipe(gulp.dest('public/assets/'));
 })
 
 // Watch files for changes
