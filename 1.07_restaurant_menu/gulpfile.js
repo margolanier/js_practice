@@ -18,20 +18,20 @@ gulp.task('html', function() {
 gulp.task('css', function() {
 	// convert style.scss into style.css
 	// copy to public/
-	return gulp.src('scss/style.scss')
+	return gulp.src('client/scss/style.scss')
 		.pipe(sass()) // requires gulp-sass
 		.pipe(gulp.dest('public/'));
 })
 
 gulp.task('js', function() {
 	// copy js file into public/
-	return gulp.src('js/app.js')
+	return gulp.src('client/js/app.js')
 		.pipe(browser.browserify())
 		.pipe(gulp.dest('public/'));
 })
 
 gulp.task('assets', function() {
-	return gulp.src('assets/*')
+	return gulp.src('client/assets/*')
 		.pipe(gulp.dest('public/assets/'));
 })
 
@@ -39,6 +39,6 @@ gulp.task('assets', function() {
 gulp.task('watch', ['default'], function() {
 	// gulp.watch('files-to-watch', 'tasks to run')
 	gulp.watch('*.html', ['html']);
-	gulp.watch('scss/*.scss', ['css']);
-    gulp.watch('js/*.js', ['js']);
+	gulp.watch('client/scss/*.scss', ['css']);
+    gulp.watch('client/js/*.js', ['js']);
 });
