@@ -4,6 +4,18 @@
 		<title>Restaurant Menu</title>
 		<meta charset="UTF-8"> 
 		<link rel="stylesheet" href="style.css">
+		
+		<script
+			src="https://code.jquery.com/jquery-3.1.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			crossorigin="anonymous">
+		</script>
+		<script
+			src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			crossorigin="anonymous">
+		</script>
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 		<script type="x-mustache-template" id="food-template">
 			{{ #food }}
@@ -37,6 +49,7 @@
 			<input id="new-item" type="text" placeholder="Buffalo Chicken">
 			<input id="new-description" type="text-area" placeholder="Caramelized onions, smoked bacon...">
 			<input id="new-price" type="number" placeholder="8.00">
+			<input id="new-category" type="text" placeholder="low-cal">
 			<button id="add-item">Add Item</button>
 		</section>
 	</body>
