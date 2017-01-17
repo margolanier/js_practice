@@ -7,21 +7,28 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js">
 		</script>
 		<script type="x-mustache-template" id="runners-template">
-			{{ #team }}
+			{{ #runners }}
 				<span class="{{ status }}">{{ name }}</span>
 				<div class="action">
-					<button id="freeze">Freeze ❄️</button>
+					<button id="get-flag">Capture Flag 🏁</button>
 					<button id="unfreeze" class="hide">Unfreeze 😓</button>
 				</div>
-			{{ /team }}
+			{{ /runners }}
 		</script>
 		<script type="x-mustache-template" id="chasers-template">
-			{{ #team }}
+			{{ #chasers }}
 				{{ name }}
-			{{ /team }}
+				<div class="action">
+					<select id="selectRunner">
+						<option value="">Freeze Runner ❄️</option>
+						{{ #runners }}
+							<option value="{{ id }}">{{ name }}</option>
+						{{ /runners }}
+					</select>
+				</div>
+			{{ /chasers }}
 		</script>
 		<script src="app.js"></script>
-		
 	</head>
 	
 	<body>
@@ -35,7 +42,6 @@
 			<input type="submit" value="Add Player" id="submitRunner">
 			
 			<ol id="runners-list"></ol>
-			<button id="get-flag">Get Flag 🏁</button>
 		</section>
 		
 		<section class="team chasers">

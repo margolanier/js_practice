@@ -44,7 +44,7 @@ section.team {
 		}
 	}
 	
-	button, input[type="submit"] {
+	button, input[type="submit"], select {
 		background-color: $light2;
 		border: 1px solid $light3;
 		padding: 10px;
@@ -53,8 +53,14 @@ section.team {
 		width: 108px;
 	}
 	
+	select {
+		width: auto;
+		border-radius: 0;
+	}
+	
 	button#get-flag {
 		float: right;
+		width: auto;
 	}
 	
 	input {

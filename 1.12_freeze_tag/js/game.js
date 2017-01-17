@@ -6,6 +6,9 @@ module.exports = function() {
 	// get score after each play to check for winner
 	getScore = function() {
 		// all runners are frozen => chasers win
+		/*if(runners) {
+			
+		}*/
 		/*if (this.teams[0] === )*/
 		
 		// runner picks up flag => runners win
