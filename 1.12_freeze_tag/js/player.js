@@ -6,29 +6,23 @@ module.exports = function(name, team, id) {
 	this.frozen = false;
 	this.tag = function(otherPlayer) {
 		// chaser tags runner => runner is frozen
-		if (this.team === runner && this.frozen === false && otherPlayer.team === chaser) {
+		if (this.team.name === 'Runners' && this.frozen === false && otherPlayer.team.name === 'Chasers') {
 			otherPlayer.frozen = true;
 		}
 		// runner tags teammate => unfreezes him
-		if (this.team === runner && this.frozen === false && otherPlayer.team === runner) {
+		if (this.team.name === 'Runners' && this.frozen === false && otherPlayer.team.name === 'Runners') {
 			otherPlayer.frozen = false;
 		}
 	};
-	this.distanceFromFlag = function() {
-		return Math.random();
-	};
+	this.distanceFromFlag = Math.random();
 	this.getFlag = function() {
 		// to capture flag, runner must be in the 'end zone' (which covers 30% surface area of playable field)
-		if (this.team === 'Runners' && this.distanceFromFlag > 0.7) {
+		if (team.name === 'Runners' && this.distanceFromFlag > 0.6) {
 			team.won = true;
-			console.log('yes');
+			alert(this.name +' captured the flag.  The ' + team.name + ' won.');
 		} else {
-			console.log('no');
-			this.distanceFromFlag = .8;
-			/*this.distanceFromFlag = function() {
-				return Math.random();
-			};*/
-			alert(this.name +'\'s attempt to capture the flag was unsuccessful.');
+			this.distanceFromFlag = Math.random();
+			alert(this.name +'\'s attempt was unsuccessful.');
 		}
 	};
 	
