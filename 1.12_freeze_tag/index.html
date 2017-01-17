@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title></title>
+		<title>Flag Freeze Tag</title>
 		<meta charset="UTF-8"> 
 		<link rel="stylesheet" href="style.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js">
@@ -9,16 +9,15 @@
 		<script type="x-mustache-template" id="runners-template">
 			{{ #team }}
 				<span class="{{ status }}">{{ name }}</span>
-				<div class="actions">
-					<button id="unfreeze">Unfreeze 😓</button>
-					<button id="get-flag">Get Flag 🏁</button>
+				<div class="action">
+					<button id="freeze">Freeze ❄️</button>
+					<button id="unfreeze" class="hide">Unfreeze 😓</button>
 				</div>
 			{{ /team }}
 		</script>
 		<script type="x-mustache-template" id="chasers-template">
 			{{ #team }}
-				<span class="name">{{ name }}</span> - ${{ price }}
-				<br>{{ description }}
+				{{ name }}
 			{{ /team }}
 		</script>
 		<script src="app.js"></script>
@@ -32,26 +31,21 @@
 			<h2>Runners</h2>
 			<p>Runners can tag a teammate to 'unfreeze' that runner.<br>Runners win if one of the players picks up the flag.</p>
 			
+			<input type="text" placeholder="Name of Runner" id="newRunner">
+			<input type="submit" value="Add Player" id="submitRunner">
+			
 			<ol id="runners-list"></ol>
-			
-			
-			<form>
-				<input type="text" placeholder="Name of Runner" id="newPlayer">
-				<input type="submit" value="Add Player" id="submitRunner">
-			</form>
+			<button id="get-flag">Get Flag 🏁</button>
 		</section>
 		
 		<section class="team chasers">
 			<h2>Chasers</h2>
 			<p>Chasers can tag a runner to 'freeze' the runner.<br>Chasers win when all runners are frozen.</p>
 			
-			<ol id="chasers-list"></ol>
-			<button id="freeze">Tag/Freeze ❄️</button>
+			<input type="text" placeholder="Name of Chaser" id="newChaser">
+			<input type="submit" value="Add Player" id="submitChaser">
 			
-			<form>
-				<input type="text" placeholder="Name of Chaser" id="newPlayer">
-				<input type="submit" value="Add Player" id="submitChaser">
-			</form>
+			<ol id="chasers-list"></ol>
 		</section>
 		
 		

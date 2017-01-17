@@ -6,6 +6,7 @@
 $font-color: #003778;
 $light1: #f8f8f8;
 $light2: #eaeaea;
+$light3: #ccc;
 
 body {
 	@include grid-row();
@@ -33,37 +34,49 @@ section.team {
 			list-style-position: inside;
 			line-height: 45px;
 			margin-bottom: 10px;
+			padding-right: 0 !important;
 			background-color: $light1;
 			
-			.actions {
+			.action {
 				display: inline;
 				float: right;
 			}
 		}
 	}
 	
+	button, input[type="submit"] {
+		background-color: $light2;
+		border: 1px solid $light3;
+		padding: 10px;
+		margin-left: 5px;
+		margin-bottom: 5px;
+		width: 108px;
+	}
+	
+	button#get-flag {
+		float: right;
+	}
+	
 	input {
 		margin: 10px 0;
 		padding: 5px 10px;
 		border-width: 2px;
+		width: calc(100% - 113px); // 5px left margin on button
 		background: white;
 	}
 	
-	button {
-		padding: 10px;
-		background-color: $light2;
-		margin-left: 5px;
-		margin-bottom: 5px;
+	input[type="text"] {
+		line-height: 26px;
+	}
+	
+	input[type="submit"] {
+		margin-left: 0;
 	}
 	
 	&.runners {
 		h2 {
 			border-top: 2px solid $font-color;
 			border-bottom: 2px solid $font-color;
-		}
-		
-		input[type="submit"] {
-			border: 2px solid $font-color;
 		}
 	}
 	
@@ -72,9 +85,9 @@ section.team {
 			border-top: 2px dashed $font-color;
 			border-bottom: 2px dashed $font-color;
 		}
-		
-		input[type="submit"] {
-			border: 2px dashed $font-color;
-		}
 	}
+}
+
+.hide {
+	display: none;
 }

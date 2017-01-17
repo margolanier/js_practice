@@ -1,38 +1,49 @@
 // Import constructors
+let Game = require('./game.js');
 let Team = require('./team.js');
 let Player = require('./player.js');
+
+// Start new game
+let game = new Game;
 
 // Add teams
 let runners = new Team('Runners');
 let chasers = new Team('Chasers');
+game.teams.push(runners, chasers);
+console.log(game.teams);
 
 window.addEventListener('load', function() {
 	
 	let alice = new Player('Alice', runners);
 	let bob = new Player('Bob', runners);
-	let carl = new Player('Carl', chasers);
-	printTeams();
+	let carlos = new Player('Carlos', chasers);
 	
-	let newPlayerBtn = document.querySelector('#newPlayer');
-	newPlayerBtn.addEventListener('click', function() {
-		
+	// Render team lists to DOM
+	printRunners();
+	printChasers();
+	
+	let newRunner = document.querySelector('#submitRunner');
+	newRunner.addEventListener('click', function() {
+		let name = document.querySelector('#newRunner').value;
+		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
+		new Player(name, runners);
+		printRunners();
 	});
 	
-	// Create a Game constructor
-	/*function Game() {
-		this.teams = [];
-		this.status = active;
-	}
-	let game1 = new Game();*/
+	let newChaser = document.querySelector('#submitChaser');
+	newChaser.addEventListener('click', function() {
+		let name = document.querySelector('#newChaser').value;
+		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
+		new Player(name, chasers);
+		printChasers();
+	});
 	
-	console.log(runners.players);
-	console.log(bob);
 });
 
 
-function printTeams() {
-	// Print team lists to DOM
+function printRunners() {
 	let runnersList = document.querySelector('#runners-list');
+	runnersList.innerHTML = '';
 	runners.players.forEach(function(player) {
 		let status = player.frozen ? 'inactive' : ''; // fade player name if frozen
 		let li = document.createElement('li');
@@ -46,16 +57,19 @@ function printTeams() {
 		);
 		runnersList.appendChild(li);
 	});
-	/*for (let i=0; i<runners.players.length; i++) {
-		let li = document.createElement('li');
-		li.textContent = runners.players[i].name;
-		runnersList.appendChild(li);
-	}*/
-	
+}
+
+function printChasers() {
 	let chasersList = document.querySelector('#chasers-list');
-	for (let i=0; i<chasers.players.length; i++) {
+	chasersList.innerHTML = '';
+	chasers.players.forEach(function(player) {
 		let li = document.createElement('li');
-		li.textContent = chasers.players[i].name;
+		li.innerHTML = Mustache.render(
+			document.querySelector('#chasers-template').innerHTML,
+			{
+				team: player,
+			}
+		);
 		chasersList.appendChild(li);
-	}
+	});
 }
