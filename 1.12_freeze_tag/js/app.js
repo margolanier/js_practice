@@ -1,5 +1,3 @@
-let player_id = 0;
-
 let Game = require('./game.js');
 let Team = require('./team.js');
 let Player = require('./player.js');
@@ -16,10 +14,10 @@ game.teams.push(runners, chasers);
 window.addEventListener('load', function() {
 	
 	// Add a few default players
-	let alice = new Player('Alice', runners, player_id);
-	let bob = new Player('Bob', runners, player_id);
-	let carlos = new Player('Carlos', chasers);
-	let darla = new Player('Darla', chasers);
+	runners.add('Alice');
+	runners.add('Bob');
+	chasers.add('Carlos');
+	chasers.add('Darla');
 	
 	// Render team lists to DOM
 	render.printRunners(runners);
@@ -29,20 +27,22 @@ window.addEventListener('load', function() {
 	newRunner.addEventListener('click', function() {
 		let name = document.querySelector('#newRunner').value;
 		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
-		new Player(name, runners);
+		runners.add(name);
 		render.printRunners(runners);
+		// Render chaser list again to update 'freeze runner' options
+		render.printChasers(chasers, runners);
 	});
 	
 	let newChaser = document.querySelector('#submitChaser');
 	newChaser.addEventListener('click', function() {
 		let name = document.querySelector('#newChaser').value;
 		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
-		new Player(name, chasers);
+		chasers.add(name);
 		render.printChasers(chasers, runners);
 	});
 	
 	let freeze = document.addEventListener('change', function() {
-		let target = document.querySelector('#')
+		//let target = document.querySelector('#')
 	})
 	
 });

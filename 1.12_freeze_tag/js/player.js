@@ -1,8 +1,8 @@
 // Create a player constructor
-module.exports = function(name, team) {
+module.exports = function(name, team, id) {
 	this.name = name;
 	this.team = team;
-	//this.id = null;
+	this.id = id;
 	this.frozen = false;
 	this.tag = function(otherPlayer) {
 		// chaser tags runner => runner is frozen
@@ -25,7 +25,7 @@ module.exports = function(name, team) {
 	};
 	
 	// when creating new Player, add player to Team list
-	//team.players.push(this);
+	team.players.push(this);
 	
 	return this;
 };
