@@ -21,7 +21,7 @@ window.addEventListener('load', function() {
 	
 	// Render team lists to DOM
 	render.printRunners(runners);
-	render.printChasers(chasers, runners);
+	render.printChasers(chasers, runners, watchChasers);
 	
 	let newRunner = document.querySelector('#submitRunner');
 	newRunner.addEventListener('click', function() {
@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
 		runners.add(name);
 		render.printRunners(runners);
 		// Render chaser list again to update 'freeze runner' options
-		render.printChasers(chasers, runners);
+		render.printChasers(chasers, runners, watchChasers);
 	});
 	
 	let newChaser = document.querySelector('#submitChaser');
@@ -38,13 +38,25 @@ window.addEventListener('load', function() {
 		let name = document.querySelector('#newChaser').value;
 		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 		chasers.add(name);
-		render.printChasers(chasers, runners);
+		render.printChasers(chasers, runners, watchChasers);
 	});
-	
-	let freeze = document.addEventListener('change', function() {
-		//let target = document.querySelector('#')
-	})
 	
 });
 
+// Add event listeners to 'freeze' selection after chasers list is rendered
+function watchChasers() {
+	let dropdown = document.querySelectorAll('.selectRunner');
+	/*http://stackoverflow.com/questions/24875414/addeventlistener-change-and-option-selection*/
+	dropdown.forEach(function(option) {
+		option.addEventListener('change', function() {
+			freezeRunner(option.value);
+		});
+	});
+}
+
+function freezeRunner(id) {
+	let target = runners.players[id - 1]; // player index = id - 1
+	target.frozen = true;
+	console.log(target);
+}
 

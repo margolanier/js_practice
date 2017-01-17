@@ -17,7 +17,7 @@ module.exports = {
 		});
 	},
 
-	printChasers: function(chasers, runners) {
+	printChasers: function(chasers, runners, callback) {
 		let chasersList = document.querySelector('#chasers-list');
 		chasersList.innerHTML = '';
 		chasers.players.forEach(function(player) {
@@ -41,5 +41,7 @@ module.exports = {
 			);
 			chasersList.appendChild(li);
 		});
+		
+		callback();
 	}
 };
