@@ -13,7 +13,7 @@ gulp.task('html', function() {
 	// copy index.html into the public/ directory
 	return gulp.src('index.html')
 		.pipe(gulp.dest('public/'));
-})
+});
 
 gulp.task('css', function() {
 	// convert style.scss into style.css
@@ -21,13 +21,14 @@ gulp.task('css', function() {
 	return gulp.src('scss/style.scss')
 		.pipe(sass()) // requires gulp-sass
 		.pipe(gulp.dest('public/'));
-})
+});
 
 gulp.task('js', function() {
 	// copy js file into public/
 	return gulp.src('js/app.js')
+		.pipe(browser.browserify()) // require() local files
 		.pipe(gulp.dest('public/'));
-})
+});
 
 // Watch files for changes
 gulp.task('watch', ['default'], function() {

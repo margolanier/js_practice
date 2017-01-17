@@ -2,3 +2,79 @@
 
 @include foundation-global-styles;
 @include foundation-grid;
+
+$font-color: #003778;
+$light1: #f8f8f8;
+$light2: #eaeaea;
+
+body {
+	@include grid-row();
+	background: white;
+}
+
+h1, h2, h3 {
+	color: $font-color;
+}
+
+.title {
+	@include grid-column(12);
+}
+
+section.team {
+	@include grid-column(6);
+	
+	ol {
+		@include grid-row();
+		padding-left: 0;
+		
+		
+		li {
+			@include grid-column(12);
+			list-style-position: inside;
+			line-height: 45px;
+			margin-bottom: 10px;
+			background-color: $light1;
+			
+			.actions {
+				display: inline;
+				float: right;
+			}
+		}
+	}
+	
+	input {
+		margin: 10px 0;
+		padding: 5px 10px;
+		border-width: 2px;
+		background: white;
+	}
+	
+	button {
+		padding: 10px;
+		background-color: $light2;
+		margin-left: 5px;
+		margin-bottom: 5px;
+	}
+	
+	&.runners {
+		h2 {
+			border-top: 2px solid $font-color;
+			border-bottom: 2px solid $font-color;
+		}
+		
+		input[type="submit"] {
+			border: 2px solid $font-color;
+		}
+	}
+	
+	&.chasers {
+		h2 {
+			border-top: 2px dashed $font-color;
+			border-bottom: 2px dashed $font-color;
+		}
+		
+		input[type="submit"] {
+			border: 2px dashed $font-color;
+		}
+	}
+}
