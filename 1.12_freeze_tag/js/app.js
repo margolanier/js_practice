@@ -20,15 +20,15 @@ window.addEventListener('load', function() {
 	chasers.add('Darla');
 	
 	// Render team lists to DOM
-	render.printRunners(runners);
 	render.printChasers(chasers, runners, watchChasers);
+	render.printRunners(runners, watchRunners);
 	
 	let newRunner = document.querySelector('#submitRunner');
 	newRunner.addEventListener('click', function() {
 		let name = document.querySelector('#newRunner').value;
 		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 		runners.add(name);
-		render.printRunners(runners);
+		render.printRunners(runners, watchRunners);
 		// Render chaser list again to update 'freeze runner' options
 		render.printChasers(chasers, runners, watchChasers);
 	});
@@ -43,7 +43,8 @@ window.addEventListener('load', function() {
 	
 });
 
-// Add event listeners to 'freeze' selection after chasers list is rendered
+
+// Add event listeners to 'freeze' selection (after chasers list is rendered)
 function watchChasers() {
 	let dropdown = document.querySelectorAll('.selectRunner');
 	/*http://stackoverflow.com/questions/24875414/addeventlistener-change-and-option-selection*/
@@ -57,8 +58,46 @@ function watchChasers() {
 function freezeRunner(id) {
 	let target = runners.players[id - 1]; // player index = id - 1
 	target.frozen = true;
-	console.log(target);
+	
+	// refresh dropdown options to only show unfrozen runners
+	//render.printChasers(chasers, runners, watchChasers);
 	// toggle 'capture flag' or 'unfreeze' buttons depending on runner.frozen value
-	render.printRunners(runners);
+	render.printRunners(runners, watchRunners);
+}
+
+
+// Add event listeners to 'get flag' and 'unfreeze' buttons (after runners list is rendered)
+function watchRunners() {
+	let flagBtn = document.querySelectorAll('.get-flag');
+	flagBtn.forEach(function(button) {
+		button.addEventListener('click', function() {
+			// get value of runner li
+			let buttonDiv = button.parentElement;
+			let id = buttonDiv.parentElement.value;
+			captureFlag(id);
+		});
+	});
+	
+	let unfreezeBtn = document.querySelectorAll('.unfreeze');
+	unfreezeBtn.forEach(function(button) {
+		button.addEventListener('click', function() {
+			// get value of runner li
+			let buttonDiv = button.parentElement;
+			let id = buttonDiv.parentElement.value;
+			unfreezeRunner(id);
+		});
+	});
+}
+
+function captureFlag(id) {
+	let target = runners.players[id - 1]; // player index = id - 1
+	target.getFlag();
+}
+
+function unfreezeRunner(id) {
+	let target = runners.players[id - 1]; // player index = id - 1
+	target.frozen = false;
+	render.printChasers(chasers, runners, watchChasers);
+	render.printRunners(runners, watchRunners);
 }
 

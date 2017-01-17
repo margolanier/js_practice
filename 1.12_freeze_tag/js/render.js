@@ -1,5 +1,5 @@
 module.exports = {
-	printRunners: function(runners) {
+	printRunners: function(runners, callback) {
 		let runnersList = document.querySelector('#runners-list');
 		runnersList.innerHTML = '';
 		runners.players.forEach(function(player) {
@@ -9,13 +9,15 @@ module.exports = {
 				{
 					runners: player,
 					name: player.name,
-					id: player.id,
 				}
 			);
 			let status = player.frozen ? 'frozen' : 'active';
 			li.classList.add(status);
+			li.setAttribute('value', player.id);
 			runnersList.appendChild(li);
 		});
+		
+		callback();
 	},
 
 	printChasers: function(chasers, runners, callback) {

@@ -19,8 +19,16 @@ module.exports = function(name, team, id) {
 	};
 	this.getFlag = function() {
 		// to capture flag, runner must be in the 'end zone' (which covers 30% surface area of playable field)
-		if (this.team === runners && this.distanceFromFlag > 0.7) {
+		if (this.team === 'Runners' && this.distanceFromFlag > 0.7) {
 			team.won = true;
+			console.log('yes');
+		} else {
+			console.log('no');
+			this.distanceFromFlag = .8;
+			/*this.distanceFromFlag = function() {
+				return Math.random();
+			};*/
+			alert(this.name +'\'s attempt to capture the flag was unsuccessful.');
 		}
 	};
 	
