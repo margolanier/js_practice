@@ -58,5 +58,7 @@ function freezeRunner(id) {
 	let target = runners.players[id - 1]; // player index = id - 1
 	target.frozen = true;
 	console.log(target);
+	// toggle 'capture flag' or 'unfreeze' buttons depending on runner.frozen value
+	render.printRunners(runners);
 }
 

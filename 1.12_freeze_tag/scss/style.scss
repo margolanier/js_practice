@@ -41,6 +41,24 @@ section.team {
 				display: inline;
 				float: right;
 			}
+			
+			&.frozen {
+				.get-flag {
+					display: none;
+				}
+				.unfreeze {
+					display: inline-block;
+				}
+			}
+			
+			&.active {
+				.get-flag {
+					display: inline-block;
+				}
+				.unfreeze {
+					display: none;
+				}
+			}
 		}
 	}
 	
@@ -50,24 +68,18 @@ section.team {
 		padding: 10px;
 		margin-left: 5px;
 		margin-bottom: 5px;
-		width: 108px;
+		width: auto;
 	}
 	
 	select {
-		width: auto;
 		border-radius: 0;
-	}
-	
-	button#get-flag {
-		float: right;
-		width: auto;
 	}
 	
 	input {
 		margin: 10px 0;
 		padding: 5px 10px;
 		border-width: 2px;
-		width: calc(100% - 113px); // 5px left margin on button
+		width: calc(100% - 115px); // 5px left margin on button
 		background: white;
 	}
 	
@@ -76,7 +88,8 @@ section.team {
 	}
 	
 	input[type="submit"] {
-		margin-left: 0;
+		margin-left: 5px;
+		width: 105px;
 	}
 	
 	&.runners {
@@ -92,8 +105,4 @@ section.team {
 			border-bottom: 2px dashed $font-color;
 		}
 	}
-}
-
-.hide {
-	display: none;
 }

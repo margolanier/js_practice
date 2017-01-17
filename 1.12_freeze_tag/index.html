@@ -8,10 +8,10 @@
 		</script>
 		<script type="x-mustache-template" id="runners-template">
 			{{ #runners }}
-				<span class="{{ status }}">{{ name }}</span>
+				{{ name }}
 				<div class="action">
-					<button id="get-flag">Capture Flag 🏁</button>
-					<button id="unfreeze" class="hide">Unfreeze 😓</button>
+					<button class="get-flag" value="{{ id }}">Capture Flag 🏁</button>
+					<button class="unfreeze" value="{{ id }}">Unfreeze 😓</button>
 				</div>
 			{{ /runners }}
 		</script>

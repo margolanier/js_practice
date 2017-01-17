@@ -3,16 +3,17 @@ module.exports = {
 		let runnersList = document.querySelector('#runners-list');
 		runnersList.innerHTML = '';
 		runners.players.forEach(function(player) {
-			let status = player.frozen ? 'inactive' : ''; // fade player name if frozen
 			let li = document.createElement('li');
 			li.innerHTML = Mustache.render(
 				document.querySelector('#runners-template').innerHTML,
 				{
 					runners: player,
 					name: player.name,
-					status: status,
+					id: player.id,
 				}
 			);
+			let status = player.frozen ? 'frozen' : 'active';
+			li.classList.add(status);
 			runnersList.appendChild(li);
 		});
 	},
