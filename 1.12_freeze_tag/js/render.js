@@ -29,17 +29,10 @@ module.exports = {
 				document.querySelector('#chasers-template').innerHTML,
 				{
 					chasers: player,
-					runners: runners.players,
-					name: function() {
-						if (this.frozen === false) {
-							return this.name;
-						}
-					},
-					id: function() {
-						if (this.frozen === false) {
-							return this.id;
-						}
-					},
+					//runners: runners.players.filter(player => player.frozen === false),
+					runners: runners.players.filter(function (player) {
+						return player.frozen === false;
+					}),
 				}
 			);
 			chasersList.appendChild(li);

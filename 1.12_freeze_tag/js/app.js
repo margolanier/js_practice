@@ -1,6 +1,8 @@
+// Import constructors
 let Game = require('./game.js');
 let Team = require('./team.js');
 let Player = require('./player.js');
+
 let render = require('./render.js');
 
 // Start new game
@@ -51,6 +53,7 @@ function watchChasers() {
 	dropdown.forEach(function(option) {
 		option.addEventListener('change', function() {
 			freezeRunner(option.value);
+			//game.continue();
 		});
 	});
 }
@@ -60,7 +63,7 @@ function freezeRunner(id) {
 	target.frozen = true;
 	
 	// refresh dropdown options to only show unfrozen runners
-	//render.printChasers(chasers, runners, watchChasers);
+	render.printChasers(chasers, runners, watchChasers);
 	// toggle 'capture flag' or 'unfreeze' buttons depending on runner.frozen value
 	render.printRunners(runners, watchRunners);
 }
