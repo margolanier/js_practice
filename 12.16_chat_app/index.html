@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Chatter Box</title>
+	
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+	
+	<script type="x-mustache-template" id="chat-template">
+		<p class="from-div">{{ user }}: </p>
+		<p class="message-div {{ class }}">
+			{{ message }}
+			<img src="{{ image }}" >
+		</p>
+		<p class="message-id">id: {{ id }}</p>
+	</script>
+</head>
+
+<body>
+	<header>
+		<section id="top-bar">
+			<h1>Chatter Box</h1>
+			<div id="from-container">
+				<p>From:</p>
+				<input type="text" placeholder="Your Name Here" id="from">
+			</div>
+		</section>
+	</header>
+	
+	<section id="message-container">
+		<ul></ul>
+	</section>
+
+	<section id="input-container">
+		<div id="user-input">
+			<input type="text" placeholder="Your Message Here" id="user-message">
+			<button id="send">Send</button>
+			
+			<button id="delete">Delete Message<span id="deleteID"></span></button>
+		</div>
+	</section>
+	
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/foundation.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+	<script src="js/chatterbox.js"></script>
+</body>
+	
+</html>
