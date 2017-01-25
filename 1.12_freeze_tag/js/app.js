@@ -3,14 +3,18 @@ let Game = require('./game.js');
 let Team = require('./team.js');
 let Player = require('./player.js');
 
-let render = require('./render.js');
+// Define the teams
+let runners = new Team('Runners');
+let chasers = new Team('Chasers');
+
+// Call render() and action() with teams as parameters
+// this will make team objects available to other modules
+let render = require('./render.js')(runners, chasers);
+let action = require('./action.js')(runners, chasers);
+let listen = require('./watch.js');
 
 // Start new game
 let game = new Game;
-
-// Add teams
-let runners = new Team('Runners');
-let chasers = new Team('Chasers');
 game.teams.push(runners, chasers);
 
 window.addEventListener('load', function() {
@@ -21,18 +25,20 @@ window.addEventListener('load', function() {
 	chasers.add('Carlos');
 	chasers.add('Darla');
 	
-	// Render team lists to DOM
-	render.printChasers(chasers, runners, watchChasers);
-	render.printRunners(runners, watchRunners);
+	// Keep track of active runners
+	let notFrozen = 2;  // Starting with Alice and Bob
 	
+	// Render team lists to DOM
+	rerender();
+	
+	// Allow users to add new players
 	let newRunner = document.querySelector('#submitRunner');
 	newRunner.addEventListener('click', function() {
 		let name = document.querySelector('#newRunner').value;
 		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 		runners.add(name);
-		render.printRunners(runners, watchRunners);
-		// Render chaser list again to update 'freeze runner' options
-		render.printChasers(chasers, runners, watchChasers);
+		
+		rerender();
 	});
 	
 	let newChaser = document.querySelector('#submitChaser');
@@ -40,67 +46,36 @@ window.addEventListener('load', function() {
 		let name = document.querySelector('#newChaser').value;
 		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 		chasers.add(name);
-		render.printChasers(chasers, runners, watchChasers);
+		
+		rerender();
 	});
 	
 });
 
-
-// Add event listeners to 'freeze' selection (after chasers list is rendered)
-function watchChasers() {
-	let dropdown = document.querySelectorAll('.selectRunner');
-	/*http://stackoverflow.com/questions/24875414/addeventlistener-change-and-option-selection*/
-	dropdown.forEach(function(option) {
-		option.addEventListener('change', function() {
-			freezeRunner(option.value);
-			//game.continue();
-		});
-	});
+function rerender() {
+	render.printChasers();
+	render.printRunners();
+	watch();
 }
 
-function freezeRunner(id) {
-	let target = runners.players[id - 1]; // player index = id - 1
-	target.frozen = true;
-	
-	// refresh dropdown options to only show unfrozen runners
-	render.printChasers(chasers, runners, watchChasers);
-	// toggle 'capture flag' or 'unfreeze' buttons depending on runner.frozen value
-	render.printRunners(runners, watchRunners);
-}
-
-
-// Add event listeners to 'get flag' and 'unfreeze' buttons (after runners list is rendered)
-function watchRunners() {
-	let flagBtn = document.querySelectorAll('.get-flag');
-	flagBtn.forEach(function(button) {
-		button.addEventListener('click', function() {
-			// get value of runner li
-			let buttonDiv = button.parentElement;
-			let id = buttonDiv.parentElement.value;
-			captureFlag(id);
-		});
+function watch(notFrozen, game) {
+	listen.watchFreeze(function(selected) {
+		action.freezeRunner(selected, rerender);
+		notFrozen--;
+		if (notFrozen === 0) {
+			game.allFrozen = true;
+		}
 	});
 	
-	let unfreezeBtn = document.querySelectorAll('.unfreeze');
-	unfreezeBtn.forEach(function(button) {
-		button.addEventListener('click', function() {
-			// get value of runner li
-			let buttonDiv = button.parentElement;
-			let id = buttonDiv.parentElement.value;
-			unfreezeRunner(id);
-		});
+	listen.watchUnfreeze(function(selected) {
+		action.unfreezeRunner(selected, rerender);
+		notFrozen++;
+	});
+	
+	listen.watchFlag(function(selected) {
+		action.captureFlag(selected, rerender);
 	});
 }
 
-function captureFlag(id) {
-	let target = runners.players[id - 1]; // player index = id - 1
-	target.getFlag();
-}
-
-function unfreezeRunner(id) {
-	let target = runners.players[id - 1]; // player index = id - 1
-	target.frozen = false;
-	render.printChasers(chasers, runners, watchChasers);
-	render.printRunners(runners, watchRunners);
-}
-
+//console.log(game.runnersFrozen());
+//console.log(game.over());

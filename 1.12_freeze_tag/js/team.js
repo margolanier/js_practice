@@ -5,7 +5,6 @@ let nextId = 0;
 module.exports = function(name) {
 	this.name = name;
 	this.players = [];
-	this.flag = null; // true if runner captures flag
 	
 	this.add = function(name) {
 		// add id only to runners
