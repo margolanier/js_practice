@@ -6,3 +6,7 @@
 body {
 	@include grid-row();
 }
+
+button {
+	@include button();
+}

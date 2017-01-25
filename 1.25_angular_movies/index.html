@@ -1,48 +1,29 @@
 <!doctype html>
 <html>
-	<head>
-		<title></title>
-		<meta charset="UTF-8"> 
-		<link rel="stylesheet" href="style.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-		<script src="app.js"></script>
-		
-	</head>
-	
-	<body ng-app="MovieApp">
-		<h1>Movies</h1>
-    
-		<section ng-controller="AddMovieController">
-			<p>With your host: {{ host }}, who has {{ hair }} hair.</p>
-			<input type="text" ng-model="host" placeholder="Dog name">
-			<button ng-click="colorTyme('rose')">Change to Rose</button>
-			<button ng-click="colorTyme('orange')">Change to Orange</button>
-		</section>
+<head>
+    <title>Movie App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
 
-		<section><!--ng-controller="ListOPetsController"-->
-			<p>Pets are great.</p>
-			<!-- ng-model 'binds' the value of this box to a $scope property -->
-			<!-- English: connects the value of $scope.petName to this element's value -->
-			<input type="text" ng-model="petName" placeholder="Which pet?">
-			<button ng-click="newPet()">Add your pet</button>
-			<ul>
-				<!-- 
-					Loop over all of the items in $scope.pets, and
-					each will be called 'oneOfEm' during the loop.
-					'in' is required - its saying we want a for loop
-					here over the $scope.pets array. the current element 
-					during the loop will be called 'oneofEm'.
-				-->
-				<li ng-repeat="oneOfEm in pets">
-					{{ oneOfEm }}
-					<!-- 
-						Angular creates $index for us when we're inside 
-						of an ng-repeat (for loop). 
-					-->
-					<button ng-click="remove($index)">remove</button>
-				</li>
-			</ul>
-		</section>
-		
-	</body>
+<body ng-app="MovieApp">
+	<h1>Movie App</h1>
+	
+	<section ng-controller="MovieController">
+		<p>Add a movie</p>
+		<input type="text" ng-model="newTitle" placeholder="Title">
+		<input type="text" ng-model="newDate" placeholder="Release Date">
+		<input type="text" ng-model="newGenre" placeholder="Genre">
+        <button ng-click="newMovie()">Request</button>
+	
+		<ul>
+			<li ng-repeat="movie in movies">
+				{{ movie.title }}
+				<button ng-click="remove($index)">remove</button>
+			</li>
+		</ul>
+	</section>
+</body>
+
 </html>

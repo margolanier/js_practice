@@ -1,85 +1,38 @@
 const app = angular.module('MovieApp', []);
 
-// When I define a controller, the first arg is the name, the second is the 
-// function that describes what it does.
-//
-// You can add a bunch of different params to the function, which are 'services'.
-// WEIRD THING ALERT: the NAME of those params is important.
-app.controller('PetShoppeController', function ($scope, PetService) {
-    $scope.host = 'Maple';
-    $scope.hair = 'long and golden';
-
-    $scope.colorTyme = function (color) {
-        console.log('lets dye this dog');
-        // Its nice once you get used to it
-        // $scope.hair = `spikey ${color} dreadlocky`;
-        $scope.hair = 'spikey ' + color + ' dreadlocky';
-
-        console.log(PetService.getPets());
-    };
+app.controller('MovieController', function ($scope, MovieData) {
+	// Get array of movies from the service
+	$scope.movies = MovieData.getMovies();
+	
+	$scope.newMovie = function() {
+		// Get input values from movie form and pass to service ftn as params
+		MovieData.addMovie($scope.newTitle, $scope.newDate, $scope.newGenre);
+		
+		// Clear text boxes
+		$scope.newTitle = '';
+		$scope.newDate = '';
+		$scope.newGenre = '';
+	};
+	
+	$scope.remove = function(id) {
+		$scope.movies.splice(id, 1);
+	};
 });
 
-/**
- * Scopes are INDEPENDENT across controllers. The scope in
- * one controller is not the same as the scope in another
- * controller.
- */
-// Without services
-// app.controller('ListOPetsController', function ($scope) {
-//     $scope.petName = '';
-//     $scope.pets = [];
-
-//     // You won't have access to 'nums' in your template
-//     // because its a local variable. You need to add it
-//     // to scope, so when we do $scope.x that means our
-//     // templates can access this array called 'x'.
-//     let nums = [1, 2, 67];
-//     $scope.x = nums;
-
-//     $scope.addPet = function () {
-//         $scope.pets.push($scope.petName);
-//         $scope.petName = '';
-//     };
-
-//     $scope.remove = function (id) {
-//         $scope.pets.splice(id, 1);
-//     };
-// });
-
-// Second param is name of service that was created below.
-app.controller('ListOPetsController', function ($scope, PetService) {
-    $scope.petName = '';
-    $scope.pets = PetService.getPets();
-    // $scope.pets = [];
-
-    $scope.newPet = function () {
-        PetService.addPet($scope.petName);
-        // $scope.pets.push($scope.petName);
-        $scope.petName = '';
-    };
-
-    $scope.remove = function (id) {
-        $scope.pets.splice(id, 1);
-    };
-});
-
-/**
- * .factory is how we create services. Sorry but it
- * is, nothing we can do about it.
- * 
- * This function runs once at the beginning and returns
- * the OBJECT THAT IS THE SERVICE.
- */
-app.factory('PetService', function () {
-    let pets = [];
-
+app.factory('MovieData', function() {
+    let movies = [];
+	
     return {
-        // Made up function names
-        addPet: function (name) {
-            pets.push(name);
+        addMovie: function(title, date, genre) {
+			let movie = {
+				title: title,
+				releaseDate: date,
+				genre: genre,
+			};
+            movies.push(movie);
         },
-        getPets: function () {
-            return pets;
+        getMovies: function() {
+            return movies;
         },
     };
 });
