@@ -3,10 +3,110 @@
 @include foundation-global-styles;
 @include foundation-grid;
 
-body {
+$md-screen: 767px;
+$red: #FF9696;
+$green: #BBFFB6;
+$hover: #F0F0F0;
+
+header {
 	@include grid-row();
+	
+	h1 {
+		@include grid-column(12);
+	}
+}
+
+#form {
+	@include grid-row();
+	
+	form {
+		@include grid-column(12);
+	}
+	
+	input, button {
+		width: 100%;
+	}
+	
+	input {
+		padding: 0.6em;
+		margin-bottom: 1em;
+	}
+	
+	button {
+		margin: 0;
+		margin-bottom: 0;
+	}
+	
+	@include breakpoint($md-screen) {
+		input, button {
+			width: auto;
+		}
+	}
+}	
+
+ul {
+	padding: 0;
+	margin: 0;
+	
+	li {
+		@include grid-row();
+		list-style: none;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		border-bottom: 1px dotted #ccc;
+		transition: 0.1s ease-in;
+		
+		.info {
+			@include grid-column(12);
+			
+			@include breakpoint($md-screen) {
+				@include grid-column(9);
+			}
+			
+			.title {
+				font-weight: bold;
+			}
+			.date {
+				opacity: 0.8;
+			}
+			.genre {
+				opacity: 0.8;
+				font-style: italic;
+				margin-top: 0;
+			}
+		}
+		
+		.rating {
+			@include grid-column(12);
+			text-align: right;
+			
+			@include breakpoint($md-screen) {
+				@include grid-column(3);
+			}
+		}
+		
+		&:first-child {
+			border-top: 1px dotted #ccc;
+		}
+		
+		&:hover {
+			background-color: $hover;
+		}
+		
+		&.like {
+			background-color: $green;
+		}
+		
+		&.dislike {
+			background-color: $red;
+		}
+		
+	}
 }
 
 button {
 	@include button();
+	float: none;
+	background-color: #ccc;
+	color: black;
 }
