@@ -101,6 +101,10 @@ button:not(.star) {
 	
 	&.star {
 		display: inline-block;
-		width: 50px;
+		
+		.fa {
+			font-size: 1.3em;
+			padding: 0.1em;
+		}
 	}
 }

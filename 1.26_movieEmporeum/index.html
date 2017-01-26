@@ -29,9 +29,8 @@
 					<button ng-click="rate(movie, 'dislike')"><i class="fa fa-thumbs-o-down"></i></button>
 					<button ng-click="remove($index)"><i class="fa fa-trash-o"></i></button>
 				</div>
-				<!--<div class="star-rating">{{ ratings }} </div>-->
 				<div class="ratings">
-					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]" ng-click="rate()" ng-class="score{{ $index + 1 }}">
+					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]" ng-click="rate(movie, $index + 1)" ng-class="score{{ $index + 1 }}">
 						<i class="fa fa-star-o" ng-hide="$index < movie.rating"></i>
 						<i class="fa fa-star" ng-show="$index < movie.rating"></i>
 					</button>
