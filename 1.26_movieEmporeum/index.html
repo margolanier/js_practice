@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>Movie Emporeum</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="MovieApp">
+	<header>
+		<h1>Movie Emporeum</h1>
+	</header>
+	
+	<section ng-controller="ShowMoviesController">
+		<ul>
+			<li ng-repeat="movie in movies" ng-class="movie.rating">
+				<div class="info">
+					<p><span class="title">{{ movie.title }},</span> <span class="date">{{ movie.release_date }}</span></p>
+					<p class="genre">
+						<span ng-repeat="id in movie.genre_ids">{{ demo[id] }}</span>
+					</p>
+					<p>{{ movie.overview }}</p>
+				</div>
+				<div class="rating">
+					<button ng-click="rate(movie, 'like')"><i class="fa fa-thumbs-o-up"></i></button>
+					<button ng-click="rate(movie, 'dislike')"><i class="fa fa-thumbs-o-down"></i></button>
+					<button ng-click="remove($index)"><i class="fa fa-trash-o"></i></button>
+				</div>
+			</li>
+		</ul>
+	</section>
+</body>
+
+</html>
