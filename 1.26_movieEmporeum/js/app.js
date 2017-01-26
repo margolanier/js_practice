@@ -15,24 +15,29 @@ app.controller('ShowMoviesController', function ($scope, MovieData) {
 });
 
 app.factory('MovieData', function($http) {
-	// Add movie constructor
-	function Movie(movie) {
-		this.title = title;
-		// release date
-		// genres
-		this.id = null;
-		this.added = null;
-		this.rating = null; // number 1-5
-		
-		return this;
-	}
 	
 	// Define movies db locally (manipulate movie ratings here)
 	const movies = [];
 	const genres = {};
 	
+	// Add movie constructor
+	function Movie(movie) {
+		this.title = movie.title;
+		this.image = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`;
+		this.releaseDate = movie.release_date;
+		this.genreIds = movie.genre_ids;
+		this.desc = movie.overview;
+		this.rating = null; // number 1-5
+		
+		return this;
+	}
+	
 	// Get initial list of movies from the server
 	$http.get('https://api.themoviedb.org/3/discover/movie?api_key=033f28bd5adb08417059e695b078940d').then(function(response) {
+		for (let i=0; i<response.data.results.length; i++) {
+			response.data.results[i] = new Movie(response.data.results[i]);
+		}
+//		response.data.results = response.data.results.map(movie => new Movie(movie));
 		angular.copy(response.data.results, movies);
 	});
 	

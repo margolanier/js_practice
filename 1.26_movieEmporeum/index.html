@@ -17,16 +17,24 @@
 		<ul>
 			<li ng-repeat="movie in movies" ng-class="movie.rating">
 				<div class="info">
+					<img ng-src="{{ movie.image }}">
 					<p><span class="title">{{ movie.title }},</span> <span class="date">{{ movie.release_date }}</span></p>
 					<p class="genre">
-						<span ng-repeat="id in movie.genre_ids">{{ genres[id] }}</span>
+						<span ng-repeat="id in movie.genreIds">{{ genres[id] }}</span>
 					</p>
-					<p>{{ movie.overview }}</p>
+					<p>{{ movie.desc }}</p>
 				</div>
 				<div class="rating">
 					<button ng-click="rate(movie, 'like')"><i class="fa fa-thumbs-o-up"></i></button>
 					<button ng-click="rate(movie, 'dislike')"><i class="fa fa-thumbs-o-down"></i></button>
 					<button ng-click="remove($index)"><i class="fa fa-trash-o"></i></button>
+				</div>
+				<!--<div class="star-rating">{{ ratings }} </div>-->
+				<div class="ratings">
+					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]" ng-click="rate()" ng-class="score{{ $index + 1 }}">
+						<i class="fa fa-star-o" ng-hide="$index < movie.rating"></i>
+						<i class="fa fa-star" ng-show="$index < movie.rating"></i>
+					</button>
 				</div>
 			</li>
 		</ul>
