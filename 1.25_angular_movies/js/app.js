@@ -21,18 +21,7 @@ app.controller('ListController', function ($scope, MovieData) {
 	$scope.rate = function(item, rating) {
 		console.log(`you rated this ${rating}`);
 		item.rating = rating;
-		
-		/*$scope.movies[id].classList.remove('like');
-		$scope.movies[id].classList.remove('dislike');*/
-		
-		/*$scope.movies[id].classList.add('rating');*/
 	};
-	
-	$scope.ratingBtn = function (thought, target) {
-        console.log('You are clicking on rating');
-        
-        target.rating = thought;
-    } 
 	
 	$scope.remove = function(id) {
 		$scope.movies.splice(id, 1);
