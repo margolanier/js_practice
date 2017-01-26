@@ -19,7 +19,7 @@
 				<div class="info">
 					<p><span class="title">{{ movie.title }},</span> <span class="date">{{ movie.release_date }}</span></p>
 					<p class="genre">
-						<span ng-repeat="id in movie.genre_ids">{{ demo[id] }}</span>
+						<span ng-repeat="id in movie.genre_ids">{{ genres[id] }}</span>
 					</p>
 					<p>{{ movie.overview }}</p>
 				</div>

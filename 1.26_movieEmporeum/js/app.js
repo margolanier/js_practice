@@ -3,14 +3,6 @@ const app = angular.module('MovieApp', []);
 app.controller('ShowMoviesController', function ($scope, MovieData) {
 	$scope.movies = MovieData.getMovies();
 	$scope.genres = MovieData.getGenres();
-	console.log($scope.genres);
-	
-	$scope.demo = {
-		12: 'action',
-		16: 'adventure',
-		35: 'drama',
-		10751: 'comedy',
-	}
 	
 	$scope.rate = function(item, rating) {
 		console.log(`you rated this ${rating}`);
@@ -37,6 +29,7 @@ app.factory('MovieData', function($http) {
 	
 	// Define movies db locally (manipulate movie ratings here)
 	const movies = [];
+	const genres = {};
 	
 	// Get initial list of movies from the server
 	$http.get('https://api.themoviedb.org/3/discover/movie?api_key=033f28bd5adb08417059e695b078940d').then(function(response) {
@@ -44,9 +37,11 @@ app.factory('MovieData', function($http) {
 	});
 	
 	// Get list of genres and corresponding ids 
-	const genres = [];
 	$http.get('https://api.themoviedb.org/3/genre/movie/list?api_key=033f28bd5adb08417059e695b078940d&language=en-US').then(function(response) {
-		angular.copy(response.data.genres, genres);
+		// Add each object to genres object as a new property
+		response.data.genres.forEach(genre => {
+			genres[genre.id] = genre.name;
+		});
 	});
 	
 	// Return the service object
