@@ -20,12 +20,12 @@
 		</div>
 		
 		<ul>
-			<li ng-repeat="movie in topMovies" ng-class="movie.rating">
+			<li ng-repeat="movie in topMovies">
 				<div class="info">
 					<p><span class="title">{{ movie.title }}</span></p>
 				</div>
 				<div class="rating">
-					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]" ng-class="score{{ $index + 1 }}">
+					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]">
 						<i class="fa fa-star-o" ng-hide="$index < movie.rating"></i>
 						<i class="fa fa-star" ng-show="$index < movie.rating"></i>
 					</button>
@@ -40,7 +40,7 @@
 		</div>
 		
 		<ul>
-			<li ng-repeat="movie in movies" ng-class="movie.rating">
+			<li ng-repeat="movie in movies">
 				<div class="info">
 					<img ng-src="{{ movie.image }}">
 					<p><span class="title">{{ movie.title }},</span> <span class="date">{{ movie.releaseDate }}</span></p>
@@ -50,7 +50,7 @@
 					<p>{{ movie.desc }}</p>
 				</div>
 				<div class="rating">
-					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]" ng-click="rate(movie, $index + 1)" ng-class="score{{ $index + 1 }}">
+					<button class="star" ng-repeat="i in [1, 2, 3, 4, 5]" ng-click="rate(movie, $index + 1)">
 						<i class="fa fa-star-o" ng-hide="$index < movie.rating"></i>
 						<i class="fa fa-star" ng-show="$index < movie.rating"></i>
 					</button>
