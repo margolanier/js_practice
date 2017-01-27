@@ -6,6 +6,7 @@
 $md-screen: 767px;
 $red: #FF9696;
 $green: #BBFFB6;
+$yellow: #FFE402;
 $hover: #F0F0F0;
 
 header {
@@ -13,6 +14,20 @@ header {
 	
 	h1 {
 		@include grid-column(12);
+		margin-bottom: 0;
+	}
+}
+
+#top-rated-header, #explore-header {
+	@include grid-row();
+	
+	h2 {
+		@include grid-column(12);
+	}
+	
+	p {
+		@include grid-column(12);
+		margin-top: -1em;
 	}
 }
 
@@ -93,18 +108,31 @@ ul {
 	}
 }
 
-button:not(.star) {
+button:not(.star):not(.trash) {
 	@include button();
 	float: none;
 	background-color: #ccc;
 	color: black;
-	
-	&.star {
-		display: inline-block;
-		
+}
+
+button {
+	&.star, &.trash {
 		.fa {
 			font-size: 1.3em;
 			padding: 0.1em;
+		}
+		.fa-star {
+			color: $yellow;
+		}
+		
+		&.trash > i.fa {
+			color: red !important;
+		}
+		
+		&:select, &:focus {
+			outline: none;
+			border: none;
+			text-shadow: none;
 		}
 	}
 }

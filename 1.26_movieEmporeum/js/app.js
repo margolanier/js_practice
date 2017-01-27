@@ -1,12 +1,20 @@
 const app = angular.module('MovieApp', []);
 
+app.controller('TopMoviesController', function ($scope, MovieData) {
+	$scope.topMovies = MovieData.getTopMovies();
+	$scope.genres = MovieData.getGenres();
+});
+
 app.controller('ShowMoviesController', function ($scope, MovieData) {
 	$scope.movies = MovieData.getMovies();
 	$scope.genres = MovieData.getGenres();
 	
-	$scope.rate = function(item, rating) {
-		console.log(`you rated this ${rating}`);
-		item.rating = rating;
+	$scope.rate = function(item, rate) {
+		if (item.rating === null) {
+			MovieData.rateMovie(item, rate);
+		} else {
+			alert('You have already rated this movie.');
+		}
 	};
 	
 	$scope.remove = function(id) {
@@ -19,6 +27,7 @@ app.factory('MovieData', function($http) {
 	// Define movies db locally (manipulate movie ratings here)
 	const movies = [];
 	const genres = {};
+	const topMovies = [];
 	
 	// Add movie constructor
 	function Movie(movie) {
@@ -59,6 +68,12 @@ app.factory('MovieData', function($http) {
 		},
 		rateMovie(ratedMovie, rating) {
 			ratedMovie.rating = rating;
+			if (rating >= 4) {
+				topMovies.push(ratedMovie);
+			}
+		},
+		getTopMovies() {
+			return topMovies;
 		},
     };
 });

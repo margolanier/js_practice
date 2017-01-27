@@ -6,7 +6,7 @@ let sass = require('gulp-sass'); // download this npm plugin
 let browser = require('gulp-browser');
 
 // Default Task
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('default', ['html', 'css', 'js', 'assets']);
 
 // Subtasks
 gulp.task('html', function() {
@@ -30,10 +30,17 @@ gulp.task('js', function() {
 		.pipe(gulp.dest('public/'));
 })
 
+gulp.task('assets', function() {
+	// copy js file into public/
+	return gulp.src('assets/*')
+		.pipe(gulp.dest('public/'));
+})
+
 // Watch files for changes
 gulp.task('watch', ['default'], function() {
 	// gulp.watch('files-to-watch', 'tasks to run')
 	gulp.watch('*.html', ['html']);
 	gulp.watch('scss/*.scss', ['css']);
     gulp.watch('js/*.js', ['js']);
+	gulp.watch('assets/*', ['assets']);
 });
